@@ -104,17 +104,15 @@ describe('Usage-to-cost edited walkthrough', () => {
 
   it('separates the previous-workflow summary from the redesigned screen sequence', () => {
     const { container } = render(<CrusoeUsageCostStory />)
-    const guide = screen.getByLabelText('How to read the design evidence')
-    expect(guide).toHaveTextContent('All visuals below show the proposed redesign.')
-    expect(guide).toHaveTextContent('not an original interface capture')
-    expect(guide).toHaveTextContent('not before/after pairs')
+    expect(screen.queryByLabelText('How to read the design evidence')).not.toBeInTheDocument()
+    expect(screen.queryByText('All visuals below show the proposed redesign.')).not.toBeInTheDocument()
+    expect(container.querySelector('.crusoe-cost-reading-guide')).toBeNull()
     const before = container.querySelector('.crusoe-cost-workflow-before')!
     expect(before).toHaveTextContent('Before · Previous workflow')
     expect(before).toHaveTextContent('not a screenshot of the old interface')
     expect(before.querySelector('img,video')).toBeNull()
     expect(container.querySelector('.crusoe-cost-workflow-after')).toHaveTextContent('After · Proposed redesign')
     expect(screen.queryByLabelText('Before, after, and design rationale')).not.toBeInTheDocument()
-    expect(guide.compareDocumentPosition(screen.getByLabelText('21-second usage-to-cost walkthrough')) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     const comparison = screen.getByLabelText('Cost investigation before and after')
     const process = screen.getByRole('region', { name: 'Usage → cost process' })
     expect(comparison.compareDocumentPosition(process) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()

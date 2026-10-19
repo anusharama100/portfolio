@@ -714,7 +714,14 @@ html:has(.case-study-experience), body:has(.case-study-experience) { overflow: v
 .case-study-experience .toni-scroll-heading { padding: 24px 28px; }
 .case-study-experience .toni-scroll-heading > strong { color: var(--foreground); font: 600 22px/1.4 'DM Sans', sans-serif; }
 .case-study-experience .toni-scroll-heading > p { max-width: 80ch; margin: 10px 0 0; color: var(--muted-foreground); font: 400 14px/1.7 'DM Sans', sans-serif; }
-.case-study-experience .toni-design-scroll { width: 100%; height: clamp(360px, 72vh, 740px); overflow: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; border-block: 1px solid var(--border); background: white; }
+.case-study-experience .toni-scroll-view-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.case-study-experience .toni-scroll-view-controls button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 4px; background: var(--background); color: var(--foreground); font: 500 14px/1.5 'DM Sans', sans-serif; cursor: pointer; }
+.case-study-experience .toni-scroll-view-controls button > span { color: var(--study-rose-ink); font-variant-numeric: tabular-nums; }
+.case-study-experience .toni-scroll-view-controls button[aria-pressed="true"] { border-color: var(--study-rose-ink); background: var(--study-rose); }
+.case-study-experience :is(.toni-scroll-view-controls button, .toni-scroll-preview-links a, .toni-scroll-preview-links button):focus-visible { outline: 2px solid var(--study-rose-ink); outline-offset: 3px; }
+.case-study-experience :is(.toni-design-scroll, .toni-live-site) { width: 100%; height: clamp(420px, calc(88svh / var(--study-reading-scale, 1)), 1200px); border-block: 1px solid var(--border); background: white; }
+.case-study-experience .toni-design-scroll { overflow: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+.case-study-experience .toni-live-site iframe { display: block; width: 100%; height: 100%; border: 0; }
 .case-study-experience .toni-design-scroll:focus-visible { outline: 2px solid var(--study-rose-ink); outline-offset: -3px; }
 .case-study-experience .toni-scroll-phase-heading { padding: 24px 28px; background: var(--study-rose); }
 .case-study-experience .toni-scroll-phase-heading h3 { display: flex; gap: 12px; margin: 0; color: var(--foreground); font: 600 18px/1.5 'DM Sans', sans-serif; }
@@ -726,6 +733,9 @@ html:has(.case-study-experience), body:has(.case-study-experience) { overflow: v
 .case-study-experience .toni-scroll-screen > figcaption > span { color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
 .case-study-experience .toni-scroll-screen img { display: block; width: 100%; max-width: 100%; height: auto; }
 .case-study-experience .toni-scroll-note { margin: 0; padding: 20px 28px; color: var(--muted-foreground); font: 400 13px/1.7 'DM Sans', sans-serif; }
+.case-study-experience .toni-scroll-note > p { margin: 0; }
+.case-study-experience .toni-scroll-preview-links { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 20px; margin-top: 8px; }
+.case-study-experience .toni-scroll-preview-links :is(a, button) { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--foreground); font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
 .case-study-experience .toni-case :is(.toni-screen-wide,.toni-transformation-grid) { width: 100%; max-width: var(--toni-evidence-max); margin-inline: auto; }
 .case-study-experience .toni-case .toni-screen-process-crop { max-width: 820px; }
 .case-study-experience .toni-case :is(.toni-auth-layout,.toni-signed-in-gallery) { max-width: 1040px; margin-inline: auto; }

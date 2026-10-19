@@ -147,6 +147,24 @@ describe('Crusoe evidence-led storytelling', () => {
     expect(screen.getByText(/they are not all presented as shipped screens/)).toBeInTheDocument()
   })
 
+  it('keeps the full journey notes in the same API, cost, and debugging order as the decision cards', () => {
+    const { container } = render(<CrusoeCaseStudy />)
+    fireEvent.click(screen.getByRole('button', { name: 'Read project 02: Heuristic evaluation' }))
+    expect(screen.getAllByRole('button', { name: /^Explore (Safer|Explain|Recover)/ }).map(button => button.getAttribute('aria-label'))).toEqual([
+      'Explore Safer API-key defaults', 'Explore Explain a cost change', 'Explore Recover without a detour',
+    ])
+    const journeys = [...container.querySelectorAll('.crusoe-journey-dossier')]
+    expect(journeys.map(journey => journey.querySelector('summary > span')!.textContent)).toEqual([
+      'Journey 01', 'Journey 02', 'Journey 03',
+    ])
+    expect(journeys.map(journey => journey.querySelector('summary > strong')!.textContent)).toEqual([
+      'API keys', 'Cost monitoring', 'Monitoring + debugging',
+    ])
+    expect(within(journeys[0] as HTMLElement).getByRole('list', { name: 'API keys evaluated path', hidden: true })).toHaveTextContent('Find API keys')
+    expect(within(journeys[1] as HTMLElement).getByRole('list', { name: 'Cost monitoring evaluated path', hidden: true })).toHaveTextContent('See spend change')
+    expect(within(journeys[2] as HTMLElement).getByRole('list', { name: 'Monitoring + debugging evaluated path', hidden: true })).toHaveTextContent('Notice an issue')
+  })
+
   it('links usage analysis to design decisions without presenting prototype playback as measured impact', () => {
     const { container } = render(<CrusoeCaseStudy />)
     fireEvent.click(screen.getByRole('button', { name: 'Read project 03: Usage → cost' }))

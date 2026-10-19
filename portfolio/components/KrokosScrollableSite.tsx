@@ -3,13 +3,15 @@
 export type KrokosSiteVersion = 'before' | 'after'
 
 export const originalKrokosSections = [
-  { file: 'opening', label: 'Opening', alt: 'Original Krokos homepage opening with botanical photography and a Learn How action' },
-  { file: 'newsletter', label: 'Newsletter', alt: 'Original Krokos newsletter sign-up immediately after the opening' },
-  { file: 'plant-science', label: 'Plant science', alt: 'Original Power of Plants section with the scientific explanation and plant imagery' },
-  { file: 'supply-chain', label: 'Supply-chain problem', alt: 'Original botanical-sourcing problem followed by the plant-cell-culture approach heading' },
-  { file: 'approach', label: 'Approach & benefits', alt: 'Original plant-to-culture sequence and benefits of plant cell culture' },
-  { file: 'saffron', label: 'Saffron focus', alt: 'Original What We’re Building section introducing the saffron application' },
-  { file: 'team-contact', label: 'Team & contact', alt: 'Original Krokos team profiles followed by the contact form' },
+  { file: 'opening', label: 'Opening', height: 610, alt: 'Original Krokos homepage opening with botanical photography and a Learn How action' },
+  { file: 'newsletter', label: 'Newsletter', height: 790, alt: 'Original Krokos newsletter sign-up immediately after the opening' },
+  { file: 'plant-science', label: 'Plant science', height: 526, alt: 'Complete original Power of Plants section with the scientific explanation and plant imagery' },
+  { file: 'supply-chain', label: 'Supply-chain problem', height: 526, alt: 'Complete original botanical-sourcing problem, including the field photograph and both explanatory paragraphs' },
+  { file: 'approach', label: 'Approach', height: 718, alt: 'Complete original Our Approach section, including its headline, explanation, and three circular process photographs' },
+  { file: 'benefits', label: 'Benefits', height: 860, alt: 'Complete original Why Plant Cell Culture section, with all four benefits and the botanical ingredient photograph' },
+  { file: 'saffron', label: 'Saffron focus', height: 684, alt: 'Complete original What We’re Building section, including both paragraphs and the entire saffron photograph' },
+  { file: 'team', label: 'Founding team', height: 526, alt: 'Complete original Founding Team section with the heading and both founder profiles' },
+  { file: 'contact', label: 'Contact', height: 644, alt: 'Complete original Contact Us section, including all form fields and the Submit button' },
 ] as const
 
 export default function KrokosScrollableSite({ version }: { version: KrokosSiteVersion }) {
@@ -27,7 +29,7 @@ export default function KrokosScrollableSite({ version }: { version: KrokosSiteV
         {before ? originalKrokosSections.map((section, index) => (
           <figure className="krokos-archived-section" key={section.file}>
             <figcaption><span>{String(index + 1).padStart(2, '0')}</span> {section.label}</figcaption>
-            <img src={`/krokos/original-sections/${section.file}.jpg`} alt={section.alt} width={1280} height={800} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <img src={`/krokos/original-sections/${section.file}.jpg`} alt={section.alt} width={1280} height={section.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
           </figure>
         )) : (
           <img src="/krokos/redesign-landing-full.jpg" alt="Full published Krokos Bio redesign, from the navigation and opening through the science, approach, saffron, team, contact, and footer" width={1280} height={8259} decoding="async" />
@@ -35,7 +37,7 @@ export default function KrokosScrollableSite({ version }: { version: KrokosSiteV
       </div>
       <figcaption className="krokos-scrollthrough-note">
         {before
-          ? 'Archived sections from the original-site recording, in page order. These are separate captures, not a continuous full-page screenshot.'
+          ? 'Archived sections, cropped at section boundaries. The benefits section joins two overlapping captures. These are separate captures, not a continuous full-page screenshot.'
           : 'Full published homepage capture. This is a static design preview; links and controls pictured inside the frame are not interactive.'}
       </figcaption>
     </figure>

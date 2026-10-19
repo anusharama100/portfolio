@@ -3,6 +3,7 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import NeuranoteCaseStudy from '@/portfolio/pages/case-study-neuranote'
 import NeuraWalkthroughVideo from '@/portfolio/components/NeuraWalkthroughVideo'
+import NeuraUserFlows from '@/portfolio/components/NeuraUserFlows'
 
 vi.mock('@/portfolio/compat', () => ({
   Link: (props: ComponentProps<'a'>) => <a {...props} />,
@@ -61,13 +62,59 @@ describe('NeuraNote editorial case-study layout', () => {
     const { container } = render(<NeuranoteCaseStudy />)
     const flows = container.querySelector('#neura-flows') as HTMLElement
     expect(flows.querySelectorAll('.neura-journey')).toHaveLength(6)
-    for (const label of ['Onboarding', 'Create Note', 'AI Features', 'Concept Map', 'Review Session', 'Insights']) {
-      expect(within(flows).getByRole('region', { name: label })).toBeInTheDocument()
+    const journeys = ['Onboarding', 'Create Note', 'AI Features', 'Concept Map', 'Review Session', 'Insights']
+    expect(within(flows).getAllByRole('tab')).toHaveLength(6)
+    for (const [index, label] of journeys.entries()) {
+      const name = `${String(index + 1).padStart(2, '0')} ${label}`
+      const tab = within(flows).getByRole('tab', { name })
+      fireEvent.click(tab)
+      const panel = within(flows).getByRole('tabpanel', { name })
+      expect(within(flows).getAllByRole('tabpanel')).toHaveLength(1)
+      expect(tab).toHaveAttribute('aria-selected', 'true')
+      expect(tab).toHaveAttribute('aria-controls', panel.id)
+      expect(panel).toBeVisible()
+      expect(within(panel).getByRole('heading', { name: label })).toBeInTheDocument()
     }
+    fireEvent.click(within(flows).getByRole('tab', { name: '02 Create Note' }))
     const capture = within(flows).getByRole('list', { name: 'Other capture options' })
     expect(within(capture).getAllByRole('listitem').map(e => e.textContent)).toEqual(['Upload PDF', 'Import Photo', 'Voice Note'])
+    fireEvent.click(within(flows).getByRole('tab', { name: '03 AI Features' }))
+    expect(within(flows).getByRole('list', { name: 'From a concept' })).toHaveTextContent('Save → Add to Map')
+    expect(within(flows).getByRole('list', { name: 'Summarize a note' })).toHaveTextContent('Summary')
+    fireEvent.click(within(flows).getByRole('tab', { name: '04 Concept Map' }))
     expect(within(flows).getByRole('list', { name: 'Without concepts' })).toHaveTextContent('Empty State')
+    fireEvent.click(within(flows).getByRole('tab', { name: '05 Review Session' }))
     expect(within(flows).getByRole('list', { name: 'Finish review' })).toHaveTextContent('View Insights')
+  })
+
+  it('starts with only Onboarding visible and lets readers switch journeys without page jumps', () => {
+    const scroll = vi.spyOn(window, 'scrollTo')
+    const scrollIntoView = vi.spyOn(HTMLElement.prototype, 'scrollIntoView')
+    render(<NeuraUserFlows />)
+    const tabs = screen.getByRole('tablist', { name: 'Choose a NeuraNote journey' })
+    expect(within(tabs).getAllByRole('tab', { selected: true })).toHaveLength(1)
+    expect(screen.getAllByRole('tabpanel')).toHaveLength(1)
+    expect(screen.getAllByRole('tabpanel', { hidden: true })).toHaveLength(6)
+    expect(screen.getByRole('tabpanel', { name: '01 Onboarding' })).toBeVisible()
+    fireEvent.click(screen.getByRole('tab', { name: '06 Insights' }))
+    expect(screen.getByRole('tabpanel', { name: '06 Insights' })).toHaveTextContent('Weekly Reflection')
+    expect(screen.queryByRole('tabpanel', { name: '01 Onboarding' })).not.toBeInTheDocument()
+    expect(scroll).not.toHaveBeenCalled()
+    expect(scrollIntoView).not.toHaveBeenCalled()
+  })
+
+  it('supports arrow keys, Home, and End with a single tab stop and matching panel', () => {
+    render(<NeuraUserFlows />)
+    const tabs = screen.getAllByRole('tab')
+    tabs[0].focus()
+    for (const [from, key, next] of [[0, 'ArrowRight', 1], [1, 'End', 5], [5, 'ArrowRight', 0], [0, 'ArrowLeft', 5], [5, 'Home', 0]] as const) {
+      fireEvent.keyDown(tabs[from], { key })
+      expect(tabs[next]).toHaveFocus()
+      expect(tabs[next]).toHaveAttribute('aria-selected', 'true')
+      expect(tabs[next]).toHaveAttribute('tabindex', '0')
+      expect(tabs.filter(tab => tab.getAttribute('tabindex') === '0')).toHaveLength(1)
+      expect(screen.getByRole('tabpanel')).toHaveAttribute('id', tabs[next].getAttribute('aria-controls'))
+    }
   })
 
   it('keeps both original recordings user-controlled and removes the redundant footer', () => {

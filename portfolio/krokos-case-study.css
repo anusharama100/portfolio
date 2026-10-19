@@ -35,7 +35,8 @@
 .case-study-experience .krokos-scrollthrough-header strong { color: var(--foreground); font-size: 16px; font-weight: 700; }
 .case-study-experience .krokos-scrollthrough-header > span { color: var(--muted-foreground); font-size: 14px; }
 .case-study-experience .krokos-case .krokos-scrollthrough-help { margin: 14px 0 18px; color: var(--muted-foreground); font-size: 14px; line-height: 1.7; }
-.case-study-experience .krokos-site-scroll { width: 100%; height: clamp(360px, 72vh, 760px); overflow: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; border: 1px solid var(--border); border-radius: 4px; background: white; }
+/* Give both versions a taller viewport, including at the shared 80% desktop scale. */
+.case-study-experience .krokos-site-scroll { width: 100%; height: clamp(420px, calc(88svh / var(--study-reading-scale, 1)), 1200px); overflow: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; border: 1px solid var(--border); border-radius: 4px; background: white; }
 .case-study-experience .krokos-site-scroll:focus-visible { outline: 2px solid var(--study-signal); outline-offset: 4px; }
 .case-study-experience .krokos-site-scroll img { display: block; width: 100%; height: auto; }
 .case-study-experience .krokos-archived-section + .krokos-archived-section { border-top: 12px solid var(--study-paper); }

@@ -33,7 +33,7 @@ export default function AboutPage() {
       <main className="about-main">
         <div className="about-intro site-container">
           <span className="eyebrow">a little about me</span>
-          <h1>behind the <em>pixels.</em></h1>
+          <h1>curious by <em>nature.</em></h1>
           <p>I’m <span className="person-name">Anusha</span>, a visual and product designer drawn to clear systems, playful details, and the small choices that make digital products feel human.</p>
         </div>
 

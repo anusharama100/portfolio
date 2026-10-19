@@ -44,11 +44,6 @@ export default function CrusoeUsageCostStory() {
         <p>When an AI bill changes, a team needs more than a number. They need to know which product contributed, what the workload did, and where to investigate. I designed a path connecting those questions instead of treating Usage, Billing, and logs as isolated pages.</p>
       </div>
       <CrusoeProjectBrief story={crusoeNarratives['usage-to-cost']} />
-      <aside className="crusoe-cost-reading-guide" aria-label="How to read the design evidence">
-        <h3>All visuals below show the proposed redesign.</h3>
-        <p><strong>Before:</strong> the previous investigation is explained as a workflow summary, not an original interface capture.</p>
-        <p><strong>After:</strong> every screenshot and the video show my proposed redesign. Images shown together are different steps in that same design—not before/after pairs.</p>
-      </aside>
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-problem-title">
         <div className="crusoe-clean-heading"><span>01 · The problem, then the change</span><div><h3 id="crusoe-cost-problem-title">Seeing the bill was not the same as understanding it.</h3><p>Intelligence Foundry lets developers run hosted AI models. Text usage is measured in tokens—pieces of processed text—while video usage is measured in generation time. A dollar total cannot explain those different activities on its own.</p></div></div>
         <div className="crusoe-cost-flow-comparison" aria-label="Cost investigation before and after">

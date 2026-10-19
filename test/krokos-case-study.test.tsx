@@ -55,9 +55,9 @@ describe('Krokos Bio case study', () => {
     const scrollIntoView = vi.spyOn(HTMLElement.prototype, 'scrollIntoView')
     const { container } = render(<KrokosHomepageComparison />)
     expect(screen.getByRole('button', { name: '01 Original site' })).toHaveAttribute('aria-pressed', 'true')
-    expect(screen.getByRole('region', { name: 'Original site page captures' }).querySelectorAll('img')).toHaveLength(7)
+    expect(screen.getByRole('region', { name: 'Original site page captures' }).querySelectorAll('img')).toHaveLength(9)
     expect(container.querySelector('video')).toBeNull()
-    expect(screen.getByRole('link', { name: 'Open original site opening capture' })).toHaveAttribute('href', '/krokos/original-home.jpg')
+    expect(screen.getByRole('link', { name: 'Open original site opening capture' })).toHaveAttribute('href', '/krokos/original-sections/opening.jpg')
 
     fireEvent.click(screen.getByRole('button', { name: '02 Redesign' }))
     expect(screen.getByRole('region', { name: 'Redesign page captures' }).querySelector('img')).toHaveAttribute('src', '/krokos/redesign-landing-full.jpg')

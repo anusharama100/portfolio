@@ -1,19 +1,4 @@
 /* Version labels precede the evidence; paired images are steps, not versions. */
-.case-study-experience .crusoe-cost-reading-guide {
-  margin-top: 24px;
-  padding: 22px 24px;
-}
-.case-study-experience .crusoe-cost-reading-guide h3 {
-  margin: 0 0 12px;
-  font: 700 18px/1.5 'DM Sans', sans-serif !important;
-}
-.case-study-experience .crusoe-cost-reading-guide p {
-  max-width: 95ch;
-  margin: 8px 0 0;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.case-study-experience .crusoe-cost-reading-guide strong { font-weight: 700; }
 .case-study-experience .crusoe-cost-flow-comparison > div > span {
   margin-bottom: 10px;
   color: var(--foreground);
@@ -115,7 +100,6 @@
 .case-study-experience .crusoe-cost-walkthrough .crusoe-cost-evidence-note { margin-top: 22px; font-size: 14px; }
 .case-study-experience .crusoe-cost-evidence-note strong { color: var(--foreground); font-weight: 700; }
 @media (max-width: 760px) {
-  .case-study-experience .crusoe-cost-reading-guide { padding: 20px; }
   .case-study-experience :is(.crusoe-cost-shot-header, .crusoe-cost-video-version) { padding: 12px; }
   .case-study-experience .crusoe-cost-story-shot figcaption { padding: 16px; }
   .case-study-experience .crusoe-cost-current-chapter { padding: 20px 18px; }

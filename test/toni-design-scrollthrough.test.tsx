@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import type { ComponentProps } from 'react'
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import ToniDesignScrollThrough, { toniDesignGroups } from '@/portfolio/components/ToniDesignScrollThrough'
 import CaseStudyExperience from '@/portfolio/components/CaseStudyExperience'
@@ -15,26 +15,34 @@ vi.mock('@/portfolio/compat', () => ({
 afterEach(() => { cleanup(); vi.restoreAllMocks() })
 
 describe('ToniPR reader-controlled design preview', () => {
-  it('replaces video and timestamps with a keyboard-scrollable frame', () => {
+  it('opens the real scroll-animated landing page without a recorded video or automatic outer scrolling', () => {
     const scroll = vi.spyOn(window, 'scrollTo')
     const scrollIntoView = vi.spyOn(HTMLElement.prototype, 'scrollIntoView')
     const { container } = render(<ToniDesignScrollThrough />)
-    const frame = screen.getByRole('region', { name: 'ToniPR design screens' })
-    expect(frame).toHaveAttribute('tabindex', '0')
-    expect(frame).toHaveAccessibleDescription(/Scroll inside the frame.*arrow keys/)
-    expect(container.querySelector('video,source,track,iframe')).toBeNull()
-    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+    const frame = screen.getByRole('region', { name: 'ToniPR live website preview' })
+    expect(frame).toHaveAccessibleDescription(/Scroll inside the live website to see Toni’s animations/)
+    const website = screen.getByTitle('ToniPR live landing page with scroll animations')
+    expect(website).toHaveAttribute('src', 'https://tonipr.com/')
+    expect(website).toHaveAttribute('loading', 'lazy')
+    expect(website).toHaveAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups')
+    expect(website).toHaveAttribute('allow', "camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'")
+    expect(website).toHaveAttribute('referrerpolicy', 'no-referrer')
+    expect(screen.getByRole('button', { name: '01 Landing page' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('link', { name: 'Open ToniPR in a new tab ↗' })).toHaveAttribute('href', 'https://tonipr.com/')
+    expect(container.querySelector('video,source,track')).toBeNull()
     expect(screen.queryByText('The experience in 28 seconds.')).not.toBeInTheDocument()
     expect(scroll).not.toHaveBeenCalled()
     expect(scrollIntoView).not.toHaveBeenCalled()
   })
 
-  it('keeps complete, labeled captures in landing-page then product-flow order', () => {
+  it('preserves complete labeled captures as the landing-page fallback and separate product flow', () => {
     render(<ToniDesignScrollThrough />)
-    expect(screen.getAllByRole('region').map(region => region.getAttribute('aria-label') || region.getAttribute('aria-labelledby'))).toEqual([
-      'ToniPR design screens', 'toni-scroll-landing', 'toni-scroll-product',
-    ])
+    fireEvent.click(screen.getByRole('button', { name: 'View captured version instead' }))
     for (const group of toniDesignGroups) {
+      if (group.id === 'product') fireEvent.click(screen.getByRole('button', { name: '02 Product flow' }))
+      const frame = screen.getByRole('region', { name: 'ToniPR design screens' })
+      expect(frame).toHaveAttribute('tabindex', '0')
+      expect(frame).toHaveAccessibleDescription(/Scroll inside the frame.*arrow keys/)
       const captures = screen.getByRole('list', { name: `${group.title} captures` })
       expect(within(captures).getAllByRole('listitem')).toHaveLength(5)
       expect([...captures.querySelectorAll('figcaption')].map(caption => caption.textContent)).toEqual(
@@ -50,20 +58,41 @@ describe('ToniPR reader-controlled design preview', () => {
     }
   })
 
-  it('identifies separate static captures and the public output demo accurately', () => {
+  it('distinguishes the live animations from the static fallback and preserves a way back', () => {
     render(<ToniDesignScrollThrough />)
+    expect(screen.getByText(/Live public website: scroll animations run inside this frame/)).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'View captured version instead' }))
     expect(screen.getByText(/not a continuous full-page screenshot/)).toBeInTheDocument()
-    expect(screen.getByText(/pictured controls and animations are not interactive/)).toBeInTheDocument()
+    expect(screen.getByText(/Pictured controls are not interactive/)).toBeInTheDocument()
     expect(screen.getByText(/stills of Toni’s scroll animation/)).toBeInTheDocument()
-    expect(screen.getByText('Public content-kit demo')).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /Toni presenting the guided interview solution/ })).toHaveAttribute('src', '/tonipr/previews/landing-solution.jpg')
+    fireEvent.click(screen.getByRole('button', { name: 'Return to live animations' }))
+    expect(screen.getByTitle('ToniPR live landing page with scroll animations')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: '02 Product flow' }))
+    expect(screen.getByText('Public content-kit demo')).toBeInTheDocument()
   })
 
-  it('uses native overflow and natural image heights without playback or automatic scrolling', () => {
+  it('offers a captured fallback and resets each capture view without moving the case-study page', () => {
+    render(<ToniDesignScrollThrough />)
+    fireEvent.click(screen.getByRole('button', { name: 'View captured version instead' }))
+    expect(screen.getByRole('list', { name: 'Landing page captures' })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: '02 Product flow' }))
+    const product = screen.getByRole('region', { name: 'ToniPR design screens' })
+    product.scrollTop = 800
+    fireEvent.click(screen.getByRole('button', { name: '01 Landing page' }))
+    expect(screen.getByTitle('ToniPR live landing page with scroll animations')).toBeInTheDocument()
+    expect(screen.queryByRole('list', { name: 'Product flow captures' })).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: '02 Product flow' }))
+    expect(screen.getByRole('region', { name: 'ToniPR design screens' }).scrollTop).toBe(0)
+  })
+
+  it('uses a tall native website frame and natural capture heights, without simulated video motion', () => {
     const css = readFileSync(resolve('portfolio/case-studies.css'), 'utf8')
     expect(css).toContain('overflow: auto; overscroll-behavior-y: contain')
     expect(css).toContain('.toni-design-scroll:focus-visible')
     expect(css).toContain('.toni-scroll-screen img { display: block; width: 100%; max-width: 100%; height: auto; }')
+    expect(css).toContain('height: clamp(420px, calc(88svh / var(--study-reading-scale, 1)), 1200px)')
+    expect(css).toContain('.toni-live-site iframe { display: block; width: 100%; height: 100%; border: 0; }')
     const component = readFileSync(resolve('portfolio/components/ToniDesignScrollThrough.tsx'), 'utf8')
     expect(component).not.toMatch(/setInterval|setTimeout|requestAnimationFrame|scrollTo|scrollIntoView|<video/)
   })

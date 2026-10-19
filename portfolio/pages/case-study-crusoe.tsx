@@ -391,30 +391,8 @@ const heuristicMethod = [
 
 const heuristicJourneys = [
   {
-    id: 'cost-monitoring',
-    number: '01',
-    title: 'Cost monitoring',
-    focus: 'Attribution + control',
-    goal: 'Understand a change in spend, trace it to the responsible usage, and decide what to do next.',
-    path: ['See spend change', 'Trace the driver', 'Take action'],
-    friction: 'Billing showed totals without explaining what caused them. Users lost their project and date filters as they moved between screens, then had to compare cost and infrastructure activity by hand.',
-    heuristics: [
-      ['H1', 'Visibility of system status'],
-      ['H2', 'Match between system and the real world'],
-      ['H6', 'Recognition rather than recall'],
-      ['H8', 'Aesthetic and minimalist design'],
-    ],
-    shipped: [
-      'Reorganized billing from overview to breakdown to resource-level detail.',
-      'Kept the billing period and organizational scope visible throughout an investigation.',
-      'Connected spend changes to the infrastructure activity behind them and surfaced the next useful action.',
-    ],
-    jira: 'Cost hierarchy · scope controls · usage attribution',
-    result: 'Users can trace a bill increase to the project and activity behind it without rebuilding the search across separate tools.',
-  },
-  {
     id: 'api-keys',
-    number: '02',
+    number: '01',
     title: 'API keys',
     focus: 'Access + setup',
     goal: 'Find, create, and use an API key in the correct account context.',
@@ -434,6 +412,28 @@ const heuristicJourneys = [
     ],
     jira: 'Navigation · credential validation · setup handoff',
     result: 'A safer setup flow that is easier to find and guides users through the key’s first use.',
+  },
+  {
+    id: 'cost-monitoring',
+    number: '02',
+    title: 'Cost monitoring',
+    focus: 'Attribution + control',
+    goal: 'Understand a change in spend, trace it to the responsible usage, and decide what to do next.',
+    path: ['See spend change', 'Trace the driver', 'Take action'],
+    friction: 'Billing showed totals without explaining what caused them. Users lost their project and date filters as they moved between screens, then had to compare cost and infrastructure activity by hand.',
+    heuristics: [
+      ['H1', 'Visibility of system status'],
+      ['H2', 'Match between system and the real world'],
+      ['H6', 'Recognition rather than recall'],
+      ['H8', 'Aesthetic and minimalist design'],
+    ],
+    shipped: [
+      'Reorganized billing from overview to breakdown to resource-level detail.',
+      'Kept the billing period and organizational scope visible throughout an investigation.',
+      'Connected spend changes to the infrastructure activity behind them and surfaced the next useful action.',
+    ],
+    jira: 'Cost hierarchy · scope controls · usage attribution',
+    result: 'Users can trace a bill increase to the project and activity behind it without rebuilding the search across separate tools.',
   },
   {
     id: 'monitoring-debugging',

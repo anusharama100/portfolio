@@ -7,7 +7,7 @@ import KrokosScrollableSite from '@/portfolio/components/KrokosScrollableSite'
 const homepageVersions = {
   before: {
     label: 'Original site',
-    src: '/krokos/original-home.jpg',
+    src: '/krokos/original-sections/opening.jpg',
     caption: 'Before · Archived sections of the original Squarespace homepage.',
     title: 'The content was there. The presentation needed a new rhythm.',
     body: 'The earlier homepage introduced the company and moved quickly into a newsletter sign-up. The science, supply-chain context, and production approach appeared farther down the page.',
