@@ -1,0 +1,16 @@
+{
+  "src": "/tonipr/journey-highlights.mp4",
+  "poster": "/tonipr/journey-highlights-poster.jpg",
+  "captions": "/tonipr/journey-highlights.vtt",
+  "duration": 28,
+  "note": "Edited website footage plus held design screenshots—not an uninterrupted live session. The final screen is the public content-kit demo.",
+  "chapters": [
+    { "time": 0, "label": "The promise", "caption": "Start with what one conversation produces.", "detail": "The public site leads with a concrete content-kit outcome rather than an open-ended AI prompt." },
+    { "time": 4, "label": "Three steps", "caption": "Choose a goal. Talk to Toni. Receive a kit.", "detail": "A short, three-step explanation sets expectations about the effort and the result before sign-up." },
+    { "time": 8, "label": "Dashboard", "caption": "One clear next action, with the outputs in view.", "detail": "The signed-in overview brings the Start Interview action and the available content formats together." },
+    { "time": 12, "label": "Interview focus", "caption": "Give the conversation a direction before recording.", "detail": "Goal-aware choices turn a broad ambition into an interview direction without asking users to write a brief." },
+    { "time": 16, "label": "Voice", "caption": "Recognizable tone choices replace a blank prompt.", "detail": "Plain-language voice options help users shape the content while keeping the setup focused." },
+    { "time": 20, "label": "Recording setup", "caption": "Check framing and sound before the session.", "detail": "The camera frame, clip-safe guide, and microphone feedback explain how to prepare for usable recordings." },
+    { "time": 24, "label": "Content-kit demo", "caption": "Keep the source interview beside its story.", "detail": "The public demo pairs an interview clip with its narrative to make the source-to-output relationship visible." }
+  ]
+}

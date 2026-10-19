@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 108" fill="none">
+  <title>Anusha Ramachandran AR monogram</title>
+  <desc>A custom AR ligature with a shared diagonal, contrasting strokes, and a sweeping R terminal.</desc>
+  <g fill="#171717">
+    <path d="M43 14H48L20 88C18 93 20 95 27 96H5C12 94 14 90 17 83L43 14Z"/>
+    <path d="M43 14H55L84 96H71L43 14Z"/>
+    <path d="M26 62H66L68 68H24L26 62Z"/>
+    <path d="M52 14H78C101 14 114 23 114 40C114 57 100 67 79 67H64L62 61H76C92 61 101 53 101 40C101 27 92 20 77 20H54L52 14Z"/>
+    <path d="M76 64C82 73 88 86 99 92C104 95 110 96 116 96H96C87 96 81 91 76 82L66 65L76 64Z"/>
+  </g>
+</svg>

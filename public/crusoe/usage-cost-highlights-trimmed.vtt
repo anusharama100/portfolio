@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00.000 --> 00:01.000
+1. Bill comparison. Check the dates before comparing the amounts.
+
+00:01.000 --> 00:05.000
+2. Product charges. GPU hours, rates, and line items explain a product charge.
+
+00:05.000 --> 00:09.000
+3. Usage totals. Token counts describe consumption, not dollars.
+
+00:09.000 --> 00:13.000
+4. Traffic and performance. These charts show how the service performed, not its dollar cost.
+
+00:13.000 --> 00:17.000
+5. Request logs. Inspect what ran: the model, token counts, status, and timing.
+
+00:17.000 --> 00:21.000
+6. Account activity. Model and endpoint updates are clues to investigate, not proof of a cause.

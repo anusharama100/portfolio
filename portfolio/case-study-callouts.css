@@ -1,0 +1,61 @@
+/* Echo the introduction's purple → pink → orange artwork in reading callouts.
+   Keep product screenshots, diagrams, and semantic status colors untouched. */
+.case-study-experience {
+  --study-callout-wash: linear-gradient(110deg,
+    oklch(.94 .065 300) 0%,
+    oklch(.95 .05 350) 52%,
+    oklch(.96 .055 60) 100%);
+  --study-callout-accent: linear-gradient(180deg,
+    oklch(.55 .23 300) 0%,
+    oklch(.64 .23 350) 52%,
+    oklch(.74 .18 55) 100%);
+}
+
+.case-study-experience :is(
+  .study-callout,
+  .crusoe-narrative-goal,
+  .crusoe-cost-reading-guide,
+  .crusoe-story-takeaway,
+  .crusoe-study-challenge,
+  .crusoe-project-next-steps,
+  .crusoe-competitive-takeaway,
+  .crusoe-clean-ai-callout,
+  .crusoe-clean-outcome-band,
+  .crusoe-collaboration-outcome,
+  .crusoe-quote-block,
+  .crusoe-he-principle-band,
+  .crusoe-he-final-note,
+  .nexus-problem-statement,
+  .nexus-research-insight,
+  .nexus-comparison-takeaway,
+  .nexus-reflection-takeaway,
+  .nexus-design-notes,
+  .neura-problem,
+  .neura-note-block,
+  .flowops-problem,
+  .flowops-note-block,
+  .krokos-design-question,
+  .krokos-implementation-note,
+  .toni-thesis-band,
+  .toni-edge-strip,
+  .toni-format-strip,
+  .toni-collaboration-takeaway
+),
+/* Outrank the legacy gray-card reset without recoloring every research card. */
+.case-study-experience .study-original-content .legacy-case-section :is(div, aside, p, blockquote).study-callout {
+  background: var(--study-callout-wash) !important;
+  border-inline-start: 3px solid transparent !important;
+  border-image-source: var(--study-callout-accent) !important;
+  border-image-slice: 1 !important;
+  color: var(--foreground) !important;
+}
+
+/* Plain editorial notes need an inset when the wash is added. */
+.case-study-experience :is(.habitat-design-question, .toni-collaboration-takeaway) {
+  padding: 20px 24px;
+}
+
+/* Legacy dark-theme text must remain legible on the light ombré surface. */
+.case-study-experience .study-original-content .study-callout :is(p, li, span, strong, blockquote) {
+  color: var(--foreground) !important;
+}

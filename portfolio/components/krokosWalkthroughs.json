@@ -1,0 +1,36 @@
+{
+  "before": {
+    "label": "Original site",
+    "duration": 28,
+    "src": "/krokos/original-site-walkthrough.mp4",
+    "poster": "/krokos/original-site-walkthrough-poster.jpg",
+    "captions": "/krokos/original-site-walkthrough.vtt",
+    "note": "Edited highlights from the archived original-site scroll capture. The chapter order follows that site; pauses and repeated scrolling are omitted.",
+    "chapters": [
+      { "time": 0, "label": "Opening", "detail": "The earlier opening paired the company promise with botanical photography and a Learn How action.", "caption": "The company promise and Learn How action." },
+      { "time": 4, "label": "Newsletter", "detail": "A newsletter sign-up followed the hero, before the page explained the supply-chain problem or production approach.", "caption": "The newsletter appeared before the problem and approach." },
+      { "time": 8, "label": "Plant science", "detail": "The Power of Plants introduced regeneration and biotechnology. This scientific message was preserved in the redesign.", "caption": "The science was already part of the company story." },
+      { "time": 12, "label": "Supply-chain problem", "detail": "The sourcing problem appeared after the plant-science section. The redesign moves this context earlier in the reading path.", "caption": "The supply-chain problem appeared farther down the page." },
+      { "time": 16, "label": "Approach", "detail": "The original page already used a plant-to-culture sequence. The redesign gives that explanation a stronger section hierarchy.", "caption": "The existing plant-to-culture explanation." },
+      { "time": 20, "label": "Saffron focus", "detail": "What We’re Building introduced the initial saffron application after the scientific explanation and benefits.", "caption": "The initial saffron application made the platform concrete." },
+      { "time": 24, "label": "Team & contact", "detail": "The team and contact form closed the earlier page. Compare this ending with the redesigned team, contact, and newsletter paths.", "caption": "The team and contact form closed the original page." }
+    ]
+  },
+  "after": {
+    "label": "Redesign",
+    "duration": 28,
+    "src": "/krokos/redesign-site-walkthrough.mp4",
+    "poster": "/krokos/redesign-site-walkthrough-poster.jpg",
+    "captions": "/krokos/redesign-site-walkthrough.vtt",
+    "note": "Guided scroll assembled from captures of the published homepage and Press page. It shows the page design and reading flow, not a recording of live hover or scroll effects.",
+    "chapters": [
+      { "time": 0, "label": "Opening", "detail": "Navigation, an editorial headline, and the Explore action establish the company and a clear route into its story.", "caption": "A clear opening and an invitation into the story." },
+      { "time": 4, "label": "Problem first", "detail": "The supply-chain problem gives visitors a reason to care before they encounter the more technical explanation.", "caption": "Explain why botanical sourcing needs a different approach." },
+      { "time": 8, "label": "Approach", "detail": "One darker chapter brings the headline, explanation, and three-step production sequence together.", "caption": "Connect the explanation to a visible three-step sequence." },
+      { "time": 12, "label": "Saffron focus", "detail": "A concrete product example turns the broader plant-cell-culture platform into something visitors can understand.", "caption": "Make the platform tangible through its first product focus." },
+      { "time": 16, "label": "Inside the lab", "detail": "The culture-start and lab sections show how plant material progresses toward an ingredient, using actual page layouts and imagery.", "caption": "Follow the progression from plant tissue to an ingredient." },
+      { "time": 20, "label": "Team & contact", "detail": "The people behind the work lead into clear contact and newsletter options at the end of the page.", "caption": "Introduce the people, then offer a useful next step." },
+      { "time": 24, "label": "Press page", "detail": "The same visual language continues into an editorial coverage page with publisher, date, headline, and source links.", "caption": "Carry the visual system into Press and article discovery." }
+    ]
+  }
+}

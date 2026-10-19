@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00.000 --> 00:04.000
+1. Compare periods. Read the current and previous totals with their dates.
+
+00:04.000 --> 00:08.000
+2. Inspect the product. See its share of spend, then open the pricing detail.
+
+00:08.000 --> 00:12.000
+3. Check usage. Switch token views without changing the chart pattern.
+
+00:12.000 --> 00:16.000
+4. Inspect the workload. Look at request rate, throughput, and response time.
+
+00:16.000 --> 00:20.000
+5. Inspect requests. Use the table to investigate status and token volume.
+
+00:20.000 --> 00:24.000
+6. Review changes. Check model updates and endpoint activity for context.

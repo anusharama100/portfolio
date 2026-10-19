@@ -1,0 +1,124 @@
+/* Version labels precede the evidence; paired images are steps, not versions. */
+.case-study-experience .crusoe-cost-reading-guide {
+  margin-top: 24px;
+  padding: 22px 24px;
+}
+.case-study-experience .crusoe-cost-reading-guide h3 {
+  margin: 0 0 12px;
+  font: 700 18px/1.5 'DM Sans', sans-serif !important;
+}
+.case-study-experience .crusoe-cost-reading-guide p {
+  max-width: 95ch;
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.case-study-experience .crusoe-cost-reading-guide strong { font-weight: 700; }
+.case-study-experience .crusoe-cost-flow-comparison > div > span {
+  margin-bottom: 10px;
+  color: var(--foreground);
+  font-size: 15px;
+  font-weight: 700;
+}
+.case-study-experience .crusoe-cost-flow-comparison h4 {
+  margin: 0 0 22px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.case-study-experience .crusoe-cost-story .crusoe-cost-workflow-after {
+  background: var(--study-callout-wash);
+  border-color: oklch(.78 .08 300);
+}
+.case-study-experience .crusoe-cost-story-shot {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--background);
+}
+.case-study-experience :is(.crusoe-cost-shot-header, .crusoe-cost-video-version) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 14px 16px;
+  background: var(--study-purple);
+}
+.case-study-experience .crusoe-cost-version-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border: 1px solid oklch(.77 .08 300);
+  border-radius: 3px;
+  background: var(--background);
+  color: oklch(.34 .13 300);
+  font: 700 14px/1.5 'DM Sans', sans-serif;
+}
+.case-study-experience .crusoe-cost-shot-header > span:last-child {
+  color: var(--foreground);
+  font: 600 13px/1.5 'DM Sans', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.case-study-experience .crusoe-cost-video-version > span:last-child {
+  color: var(--foreground);
+  font-size: 13px;
+}
+.case-study-experience .crusoe-cost-story-shot > a {
+  border: 0;
+  border-block: 1px solid var(--border);
+  border-radius: 0;
+}
+.case-study-experience .crusoe-cost-story-shot figcaption { padding: 18px 20px 22px; }
+.case-study-experience .crusoe-cost-story-shot h4 { margin: 0 0 10px; font-size: 19px; }
+.case-study-experience .crusoe-cost-story-shot p { max-width: 68ch; }
+/* Keep the explanation still when a reader selects a timestamp. */
+.case-study-experience .crusoe-cost-edit-meta { margin-bottom: 10px; }
+.case-study-experience .crusoe-cost-edit-meta strong { font-size: 19px; font-weight: 700; }
+.case-study-experience .crusoe-cost-chapter-help {
+  max-width: 85ch;
+  margin: 0 0 22px;
+  color: var(--muted-foreground);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.case-study-experience .crusoe-cost-chapters button { gap: 8px; padding: 14px 12px; }
+.case-study-experience .crusoe-cost-chapters button > span { font-size: 13px; font-variant-numeric: tabular-nums; }
+.case-study-experience .crusoe-cost-chapters button > strong { color: var(--foreground); font-size: 14px; font-weight: 600; }
+.case-study-experience .crusoe-cost-chapters button[aria-pressed='true'] { border-color: oklch(.54 .17 300); background: var(--study-purple); }
+.case-study-experience .crusoe-cost-current-chapter {
+  margin: 24px 0 0;
+  padding: 24px;
+  border: 1px solid oklch(.84 .05 300);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--study-purple) 55%, var(--background));
+}
+.case-study-experience .crusoe-cost-moment-number {
+  margin: 0 0 12px;
+  color: oklch(.34 .13 300);
+  font: 600 13px/1.5 'DM Sans', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.case-study-experience .crusoe-cost-current-chapter h4 {
+  margin: 0 0 24px;
+  color: var(--foreground);
+  font: 500 23px/1.4 'DM Sans', sans-serif;
+}
+.case-study-experience .crusoe-cost-moment-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin: 0;
+}
+.case-study-experience .crusoe-cost-moment-details > div { min-width: 0; }
+.case-study-experience .crusoe-cost-moment-details dt { margin: 0 0 10px; color: var(--foreground); font-size: 15px; font-weight: 700; }
+.case-study-experience .crusoe-cost-moment-details dd { margin: 0; color: var(--muted-foreground); font-size: 15px; line-height: 1.75; }
+.case-study-experience .crusoe-cost-walkthrough .crusoe-cost-evidence-note { margin-top: 22px; font-size: 14px; }
+.case-study-experience .crusoe-cost-evidence-note strong { color: var(--foreground); font-weight: 700; }
+@media (max-width: 760px) {
+  .case-study-experience .crusoe-cost-reading-guide { padding: 20px; }
+  .case-study-experience :is(.crusoe-cost-shot-header, .crusoe-cost-video-version) { padding: 12px; }
+  .case-study-experience .crusoe-cost-story-shot figcaption { padding: 16px; }
+  .case-study-experience .crusoe-cost-current-chapter { padding: 20px 18px; }
+  .case-study-experience .crusoe-cost-current-chapter h4 { font-size: 21px; }
+  .case-study-experience .crusoe-cost-moment-details { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}

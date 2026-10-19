@@ -1,0 +1,34 @@
+{
+  "onboarding": {
+    "src": "/neuranote/onboarding-chaptered.mp4",
+    "poster": "/neuranote/onboarding-chaptered-poster.jpg",
+    "captions": "/neuranote/onboarding-chaptered.vtt",
+    "duration": 24.757,
+    "width": 1272,
+    "height": 674,
+    "chapters": [
+      { "time": 0, "label": "Welcome", "detail": "Introduce the workspace with the first guided-tour message." },
+      { "time": 4, "label": "Navigation", "detail": "Explain how the persistent sidebar connects the main areas of the app." },
+      { "time": 7, "label": "First note", "detail": "Locate Notes and the New Note action before starting to write." },
+      { "time": 13, "label": "Concept map", "detail": "Introduce the map as the place to find connections between ideas." },
+      { "time": 15, "label": "Review", "detail": "Explain where learners practice recall and get feedback." },
+      { "time": 19, "label": "Ready to start", "detail": "Introduce Insights, finish the tour, and return to the first-note starting point." }
+    ]
+  },
+  "workflow": {
+    "src": "/neuranote/workflow-chaptered.mp4",
+    "poster": "/neuranote/workflow-chaptered-poster.jpg",
+    "captions": "/neuranote/workflow-chaptered.vtt",
+    "duration": 33.4,
+    "width": 1278,
+    "height": 618,
+    "chapters": [
+      { "time": 0, "label": "Notes library", "detail": "Start with saved notes and their extracted concept labels." },
+      { "time": 1, "label": "Note editor", "detail": "Open a note and see its content alongside the key concepts." },
+      { "time": 5, "label": "AI summary", "detail": "Inspect the generated summary and the concepts extracted from the note." },
+      { "time": 19, "label": "Concept map", "detail": "See the connected concepts, then inspect an individual node and its source." },
+      { "time": 23, "label": "Start review", "detail": "Move from the concept map into a review session." },
+      { "time": 27, "label": "Practice recall", "detail": "Read a question, try an answer, and open the supporting reference." }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 104" fill="none">
+  <title>Anusha Ramachandran AR monogram</title>
+  <g stroke="#171717" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 86C18 67 27 43 35 25C39 16 44 14 48 17C52 20 54 28 56 37L68 86" stroke-width="11"/>
+    <path d="M21 62C32 58 46 58 60 62" stroke-width="9"/>
+    <path d="M69 86V25C69 22 72 21 79 22C94 23 105 30 104 40C103 52 88 58 70 54" stroke-width="11"/>
+    <path d="M80 57C87 67 92 82 104 86" stroke-width="11"/>
+  </g>
+  <path d="M101 2C101 9 104 12 111 12C104 12 101 15 101 22C101 15 98 12 91 12C98 12 101 9 101 2Z" fill="#e54483"/>
+</svg>

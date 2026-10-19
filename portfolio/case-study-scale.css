@@ -1,0 +1,20 @@
+/* Match the preferred 80% desktop view at normal browser zoom.
+   Native CSS zoom scales layout as well as type, keeping natural image ratios,
+   scrollable evidence, and sticky/fixed navigation in the same reading system.
+   Do not scale the landing page, or shrink phone/tablet reading and tap targets. */
+.case-study-experience {
+  --study-reading-scale: 1;
+  zoom: var(--study-reading-scale);
+}
+
+@media screen and (min-width: 900px) {
+  .case-study-experience {
+    --study-reading-scale: .8;
+  }
+}
+
+@media print {
+  .case-study-experience {
+    --study-reading-scale: 1;
+  }
+}

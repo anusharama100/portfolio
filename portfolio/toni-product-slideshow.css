@@ -1,0 +1,29 @@
+/* Manual, one-screen-at-a-time product evidence. No timers or image cropping. */
+.case-study-experience .toni-product-slideshow { width: 100%; max-width: 980px; min-width: 0; margin: 32px auto 0; overflow: hidden; border: 1px solid var(--border); border-radius: 6px; background: var(--background); }
+.case-study-experience .toni-product-slide-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 16px; }
+.case-study-experience .toni-product-slide-steps button { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; min-height: 70px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 4px; color: var(--foreground); background: var(--background); font: 600 16px/1.5 'DM Sans', sans-serif; text-align: left; cursor: pointer; }
+.case-study-experience .toni-product-slide-steps button > span { color: var(--muted-foreground); font-size: 12px; font-variant-numeric: tabular-nums; }
+.case-study-experience .toni-product-slide-steps button:is(:hover,[aria-pressed="true"]) { border-color: var(--study-rose-ink); background: var(--study-rose); }
+.case-study-experience .toni-product-slide-steps button[aria-pressed="true"] > span { color: var(--study-rose-ink); }
+.case-study-experience .toni-product-slide { margin: 0; min-width: 0; }
+.case-study-experience .toni-product-slide-stage { position: relative; width: 100%; aspect-ratio: 16 / 10; border-block: 1px solid var(--border); background: var(--study-paper); }
+/* A steady canvas contains each complete screenshot at its own aspect ratio. */
+.case-study-experience .toni-product-slide-stage img { position: absolute; inset: 24px; display: block; width: calc(100% - 48px); height: calc(100% - 48px); max-width: 100%; max-height: 100%; object-fit: contain; object-position: center; }
+.case-study-experience .toni-product-slide > figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 28px; padding: 24px 28px; }
+.case-study-experience .toni-product-slide-copy h4 { margin: 0; color: var(--foreground); font: 600 21px/1.4 'DM Sans', sans-serif; }
+.case-study-experience .toni-product-slide-copy p { max-width: 64ch; margin: 10px 0 0; color: var(--muted-foreground); font: 400 15px/1.7 'DM Sans', sans-serif; }
+.case-study-experience .toni-product-slide-copy a { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--foreground); font: 500 14px/1.5 'DM Sans', sans-serif; text-decoration: underline; text-underline-offset: 4px; }
+.case-study-experience .toni-product-slide-controls { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.case-study-experience .toni-product-slide-controls button { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; padding: 0; border: 1px solid var(--border); border-radius: 50%; background: var(--background); color: var(--foreground); cursor: pointer; }
+.case-study-experience .toni-product-slide-controls button:hover { border-color: var(--study-rose-ink); background: var(--study-rose); }
+.case-study-experience .toni-product-slide-controls > span { min-width: 52px; color: var(--muted-foreground); font: 500 13px/1.5 'DM Sans', sans-serif; text-align: center; font-variant-numeric: tabular-nums; }
+.case-study-experience .toni-product-slideshow :is(button,a):focus-visible { outline: 2px solid var(--study-rose-ink); outline-offset: 3px; }
+@media (max-width: 700px) {
+  .case-study-experience .toni-product-slide-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 12px; }
+  .case-study-experience .toni-product-slide-steps button { min-height: 62px; padding: 10px 12px; }
+  .case-study-experience .toni-product-slide-stage { aspect-ratio: 4 / 3; }
+  .case-study-experience .toni-product-slide-stage img { inset: 16px; width: calc(100% - 32px); height: calc(100% - 32px); }
+  .case-study-experience .toni-product-slide > figcaption { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 20px; }
+  .case-study-experience .toni-product-slide-copy h4 { font-size: 19px; }
+  .case-study-experience .toni-product-slide-controls { justify-self: center; }
+}

@@ -1,0 +1,66 @@
+/* Small reading labels should clearly lead the copy, not disappear into it.
+   Keep this shared layer after the individual case-study styles. */
+.case-study-experience {
+  --study-label-size: 15px;
+  --study-label-weight: 700;
+}
+
+.case-study-experience :is(
+  .study-meta dt,
+  .study-summary-grid .study-eyebrow,
+  thead th,
+  [role="columnheader"],
+  .legacy-case-section .study-comparison-table > .grid:first-child > div,
+  .crusoe-narrative-brief dt,
+  .crusoe-story-context dt,
+  .crusoe-decision-reasoning dt,
+  .crusoe-cost-change-note dt,
+  .crusoe-narrative-goal > span,
+  .crusoe-project-process-heading > span,
+  .crusoe-project-collaboration-heading > span,
+  .crusoe-project-collaboration-steps > li > span,
+  .crusoe-project-reflection-label,
+  .crusoe-clean-heading > span,
+  .crusoe-before-evidence-heading > span,
+  .crusoe-clean-edge-intro > span,
+  .crusoe-section-label,
+  .crusoe-section-label > span,
+  .crusoe-section-label > strong,
+  .crusoe-story-takeaway > span,
+  .crusoe-study-challenge > span,
+  .crusoe-decision-heading > span,
+  .crusoe-decision-intro > span,
+  .toni-reflection-section > .crusoe-eyebrow,
+  .toni-partner-grid > article > span,
+  .krokos-kicker,
+  .krokos-reading-path li > span,
+  .nexus-problem-statement > p:first-child,
+  .nexus-research-insight > p:first-child,
+  .nexus-journey-heading > span,
+  .nexus-model-access dt,
+  .neura-problem > p:first-child,
+  .neura-journey > header > span,
+  .flowops-problem > p:first-child,
+  .flowops-journey > header > span
+) {
+  color: var(--foreground) !important;
+  font-size: var(--study-label-size) !important;
+  font-weight: var(--study-label-weight) !important;
+}
+
+/* The evidence table repeats its headers above each value on small screens. */
+.case-study-experience .crusoe-evidence-chain :is(tbody th, td)::before {
+  color: var(--foreground) !important;
+  font-size: var(--study-label-size) !important;
+  font-weight: var(--study-label-weight) !important;
+}
+.case-study-experience .crusoe-evidence-chain thead th {
+  padding-block: 16px;
+  line-height: 1.5;
+}
+
+/* These are already larger subheadings; strengthen them without shrinking them. */
+.case-study-experience :is(.krokos-design-reasons dt, .krokos-production-decisions dt) {
+  color: var(--foreground);
+  font-weight: var(--study-label-weight);
+}

@@ -1,0 +1,168 @@
+/* FlowOps: the same centered editorial canvas as Nexus and NeuraNote. */
+.case-study-experience[data-study-slug="flowops"] { --study-content-max: 1160px; }
+.case-study-experience .case-study-flowops .legacy-case-section { padding-block: var(--study-section-space) !important; }
+.case-study-experience .case-study-flowops .legacy-case-section > .flowops-section-inner { display: block; width: 100%; max-width: var(--study-content-max) !important; margin-inline: auto; }
+.case-study-experience .case-study-flowops .flowops-section-inner > div { width: 100%; max-width: none; }
+.case-study-experience .case-study-flowops .legacy-section-number { margin-bottom: 12px !important; }
+.case-study-experience .case-study-flowops .legacy-section-title { margin-bottom: 28px !important; }
+.case-study-experience .case-study-flowops .flowops-section-inner > p:not(.legacy-section-number) { max-width: 72ch; margin: 0 0 32px; font-size: 16px; }
+.case-study-experience .case-study-flowops .legacy-case-section :is(h4,h5) { font-weight: 500; }
+.case-study-experience .case-study-flowops .legacy-case-section p.text-xs { font-size: 13px; }
+.case-study-experience .case-study-flowops .flowops-overview > p { max-width: 72ch; margin: 0 0 28px; font-size: 23px; }
+.case-study-experience .case-study-flowops .flowops-pain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.case-study-experience .case-study-flowops .flowops-pain-grid > div { min-width: 0; padding: 24px; }
+.case-study-experience .case-study-flowops .flowops-pain-grid p { margin: 0; font-size: 14px; }
+.case-study-experience .case-study-flowops .flowops-pain-grid p:first-child { margin-bottom: 12px; font-size: 12px; }
+.case-study-experience .case-study-flowops .flowops-problem { margin-top: 30px; padding: clamp(22px, 3vw, 36px); border: 1px solid var(--border); border-radius: 4px; background: var(--study-peach); }
+.case-study-experience .case-study-flowops .flowops-problem > p:first-child { margin: 0 0 14px; font-size: 11px; font-weight: 500; }
+.case-study-experience .case-study-flowops .flowops-problem > p:last-child { max-width: 66ch; margin: 0; font: 400 clamp(21px, 2.1vw, 28px)/1.6 'DM Sans', sans-serif; line-height: 1.6 !important; }
+.case-study-experience .case-study-flowops :is(.flowops-goal-grid,.flowops-architecture-grid,.flowops-accessibility-grid) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-bottom: 30px; }
+.case-study-experience .case-study-flowops :is(.flowops-goal-grid,.flowops-architecture-grid) > div { min-width: 0; padding: 28px; background: var(--study-paper) !important; border: 1px solid var(--border) !important; }
+.case-study-experience .case-study-flowops :is(.flowops-goal-grid,.flowops-architecture-grid,.flowops-accessibility-grid) h4 { margin: 0 0 22px; font-size: 17px; }
+.case-study-experience .case-study-flowops .flowops-goal-grid .space-y-4 > div { gap: 12px; align-items: flex-start; }
+.case-study-experience .case-study-flowops .flowops-goal-grid .space-y-4 > div > div { width: 22px; height: 22px; flex: 0 0 22px; margin-top: 2px; }
+.case-study-experience .case-study-flowops .flowops-goal-grid svg { width: 12px; height: 12px; }
+.case-study-experience .case-study-flowops .flowops-goal-grid p { margin: 0; font-size: 14px; }
+.case-study-experience .case-study-flowops .flowops-role-list { display: grid; gap: 22px; }
+.case-study-experience .case-study-flowops .flowops-role-list > div { display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 28px; padding: 26px; }
+.case-study-experience .case-study-flowops .flowops-role-list > div > div:last-child { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.case-study-experience .case-study-flowops .flowops-role-list > div > div:first-child > div { width: 40px; height: 40px; margin-bottom: 14px; }
+.case-study-experience .case-study-flowops .flowops-role-list svg { width: 22px; height: 22px; }
+.case-study-experience .case-study-flowops .flowops-role-list h3 { margin: 0 0 4px; font-size: 19px !important; }
+.case-study-experience .case-study-flowops .flowops-role-list p { margin: 0; font-size: 14px; }
+.case-study-experience .case-study-flowops .flowops-role-list p.text-xs { margin-bottom: 10px; font-size: 11px; }
+.case-study-experience .case-study-flowops .flowops-chapter { margin-top: clamp(48px, 5vw, 72px); padding-top: clamp(28px, 3vw, 40px); border-top: 1px solid var(--border); scroll-margin-top: 88px; }
+.case-study-experience .case-study-flowops .flowops-chapter > h3 { margin: 0 0 10px; }
+.case-study-experience .case-study-flowops .flowops-chapter > p { max-width: 72ch; margin: 0 0 28px; font-size: 15px; }
+.case-study-experience .case-study-flowops .flowops-chapter > h3 + p { font-size: 13px; }
+.case-study-experience .case-study-flowops .flowops-affinity-themes { display: grid; gap: 12px; max-width: 80ch; margin: 20px 0 32px; }
+.case-study-experience .case-study-flowops .flowops-affinity-themes p { margin: 0; font-size: 15px; }
+.case-study-experience .case-study-flowops .flowops-affinity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.case-study-experience .case-study-flowops .flowops-affinity-grid > div { min-width: 0; }
+.case-study-experience .case-study-flowops .flowops-affinity-grid h4 { margin: 0 0 16px; font-size: 19px; text-align: left; }
+.case-study-experience .case-study-flowops .flowops-affinity-grid > div > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.case-study-experience .case-study-flowops .flowops-affinity-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 28px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); }
+.case-study-experience .case-study-flowops .flowops-affinity-legend > div { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.case-study-experience .case-study-flowops .flowops-affinity-legend > div > div { width: 16px; height: 16px; flex: 0 0 16px; border-radius: 4px; }
+.case-study-experience .case-study-flowops .flowops-affinity-legend span { font-size: 13px; }
+.case-study-experience .case-study-flowops .flowops-note-block { max-width: none; margin-top: 32px; padding: 24px 28px; border-left: 2px solid var(--case-accent); background: var(--study-paper); }
+.case-study-experience .case-study-flowops .flowops-note-block h4 { margin: 0 0 14px; font-size: 17px; }
+.case-study-experience .case-study-flowops .flowops-note-block p { max-width: 80ch; margin: 0; font-size: 15px; }
+.case-study-experience .case-study-flowops .flowops-flow-stack { display: grid; gap: 24px; }
+.case-study-experience .case-study-flowops .flowops-journey { min-width: 0; padding: 26px; border: 1px solid var(--border); border-radius: 4px; background: var(--study-paper); }
+.case-study-experience .case-study-flowops .flowops-journey > header { margin-bottom: 22px; }
+.case-study-experience .case-study-flowops .flowops-journey > header > span { display: block; margin-bottom: 10px; color: var(--muted-foreground); font-size: 12px; }
+.case-study-experience .case-study-flowops .flowops-journey h4 { margin: 0; font: 500 18px/1.5 'DM Sans', sans-serif; }
+.case-study-experience .case-study-flowops .flowops-flow-path { display: flex; gap: 26px; margin: 0; padding: 0; list-style: none; }
+.case-study-experience .case-study-flowops .flowops-flow-path > li { position: relative; display: flex; align-items: center; flex: 1 1 0; min-width: 0; min-height: 66px; padding: 14px; border: 1px solid var(--border); border-radius: 4px; color: var(--foreground); font-size: 13px; }
+.case-study-experience .case-study-flowops [data-step-kind="entry"] { background: var(--study-peach); }
+.case-study-experience .case-study-flowops [data-step-kind="action"] { background: var(--study-blue); }
+.case-study-experience .case-study-flowops [data-step-kind="config"] { background: var(--study-purple); }
+.case-study-experience .case-study-flowops [data-step-kind="success"] { background: var(--study-green); }
+.case-study-experience .case-study-flowops .flowops-flow-path li > span { position: absolute; top: 50%; right: -22px; width: 16px; transform: translateY(-50%); color: var(--muted-foreground); font-size: 17px; line-height: 1; text-align: center; }
+.case-study-experience .case-study-flowops .flowops-flow-choices { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+.case-study-experience .case-study-flowops .flowops-flow-choices p { margin: 0 0 12px; color: var(--muted-foreground); font-size: 12px; }
+.case-study-experience .case-study-flowops .flowops-flow-choices ul { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.case-study-experience .case-study-flowops .flowops-flow-choices li { padding: 10px 16px; border: 1px solid var(--border); border-radius: 4px; background: var(--background); font-size: 13px; }
+.case-study-experience .case-study-flowops .flowops-flow-focus { max-width: 85ch; margin: 22px 0 0; color: var(--muted-foreground); font-size: 13px; }
+.case-study-experience .case-study-flowops .flowops-flow-focus strong { color: var(--foreground); font-weight: 500; }
+.case-study-experience .case-study-flowops .flowops-flow-legend { display: flex; flex-wrap: wrap; gap: 16px 28px; padding-top: 4px; }
+.case-study-experience .case-study-flowops .flowops-flow-legend > span { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; }
+.case-study-experience .case-study-flowops .flowops-flow-legend i { width: 16px; height: 16px; border: 1px solid var(--border); border-radius: 3px; }
+.case-study-experience .case-study-flowops .flowops-wireframe { width: 100%; max-width: 980px; margin: 0 auto 24px; padding: 20px; border: 1px solid var(--border); border-radius: 4px; overflow-x: auto; background: var(--study-paper); }
+.case-study-experience .case-study-flowops .flowops-wireframe > svg { display: block; width: 100%; height: auto; min-width: 700px !important; }
+.case-study-experience .case-study-flowops .flowops-architecture-grid .space-y-3 > div { padding: 16px 0; gap: 16px; border-bottom: 1px solid var(--border); }
+.case-study-experience .case-study-flowops .flowops-architecture-grid .space-y-3 > div:first-child { padding-top: 0; }
+.case-study-experience .case-study-flowops .flowops-architecture-grid .space-y-3 > div:last-child { border: 0; padding-bottom: 0; }
+.case-study-experience .case-study-flowops .flowops-architecture-grid p { margin: 0; }
+.case-study-experience .case-study-flowops .flowops-decisions { display: grid; gap: 22px; margin-bottom: 36px; }
+.case-study-experience .case-study-flowops .flowops-decisions > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 28px; padding: 26px; }
+.case-study-experience .case-study-flowops .flowops-decisions p { margin: 0; font-size: 14px; }
+.case-study-experience .case-study-flowops .flowops-decisions p.text-xs { margin-bottom: 10px; font-size: 11px; }
+.case-study-experience .case-study-flowops .flowops-state-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.case-study-experience .case-study-flowops .flowops-state-grid > div { padding: 24px; text-align: left; }
+.case-study-experience .case-study-flowops .flowops-state-grid > div > div { margin: 0 0 16px; }
+.case-study-experience .case-study-flowops .flowops-accessibility-grid > div { min-width: 0; }
+.case-study-experience .case-study-flowops .flowops-validation-stack { display: grid; gap: 24px; }
+.case-study-experience .case-study-flowops .flowops-validation-stack > div { padding: 28px; background: var(--study-paper) !important; border-color: var(--border) !important; }
+.case-study-experience .case-study-flowops .flowops-validation-stack h4 { margin: 0 0 22px; font-size: 17px; }
+.case-study-experience .case-study-flowops .flowops-validation-stack .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.case-study-experience .case-study-flowops .flowops-outcome-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 30px; }
+.case-study-experience .case-study-flowops .flowops-outcome-grid > div { min-width: 0; padding: 24px; text-align: left; }
+.case-study-experience .case-study-flowops .flowops-outcome-grid > div > p:first-child { margin: 0 0 12px; font-size: 28px; line-height: 1.3 !important; }
+.case-study-experience .case-study-flowops .flowops-reflection-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px !important; margin-bottom: 30px; }
+.case-study-experience .case-study-flowops .flowops-reflection-grid > div { min-width: 0; padding: 22px 0 0; border-top: 1px solid var(--border); }
+.case-study-experience .case-study-flowops .flowops-reflection-grid h3 { margin: 0 0 16px; font-size: 18px !important; }
+.case-study-experience .case-study-flowops .flowops-reflection-grid ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.case-study-experience .case-study-flowops .flowops-design-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-bottom: 36px; }
+.case-study-experience .case-study-flowops .flowops-design-grid > div { min-width: 0; padding: 26px; background: var(--study-paper) !important; border-color: var(--border) !important; }
+.case-study-experience .case-study-flowops .flowops-design-grid h4 { margin: 0 0 24px; font-size: 17px; }
+.case-study-experience .case-study-flowops .flowops-design-grid .flex { flex-wrap: wrap; gap: 10px; }
+.case-study-experience .case-study-flowops .flowops-design-grid button { min-height: 36px; padding: 8px 12px; }
+.case-study-experience .case-study-flowops .flowops-design-grid > div:first-child .flex > div:first-child { width: 32px; height: 32px; flex: 0 0 32px; }
+.case-study-experience .case-study-flowops .flowops-design-grid > div:first-child .flex:nth-child(1) > div:first-child { background: #ef4444 !important; }
+.case-study-experience .case-study-flowops .flowops-design-grid > div:first-child .flex:nth-child(2) > div:first-child { background: #22c55e !important; }
+.case-study-experience .case-study-flowops .flowops-design-grid > div:first-child .flex:nth-child(3) > div:first-child { background: #f59e0b !important; }
+.case-study-experience .case-study-flowops .flowops-design-grid > div:first-child .flex:nth-child(4) > div:first-child { background: #3b82f6 !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system > .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.case-study-experience .case-study-flowops .flowops-badge-system .flex { gap: 10px; }
+.case-study-experience .case-study-flowops .flowops-badge-system .flex > span { padding: 8px 12px; font-size: 12px; }
+.case-study-experience .case-study-flowops .flowops-badge-system .flex > span > span { padding: 0; }
+.case-study-experience .case-study-flowops .flowops-badge-system :is([class*="bg-gray-600"],[class*="bg-blue-600"],[class*="bg-amber-600"],[class*="bg-purple-600"],[class*="bg-cyan-600"],[class*="bg-emerald-600"],[class*="bg-green-700"]) { color: white !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-gray-600"] { background: #4b5563 !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-blue-600"] { background: #2563eb !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-amber-600"] { background: #92400e !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-purple-600"] { background: #7c3aed !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-cyan-600"] { background: #0e7490 !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-emerald-600"] { background: #15803d !important; }
+.case-study-experience .case-study-flowops .flowops-badge-system [class*="bg-green-700"] { background: #166534 !important; }
+.case-study-experience .case-study-flowops .flowops-section-inner > .flowops-product-gallery { width: 100%; max-width: 980px; margin-inline: auto; }
+.case-study-experience .case-study-flowops .flowops-product-gallery:focus-visible { outline: 2px solid var(--case-accent); outline-offset: 6px; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figure { margin: 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figure > a { display: block; padding: 12px; background: var(--study-peach); }
+.case-study-experience .case-study-flowops .flowops-product-gallery img { position: static; display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figcaption { display: flex; align-items: flex-start; gap: 20px; padding: 22px; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figcaption > span { flex: 0 0 auto; color: var(--muted-foreground); font-size: 12px; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figcaption > div { flex: 1; min-width: 0; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figcaption strong { font-size: 15px; font-weight: 500; }
+.case-study-experience .case-study-flowops .flowops-product-gallery figcaption p { margin: 6px 0 0; font-size: 13px; color: var(--muted-foreground); }
+.case-study-experience .case-study-flowops .flowops-product-gallery figcaption > a { flex: 0 0 auto; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls > button { flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 50%; background: var(--background); font-size: 20px; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); flex: 1; gap: 8px; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls > div > button { display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 72px; padding: 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--background); color: var(--foreground); font-size: 12px; text-align: left; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls > div > button span { color: var(--muted-foreground); font-size: 11px; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls [aria-pressed="true"] { border-color: var(--case-accent); background: var(--study-peach); }
+.case-study-experience .case-study-flowops .flowops-gallery-controls button { cursor: pointer; }
+.case-study-experience .case-study-flowops .flowops-gallery-controls button:focus-visible { outline: 2px solid var(--case-accent); outline-offset: 3px; }
+@media (max-width: 1050px) {
+  .case-study-experience .case-study-flowops .flowops-design-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-study-experience .case-study-flowops .flowops-outcome-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .case-study-experience .case-study-flowops .flowops-affinity-grid { grid-template-columns: minmax(0, 1fr); }
+  .case-study-experience .case-study-flowops .flowops-role-list > div { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .case-study-experience .case-study-flowops .flowops-role-list > div > div:first-child > div { display: none; }
+  .case-study-experience .case-study-flowops .flowops-flow-path { flex-direction: column; gap: 22px; }
+  .case-study-experience .case-study-flowops .flowops-flow-path > li { flex: auto; min-height: 0; padding: 12px 14px; }
+  .case-study-experience .case-study-flowops .flowops-flow-path li > span { top: auto; right: auto; bottom: -20px; left: calc(50% - 8px); transform: rotate(90deg); }
+}
+@media (max-width: 760px) {
+  .case-study-experience .case-study-flowops :is(.flowops-goal-grid,.flowops-architecture-grid,.flowops-accessibility-grid,.flowops-pain-grid,.flowops-state-grid,.flowops-reflection-grid,.flowops-design-grid) { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .case-study-experience .case-study-flowops .flowops-chapter { margin-top: 42px; padding-top: 28px; }
+  .case-study-experience .case-study-flowops .flowops-decisions > div { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .case-study-experience .case-study-flowops :is(.flowops-journey,.flowops-role-list > div,.flowops-validation-stack > div) { padding: 22px; }
+  .case-study-experience .case-study-flowops .flowops-product-gallery figcaption { flex-wrap: wrap; gap: 14px; padding: 18px; }
+  .case-study-experience .case-study-flowops .flowops-product-gallery figcaption > a { width: 100%; margin-top: 4px; }
+  .case-study-experience .case-study-flowops .flowops-product-gallery figure > a { padding: 6px; }
+  .case-study-experience .case-study-flowops .flowops-gallery-controls { flex-wrap: wrap; justify-content: center; }
+  .case-study-experience .case-study-flowops .flowops-gallery-controls > div { flex: 0 0 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); order: -1; }
+  .case-study-experience .case-study-flowops .flowops-wireframe { padding: 12px; }
+}
+@media (max-width: 560px) {
+  .case-study-experience .case-study-flowops .flowops-role-list > div > div:last-child,
+  .case-study-experience .case-study-flowops .flowops-validation-stack .grid,
+  .case-study-experience .case-study-flowops .flowops-badge-system > .grid,
+  .case-study-experience .case-study-flowops .flowops-outcome-grid { grid-template-columns: minmax(0, 1fr); }
+  .case-study-experience .case-study-flowops .flowops-overview > p { font-size: 20px; }
+}
