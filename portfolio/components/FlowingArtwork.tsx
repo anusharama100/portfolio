@@ -13,34 +13,40 @@ export function FlowingArtwork({ src }: { src: string }) {
     let frame = 0;
     let visible = true;
     let ready = false;
-    let last = 0;
-    let width = 1;
-    let height = 1;
+    let disposed = false;
+    let last: number | null = null;
+    let elapsed = 0;
+    let width = 0;
+    let height = 0;
+    let positionX = .5;
+    let positionY = .5;
     let pointerX = 0;
     let pointerY = 0;
     let targetX = 0;
     let targetY = 0;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const draw = (time: number) => {
+    const draw = () => {
       if (!ready) return;
-      pointerX += (targetX - pointerX) * 0.025;
-      pointerY += (targetY - pointerY) * 0.025;
-      const t = reduced.matches ? 0 : time / 1000;
-      const scale = Math.max(width / image.width, height / image.height) * 1.09;
+      // Begin at the exact still-image crop, then ease into the deformation.
+      // A local clock also prevents a new page or resumed tab starting mid-wave.
+      const progress = reduced.matches ? 0 : Math.min(elapsed / 1800, 1);
+      const motion = progress * progress * (3 - 2 * progress);
+      const t = elapsed / 1000;
+      const scale = Math.max(width / image.width, height / image.height) * (1 + .09 * motion);
       const dw = image.width * scale;
       const dh = image.height * scale;
-      const driftX = reduced.matches ? 0 : Math.sin(t * 0.21) * 9 + pointerX * 12;
-      const driftY = reduced.matches ? 0 : Math.cos(t * 0.17) * 7 + pointerY * 8;
-      const left = (width - dw) / 2 + driftX;
-      const top = (height - dh) / 2 + driftY;
+      const driftX = (Math.sin(t * .21) * 9 + pointerX * 12) * motion;
+      const driftY = (Math.cos(t * .17) * 7 + pointerY * 8) * motion;
+      const left = (width - dw) * positionX + driftX;
+      const top = (height - dh) * positionY + driftY;
       context.clearRect(0, 0, width, height);
       context.drawImage(image, left, top, dw, dh);
-      if (reduced.matches) return;
+      if (!motion) return;
       // A connected image mesh deforms the whole color field, rather than
       // sliding a rigid picture or slicing it into visible horizontal strips.
       const cols = 24;
       const rows = 14;
-      const amplitude = Math.min(width, height) * 0.038;
+      const amplitude = Math.min(width, height) * .038 * motion;
       const point = (x: number, y: number) => {
         const u = x / cols;
         const v = y / rows;
@@ -79,30 +85,59 @@ export function FlowingArtwork({ src }: { src: string }) {
         context.drawImage(image, 0, 0);
         context.restore();
       };
+      // Adjacent triangles share vertices; calculate each point only once.
+      const points = Array.from({ length: rows + 1 }, (_, y) =>
+        Array.from({ length: cols + 1 }, (_, x) => point(x, y)));
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          const a = point(x, y), b = point(x + 1, y), c = point(x + 1, y + 1), d = point(x, y + 1);
+          const a = points[y][x], b = points[y][x + 1], c = points[y + 1][x + 1], d = points[y + 1][x];
           triangle(a, b, d);
           triangle(b, c, d);
         }
       }
     };
     const resize = () => {
+      if (!ready) return;
       const box = canvas.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
+      const artwork = canvas.parentElement?.querySelector(".hero-art");
+      const position = artwork ? getComputedStyle(artwork).objectPosition : "50% 50%";
+      const [x = "50%", y = "50%"] = position.split(" ");
+      const nextX = x.endsWith("%") ? parseFloat(x) / 100 : .5;
+      const nextY = y.endsWith("%") ? parseFloat(y) / 100 : .5;
+      const pixelWidth = Math.round(box.width * dpr);
+      const pixelHeight = Math.round(box.height * dpr);
+      if (width === box.width && height === box.height && canvas.width === pixelWidth && canvas.height === pixelHeight && positionX === nextX && positionY === nextY) return;
       width = box.width;
       height = box.height;
-      const dpr = Math.min(window.devicePixelRatio, 1.5);
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
+      positionX = nextX;
+      positionY = nextY;
+      // Assigning either dimension clears the bitmap, even if it is unchanged.
+      if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+      if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      draw(performance.now());
+      draw();
+    };
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      last = null;
+    };
+    const schedule = () => {
+      if (!frame && ready && visible && !document.hidden && !reduced.matches) frame = requestAnimationFrame(tick);
     };
     const tick = (time: number) => {
-      if (visible && !document.hidden && time - last > 32) {
-        draw(time);
-        last = time;
-      }
-      if (!reduced.matches) frame = requestAnimationFrame(tick);
+      frame = 0;
+      if (!visible || document.hidden || reduced.matches) { last = null; return; }
+      const delta = last === null ? 0 : Math.min(Math.max(time - last, 0), 50);
+      last = time;
+      elapsed += delta;
+      const follow = 1 - Math.exp(-delta / 650);
+      pointerX += (targetX - pointerX) * follow;
+      pointerY += (targetY - pointerY) * follow;
+      draw();
+      schedule();
     };
     const onMove = (event: PointerEvent) => {
       if (reduced.matches) return;
@@ -112,33 +147,46 @@ export function FlowingArtwork({ src }: { src: string }) {
     };
     const onLeave = () => { targetX = 0; targetY = 0; };
     const onPreference = () => {
-      cancelAnimationFrame(frame);
-      draw(performance.now());
-      if (!reduced.matches) frame = requestAnimationFrame(tick);
+      stop();
+      elapsed = 0;
+      pointerX = pointerY = targetX = targetY = 0;
+      draw();
+      schedule();
     };
+    const onVisibility = () => { if (document.hidden) stop(); else schedule(); };
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
-    const visibility = new IntersectionObserver(([entry]) => { visible = entry?.isIntersecting ?? false; });
+    const visibility = new IntersectionObserver(([entry]) => {
+      visible = entry?.isIntersecting ?? false;
+      if (visible) schedule(); else stop();
+    });
     visibility.observe(canvas);
     const parent = canvas.parentElement;
     parent?.addEventListener("pointermove", onMove);
     parent?.addEventListener("pointerleave", onLeave);
     reduced.addEventListener("change", onPreference);
-    image.onload = () => {
+    document.addEventListener("visibilitychange", onVisibility);
+    image.decoding = "async";
+    image.onload = async () => {
+      try { await image.decode?.(); } catch { return; }
+      if (disposed) return;
       ready = true;
       resize();
       canvas.classList.add("artwork-ready");
-      if (!reduced.matches) frame = requestAnimationFrame(tick);
+      schedule();
     };
     image.src = src;
     return () => {
-      cancelAnimationFrame(frame);
+      disposed = true;
+      stop();
       observer.disconnect();
       visibility.disconnect();
       parent?.removeEventListener("pointermove", onMove);
       parent?.removeEventListener("pointerleave", onLeave);
       reduced.removeEventListener("change", onPreference);
+      document.removeEventListener("visibilitychange", onVisibility);
       image.onload = null;
+      canvas.classList.remove("artwork-ready");
     };
   }, [src]);
   return <canvas ref={canvasRef} className="flowing-artwork" aria-hidden="true" />;

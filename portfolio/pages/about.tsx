@@ -32,8 +32,7 @@ export default function AboutPage() {
       <PortfolioHeader active="about" />
       <main className="about-main">
         <div className="about-intro site-container">
-          <span className="eyebrow">a little about me</span>
-          <h1>curious by <em>nature.</em></h1>
+          <h1>a little about me</h1>
           <p>I’m <span className="person-name">Anusha</span>, a visual and product designer drawn to clear systems, playful details, and the small choices that make digital products feel human.</p>
         </div>
 

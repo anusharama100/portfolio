@@ -43,7 +43,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 32px; }
 .nav-active::after { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--foreground); position: absolute; bottom: -10px; left: calc(50% - 2px); }
 .hero { position: relative; overflow: hidden; background: #ebe8ee; min-height: 550px; }
 .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(.93) saturate(1.18) contrast(1.03); }
-.flowing-artwork { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .6s; pointer-events: none; filter: brightness(.93) saturate(1.18) contrast(1.03); }
+.flowing-artwork { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; filter: brightness(.93) saturate(1.18) contrast(1.03); }
 .flowing-artwork.artwork-ready { opacity: 1; }
 .hero-content { position: relative; width: calc(100% - 2 * var(--hero-gutter)); min-width: 0; padding-top: 80px; padding-bottom: 92px; }
 .eyebrow { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 500; text-transform: lowercase; letter-spacing: 1.5px; }
