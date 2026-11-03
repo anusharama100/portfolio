@@ -93,7 +93,7 @@ export default function NexusCaseStudy() {
         meta={[
           ['Role', 'Product Designer'],
           ['Timeline', '10 weeks'],
-          ['Research', '48 college students'],
+          ['Research', '48 users'],
           ['Scope', 'Research, product UX, and visual system'],
         ]}
       />

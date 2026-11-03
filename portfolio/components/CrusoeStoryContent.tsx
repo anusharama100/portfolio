@@ -1,16 +1,20 @@
 "use client"
 
 // Project framing is grounded in the existing Console artifacts and delivery notes.
-// Validation involved cross-functional reviews and QA, not customer interviews or usability tests.
+// Performance figures are reported in the user's latest supplied résumé.
+// It does not specify sample sizes, dates, or a study protocol; do not infer them.
 export const crusoeNarratives = {
   'empty-state-system': {
     projectName: 'Empty-state system',
+    metrics: [['60% → 72%', 'first-resource creation', 'Reported first-use outcome'], ['−20%', 'median setup time', 'Reported first-use outcome'], ['70% → 85%', 'correct next-step identification', 'Reported guidance outcome']],
+    metricSource: 'Outcomes reported in the supplied résumé; sample sizes and measurement dates are not specified. Proposed V2 designs are shown separately.',
+    additionalMetrics: [['80%', 'of in-scope surfaces adopted the patterns', 'Pattern adoption'], ['−25%', 'average design time per state', 'Design efficiency'], ['30% → 22%', 'onboarding drop-off', 'Reported first-use outcome']],
     processTitle: 'From first-run gaps to a reusable system.',
     process: [
-      { title: 'Understand', body: 'Audit the Console, follow a fresh account through the first-run experience, and study comparable cloud products.' },
-      { title: 'Frame', body: 'Connect repeated gaps to what a new customer needs: a resource explanation, requirements, and a useful next action.' },
-      { title: 'Design', body: 'Define the V1 illustration, content, action, and documentation pattern; explore setup cards and state-aware guidance as V2.' },
-      { title: 'Align + hand off', body: 'Refine scope with product, engineering, brand, and writing; document product variants, edge cases, and behavior.' },
+      { title: 'Research', body: 'Audit first-run screens and compare cloud-product patterns.' },
+      { title: 'Synthesize', body: 'Identify gaps in purpose, actions, and setup guidance.' },
+      { title: 'Design', body: 'Build one pattern; adapt it to each resource.' },
+      { title: 'Review', body: 'Refine with the team; separate V1 from proposed V2.' },
     ],
     collaborationTitle: 'Refining the guidance with the people building it.',
     collaboration: [
@@ -22,22 +26,25 @@ export const crusoeNarratives = {
     audience: 'A customer setting up their first cloud resource in the Console.',
     challenge: 'An empty page could show what was missing without explaining the resource, its requirements, or the next step.',
     role: 'I audited first-run experiences, designed a reusable guidance pattern, and refined the content and scope with the team.',
-    goal: 'Help a first-time customer understand the resource and take a useful first step, without turning the page into a tutorial.',
+    goal: 'Help new customers understand the resource and know what to do next.',
     takeaways: [
-      { title: 'An empty state is a starting point.', body: 'The important change was not adding an illustration. It was explaining the resource, offering a useful first action, and keeping help close by.' },
-      { title: 'Consistency needs room for context.', body: 'Instances, clusters, and storage need different explanations and prerequisites. I learned to reuse the hierarchy without forcing every product into the same message.' },
-      { title: 'Separate the foundation from the future.', body: 'V1 focused on the empty page. Documenting setup recommendations and state-aware guidance as V2 kept the immediate scope clear without losing the wider direction.' },
+      { title: 'An empty state is a starting point.', body: 'Explain the resource, offer one action, and keep help nearby.' },
+      { title: 'Consistency needs room for context.', body: 'Reuse the hierarchy, not identical copy for every product.' },
+      { title: 'Separate the foundation from the future.', body: 'Keep V1 buildable; document richer setup guidance as V2.' },
     ],
-    next: 'Measure whether first-time customers can explain the resource, identify its requirements, and start creating it without assistance. Track where documentation helps and where setup still breaks down.',
+    next: 'Break out creation, setup time, and drop-off by product and cohort; check whether the reported gains persist over time.',
   },
   'heuristic-evaluation': {
     projectName: 'Heuristic evaluation',
+    metrics: [['75% → 85%', 'task completion', 'Across 3 reviewed workflows'], ['60% → 75%', 'error recovery', 'Across 3 reviewed workflows'], ['9', 'improvements shipped', 'Delivery outcome']],
+    metricSource: 'Completion and recovery rates are reported in the supplied résumé across API keys, node monitoring, and billing. Sample sizes and measurement dates are not specified.',
+    additionalMetrics: [],
     processTitle: 'From journey findings to shipped improvements.',
     process: [
-      { title: 'Understand', body: 'Walk through three complete customer tasks: monitoring costs, creating API keys, and debugging resources.' },
-      { title: 'Frame', body: 'Evaluate the journeys against ten usability principles and connect each finding to its consequence and severity.' },
-      { title: 'Design', body: 'Recommend clearer cost context, safer credential defaults, and useful explanations and recovery paths.' },
-      { title: 'Align + hand off', body: 'Prioritize Jira tickets with engineering, define acceptance criteria, and review implementation through QA.' },
+      { title: 'Research', body: 'Walk through API keys, billing, and resource debugging.' },
+      { title: 'Synthesize', body: 'Rank findings by severity and task impact.' },
+      { title: 'Design', body: 'Explore safer defaults, cost context, and recovery paths.' },
+      { title: 'Review', body: 'Scope Jira tickets and check implementation through QA.' },
     ],
     collaborationTitle: 'Turning evaluation findings into agreed fixes.',
     collaboration: [
@@ -49,22 +56,25 @@ export const crusoeNarratives = {
     audience: 'A Console customer checking a bill, creating an API key, or diagnosing an unhealthy resource.',
     challenge: 'The necessary screens existed, but inconsistent guidance, risky defaults, and lost context made complete tasks harder to follow.',
     role: 'I evaluated three journeys against ten usability principles, prioritized findings, wrote engineering tickets, and reviewed fixes with engineering through QA.',
-    goal: 'Make each critical task easier to find, safer to complete, and easier to recover from—not simply make individual screens look more consistent.',
+    goal: 'Make critical tasks easier to find, safer to complete, and easier to recover from.',
     takeaways: [
-      { title: 'A finding needs a design response.', body: 'Naming a usability principle was not enough. Connecting the observed behavior, its consequence, and a specific recommendation made the evaluation useful to the team.' },
-      { title: 'Follow the task, not just the screen.', body: 'The billing, API-key, and debugging journeys showed why defaults, retained context, and recovery matter across multiple steps—not only within an individual interface.' },
-      { title: 'The work continues through QA.', body: 'Prioritized tickets, engineering discussions, and implementation review connected the recommendations to nine shipped improvements. Proposed frames still needed to be distinguished from shipped behavior.' },
+      { title: 'A finding needs a design response.', body: 'Pair each observed problem with a specific, buildable recommendation.' },
+      { title: 'Follow the task, not just the screen.', body: 'Defaults, context, and recovery matter across the whole journey.' },
+      { title: 'The work continues through QA.', body: 'Track recommendations through implementation; label extra proposals separately.' },
     ],
-    next: 'Measure unassisted task completion, repeated navigation, and recovery after an error. Check the shipped fixes separately from the proposed directions shown in the design evidence.',
+    next: 'Break out task completion and recovery by journey, then check whether the gains persist. Evaluate additional proposals separately from shipped fixes.',
   },
   'usage-to-cost': {
     projectName: 'Usage → cost',
+    metrics: [['5', 'connected product views', 'Design scope'], ['6', 'prototype screens shown', 'Design evidence'], ['Prototype', 'reviewed cross-functionally', 'Not measured impact']],
+    metricSource: null,
+    additionalMetrics: [],
     processTitle: 'From a cost question to a connected investigation.',
     process: [
-      { title: 'Understand', body: 'Map how a team moves between Usage, Billing, workload metrics, request logs, and account activity.' },
-      { title: 'Frame', body: 'Organize the investigation around what changed, which product contributed, and what evidence to inspect next.' },
-      { title: 'Design', body: 'Prototype comparison views, progressive product detail, and operational evidence while keeping units and scope explicit.' },
-      { title: 'Align + hand off', body: 'Use cross-functional reviews and prototype walkthroughs to refine the connected path, constraints, and state behavior.' },
+      { title: 'Research', body: 'Map the path between usage, billing, analytics, and logs.' },
+      { title: 'Synthesize', body: 'Identify where filters, units, and context break down.' },
+      { title: 'Design', body: 'Connect the bill to product detail and request evidence.' },
+      { title: 'Review', body: 'Walk through the prototype with product and engineering.' },
     ],
     collaborationTitle: 'Reviewing the connections between views—not just the views.',
     collaboration: [
@@ -76,17 +86,30 @@ export const crusoeNarratives = {
     audience: 'A developer or team member trying to understand an unexpected change in AI usage or cost.',
     challenge: 'Usage, Billing, Analytics, and logs held different parts of the answer, with repeated filters and different measurement units.',
     role: 'I mapped the investigation, designed the connected views, and prototyped how scope and context carry from one screen to the next.',
-    goal: 'Let someone move from a change in their bill to the contributing product and underlying activity without rebuilding the investigation on every screen.',
+    goal: 'Connect a cost change to the product and activity behind it, without losing context.',
     takeaways: [
-      { title: 'Start with the question, not the chart.', body: 'A total is only the beginning. Designing around what changed, which product contributed, and where to investigate gave each view a reason to exist.' },
-      { title: 'Share patterns without flattening meaning.', body: 'Tokens, video seconds, dollars, and response times answer different questions. A consistent layout should reduce relearning while keeping those units and their context explicit.' },
-      { title: 'An investigation needs continuity.', body: 'Project, model, and date context matter as much as the individual screens. Reviewing the connected prototype helped frame that handoff; a measured improvement would still need follow-up evidence.' },
+      { title: 'Start with the question, not the chart.', body: 'Give each view a job: compare, explain, or investigate.' },
+      { title: 'Share patterns without flattening meaning.', body: 'Reuse layouts while keeping dollars, tokens, and response times distinct.' },
+      { title: 'An investigation needs continuity.', body: 'Carry project, model, and date context between views.' },
     ],
     next: 'Measure whether someone can trace a sample cost change to the correct product and request, keep the intended project and dates, and choose an appropriate next action.',
   },
 } as const
 
 type ProjectNarrative = (typeof crusoeNarratives)[keyof typeof crusoeNarratives]
+
+type CrusoeMetric = readonly [value: string, description: string, context: string]
+
+export function CrusoeMetricList({ metrics, label }: { metrics: readonly CrusoeMetric[]; label: string }) {
+  return (
+    <dl className="crusoe-story-metrics" aria-label={label}>
+      {metrics.map(([value, description, context]) => {
+        const [before, after] = value.split(' → ')
+        return <div key={description}><dt>{context}</dt><dd><span className="crusoe-metric-value">{after && <small>{before} → </small>}<strong>{after ?? before}</strong></span><span className="crusoe-metric-label">{description}</span></dd></div>
+      })}
+    </dl>
+  )
+}
 
 export function CrusoeProjectProcess({ story }: { story: ProjectNarrative }) {
   return (
@@ -104,12 +127,15 @@ export function CrusoeProjectProcess({ story }: { story: ProjectNarrative }) {
 export function CrusoeProjectCollaboration({ story }: { story: ProjectNarrative }) {
   return (
     <section className="crusoe-project-collaboration" aria-label={`${story.projectName} collaboration`} data-study-reveal>
+      <details className="crusoe-collaboration-details">
+      <summary>Collaboration &amp; delivery notes</summary>
       <div className="crusoe-project-collaboration-heading"><span>Collaboration · {story.projectName}</span><h3>{story.collaborationTitle}</h3></div>
       <ul className="crusoe-project-collaboration-steps">
         {story.collaboration.map(step => (
           <li key={step.title}><span>{step.partner}</span><h4>{step.title}</h4><p>{step.body}</p></li>
         ))}
       </ul>
+      </details>
     </section>
   )
 }
@@ -117,12 +143,16 @@ export function CrusoeProjectCollaboration({ story }: { story: ProjectNarrative 
 export function CrusoeProjectBrief({ story, label = 'Project brief' }: { story: ProjectNarrative; label?: string }) {
   return (
     <div className="crusoe-narrative-opening" data-study-reveal>
+      <CrusoeMetricList metrics={story.metrics} label={`${story.projectName} scope and outcomes`} />
+      {story.metricSource && <p className="crusoe-metric-source" aria-label={`${story.projectName} metric source`}>{story.metricSource}</p>}
+      <aside className="crusoe-narrative-goal" aria-label="Design goal"><span>Design goal</span><p>{story.goal}</p></aside>
+      <details className="crusoe-project-context"><summary>Project context &amp; my role</summary>
       <dl className="crusoe-narrative-brief" aria-label={label}>
         <div><dt>Who this is for</dt><dd>{story.audience}</dd></div>
         <div><dt>The challenge</dt><dd>{story.challenge}</dd></div>
         <div><dt>My role</dt><dd>{story.role}</dd></div>
       </dl>
-      <aside className="crusoe-narrative-goal" aria-label="Design goal"><span>Design goal</span><p>{story.goal}</p></aside>
+      </details>
     </div>
   )
 }
@@ -173,6 +203,11 @@ export const usageToCostInsights: CrusoeInsight[] = [
 
 export function CrusoeEvidenceChain({ rows, caption }: { rows: CrusoeInsight[]; caption: string }) {
   return (
+    <div className="crusoe-research-summary" role="region" aria-label={`${caption} summary`} data-study-reveal>
+      <div className="crusoe-research-cards">
+        {rows.map((row, index) => <article key={row.observation}><span>Finding 0{index + 1}</span><h4>{row.observation}</h4><p>{row.decision}</p></article>)}
+      </div>
+      <details className="crusoe-research-detail"><summary>View the evidence and rationale</summary>
     <table className="crusoe-evidence-chain" data-study-reveal>
       <caption>{caption}</caption>
       <thead><tr><th scope="col">What the evidence showed</th><th scope="col">Why it mattered</th><th scope="col">What I changed</th></tr></thead>
@@ -184,6 +219,8 @@ export function CrusoeEvidenceChain({ rows, caption }: { rows: CrusoeInsight[]; 
         </tr>
       ))}</tbody>
     </table>
+      </details>
+    </div>
   )
 }
 

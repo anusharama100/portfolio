@@ -2,7 +2,7 @@ export const caseStudyProjects = {
   crusoe: {
     name: 'Crusoe', category: 'Cloud infrastructure · Product design internship',
     headline: 'Making complex cloud workflows feel clear.',
-    description: 'Crusoe provides the computing power that AI teams need to build and run products. I worked on the Console, the web app where customers create resources, monitor them, and understand what they cost. This case study covers three projects: first-time guidance, a usability review, and a clearer connection between usage and billing.',
+    description: 'I designed first-time guidance, reviewed critical Console journeys, and connected AI usage to billing. Three internship projects, from interface audits and research synthesis to prototypes and engineering review.',
     image: '/landing/project-crusoe.png', imageAlt: 'Crusoe cloud resource provisioning interface', tone: 'blue',
     meta: [['Role', 'Product Design Intern'], ['Timeline', '2026 internship'], ['Team', 'Design, PM, Eng, Brand, Writing'], ['Tools', 'Figma, FigJam, Claude Code']],
     summary: [['The challenge', 'Cloud workflows assumed technical familiarity and left users without clear guidance or connected context.'], ['My contribution', 'Designed reusable empty states, reviewed critical Console journeys, and connected AI usage to billing and investigation.'], ['The outcome', 'Usability improvements shipped, with reusable patterns and implementation-ready guidance for the team.']],
@@ -28,7 +28,7 @@ export const caseStudyProjects = {
     headline: 'One question. Multiple models. A clearer answer.',
     description: 'I designed an AI research experience that compares multiple model responses behind the scenes and gives students one focused answer they can understand, verify, and act on.',
     image: '/landing/project-nexus.png', imageAlt: 'Nexus multi-model answer experience', tone: 'blue',
-    meta: [['Role', 'Product Designer'], ['Timeline', '10 weeks'], ['Research', '48 college students'], ['Scope', 'Research, product UX, and visual system'], ['Tools', 'Figma, Cursor, Lovable']],
+    meta: [['Role', 'Product Designer'], ['Timeline', '10 weeks'], ['Research', '48 users'], ['Scope', 'Research, product UX, and visual system'], ['Tools', 'Figma, Cursor, Lovable']],
     summary: [['The challenge', 'Students spent time switching between AI tools and comparing confident but conflicting answers.'], ['My contribution', 'Translated research with 48 students into a unified question-to-answer experience and a clear visual system.'], ['The design direction', 'One focused response with model comparison behind the scenes, reducing the burden of manual synthesis.']],
   },
   neuranote: {

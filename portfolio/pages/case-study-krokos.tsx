@@ -93,7 +93,11 @@ export default function KrokosCaseStudy() {
         </div>
         <ol className="krokos-reading-path" aria-label="The redesigned website’s reading path" data-study-reveal>
           {readingPath.map(([label, question, decision], index) => (
-            <li key={label}><span>0{index + 1} / {label}</span><h3>{question}</h3><p>{decision}</p></li>
+            <li key={label}>
+              <span className="krokos-reading-step" aria-hidden="true">0{index + 1}</span>
+              <div className="krokos-reading-question"><span>{label}</span><h3>{question}</h3></div>
+              <p>{decision}</p>
+            </li>
           ))}
         </ol>
         <figure className="krokos-landing-flow" data-study-reveal>

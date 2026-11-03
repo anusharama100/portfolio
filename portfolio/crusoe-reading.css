@@ -1,0 +1,53 @@
+/* Crusoe's quick read: scope, a short goal, then evidence. Detail stays available. */
+.case-study-experience .crusoe-project-panel .crusoe-project-heading { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.case-study-experience .crusoe-project-panel .crusoe-project-heading h2 { max-width: 24ch; }
+.case-study-experience .crusoe-project-panel .crusoe-project-heading > p { max-width: 70ch; font-size: 19px; line-height: 1.65; }
+.case-study-experience .crusoe-project-panel .crusoe-project-heading-visual { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'title visual' 'intro visual'; column-gap: clamp(32px, 4vw, 64px); align-items: start; }
+.case-study-experience .crusoe-project-heading-visual > h2 { grid-area: title; align-self: end; }
+.case-study-experience .crusoe-project-heading-visual > p { grid-area: intro; }
+.case-study-experience .crusoe-opening-preview { grid-area: visual; min-width: 0; margin: 0; }
+.case-study-experience .crusoe-opening-preview img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; }
+.case-study-experience .crusoe-opening-preview figcaption { display: flex; justify-content: space-between; gap: 16px; margin-top: 10px; color: var(--muted-foreground); font-size: 13px; font-weight: 600; line-height: 1.5; }
+.case-study-experience .crusoe-story-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 24px 0; border-block: 1px solid var(--border); }
+.case-study-experience .crusoe-story-metrics > div { min-width: 0; }
+.case-study-experience .crusoe-story-metrics dt { margin-bottom: 10px; color: var(--muted-foreground); font-size: 13px; font-weight: 600; line-height: 1.5; }
+.case-study-experience .crusoe-story-metrics dd { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin: 0; }
+.case-study-experience .crusoe-story-metrics strong { color: var(--study-signal); font: 500 44px/1.1 var(--font-editorial); letter-spacing: -.03em; }
+.case-study-experience .crusoe-metric-value { display: inline-flex; align-items: baseline; gap: 10px; min-height: 50px; }
+.case-study-experience .crusoe-metric-value small { color: var(--muted-foreground); font-size: 17px; font-weight: 400; white-space: nowrap; }
+.case-study-experience .crusoe-story-metrics .crusoe-metric-label { max-width: 24ch; color: var(--foreground); font-size: 15px; line-height: 1.5; }
+.case-study-experience .crusoe-project-panel .crusoe-metric-source { max-width: 95ch; margin: 12px 0 0; color: var(--muted-foreground); font-size: 13px; line-height: 1.6; }
+.case-study-experience .crusoe-cost-story .crusoe-story-metrics > div:last-child strong { font-size: 30px; }
+.case-study-experience .crusoe-project-panel .crusoe-narrative-goal { max-width: none; margin-top: 24px; }
+.case-study-experience .crusoe-project-context { margin-top: 18px; }
+.case-study-experience :is(.crusoe-project-context, .crusoe-collaboration-details, .crusoe-research-detail) > summary { width: fit-content; min-height: 44px; padding-block: 10px; color: var(--muted-foreground); font-size: 14px; font-weight: 600; line-height: 1.6; cursor: pointer; }
+.case-study-experience :is(.crusoe-project-context, .crusoe-collaboration-details, .crusoe-research-detail) > summary:focus-visible { outline: 2px solid var(--study-signal); outline-offset: 4px; }
+.case-study-experience .crusoe-project-collaboration { margin-top: 10px; padding: 0; border: 0; border-bottom: 1px solid var(--border); background: transparent; }
+.case-study-experience .crusoe-collaboration-details[open] { padding-bottom: 24px; }
+.case-study-experience .crusoe-project-process { margin-top: 18px; padding-top: 22px; }
+.case-study-experience .crusoe-project-process-steps { margin-top: 22px; }
+.case-study-experience .crusoe-project-process-steps h4 { font-weight: 600; }
+.case-study-experience .crusoe-project-process-steps p { max-width: 28ch; line-height: 1.6; }
+.case-study-experience .crusoe-research-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
+.case-study-experience .crusoe-research-cards article { min-width: 0; padding: 24px; background: var(--study-paper); border-top: 2px solid var(--study-signal); }
+.case-study-experience .crusoe-research-cards article > span { color: var(--study-signal); font-size: 13px; font-weight: 600; }
+.case-study-experience .crusoe-research-cards h4 { margin: 12px 0; color: var(--foreground); font: 600 20px/1.4 'DM Sans', sans-serif; }
+.case-study-experience .crusoe-research-cards p { margin: 0; color: var(--muted-foreground); font-size: 15px; line-height: 1.65; }
+.case-study-experience .crusoe-research-detail { margin-top: 16px; }
+.case-study-experience .crusoe-research-detail .crusoe-evidence-chain { margin-top: 12px; }
+@media (max-width: 900px) {
+  .case-study-experience .crusoe-project-panel .crusoe-project-heading-visual { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'title' 'intro' 'visual'; }
+  .case-study-experience .crusoe-opening-preview { width: min(100%, 560px); }
+}
+@media (max-width: 760px) {
+  .case-study-experience .crusoe-story-metrics { gap: 18px; }
+  .case-study-experience .crusoe-story-metrics dt { min-height: 4.5em; }
+  .case-study-experience .crusoe-story-metrics dd { flex-direction: column; gap: 8px; }
+  .case-study-experience .crusoe-story-metrics strong { font-size: 36px; }
+  .case-study-experience .crusoe-metric-value { min-height: 64px; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 2px; }
+  .case-study-experience .crusoe-metric-value small { font-size: 14px; }
+  .case-study-experience .crusoe-story-metrics .crusoe-metric-label { font-size: 14px; }
+  .case-study-experience .crusoe-cost-story .crusoe-story-metrics > div:last-child strong { font-size: 24px; }
+  .case-study-experience .crusoe-research-cards { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .case-study-experience .crusoe-project-process-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
+}

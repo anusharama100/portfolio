@@ -54,6 +54,8 @@ describe('Nexus editorial case-study layout', () => {
   it('uses the shared case-study introduction and persistent back navigation', () => {
     const { container } = render(<CaseStudyExperience slug="nexus"><NexusCaseStudy /></CaseStudyExperience>)
     expect(container.firstElementChild).toHaveAttribute('data-study-slug', 'nexus')
+    const research = within(container.querySelector('.study-meta') as HTMLElement).getByText('Research').parentElement!
+    expect(research.querySelector('dd')).toHaveTextContent('48 users')
     expect(screen.getByRole('link', { name: 'Back to selected work' })).toHaveAttribute('href', '/#projects')
     expect(screen.queryByRole('combobox', { name: 'Jump to section' })).not.toBeInTheDocument()
   })

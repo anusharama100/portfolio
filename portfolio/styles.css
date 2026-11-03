@@ -13,6 +13,7 @@
 @import "./case-study-labels.css";
 @import "./case-study-callouts.css";
 @import "./usage-cost-story.css";
+@import "./crusoe-reading.css";
 @import "./case-study-scale.css";
 
 @custom-variant dark (&:is(.dark *));

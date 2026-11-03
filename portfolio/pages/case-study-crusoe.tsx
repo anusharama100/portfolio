@@ -8,7 +8,7 @@ import CrusoeUsageCostStory from '@/portfolio/components/CrusoeUsageCostStory'
 import CrusoeDecisionExplorer from '@/portfolio/components/CrusoeDecisionExplorer'
 import { crusoeDesignDecisions } from '@/portfolio/components/crusoeDesignDecisions'
 import { useCaseStudyMotion } from '@/portfolio/components/useCaseStudyMotion'
-import { CrusoeEvidenceChain, CrusoeProjectBrief, CrusoeProjectProcess, CrusoeProjectCollaboration, CrusoeProjectNextSteps, CrusoeProjectReflection, crusoeNarratives, heuristicInsights } from '@/portfolio/components/CrusoeStoryContent'
+import { CrusoeEvidenceChain, CrusoeMetricList, CrusoeProjectBrief, CrusoeProjectProcess, CrusoeProjectCollaboration, CrusoeProjectNextSteps, CrusoeProjectReflection, crusoeNarratives, heuristicInsights } from '@/portfolio/components/CrusoeStoryContent'
 
 type VisualPlaceholderProps = {
   number: string
@@ -322,9 +322,9 @@ const emptyStateWork = [
 ] as const
 
 const emptyStateRules = [
-  ['Explain the resource', 'Because a status alone does not explain the product, a specific title and short description give the page a purpose.'],
-  ['Make the first step obvious', 'Because an empty table offers little direction, one primary “Create Instance” action anchors the starting point.'],
-  ['Put help beside the action', 'Because some customers need more detail before starting, “View docs” provides a secondary path without adding a wall of instructions.'],
+  ['Explain the resource', 'A specific title and short description explain what belongs here.'],
+  ['Make the first step obvious', 'One primary action makes it clear how to begin.'],
+  ['Put help beside the action', 'A nearby documentation link supports customers who need more context.'],
 ] as const
 
 const versionComparison = [
@@ -375,12 +375,6 @@ const futureBannerCases = [
   ['Failure', 'Name what failed, explain the cause, and offer a concrete recovery path.', '/images/crusoe/edge-banner-failure.png'],
   ['Retry', 'Preserve context after a failed attempt so users can recover without starting over.', '/images/crusoe/edge-banner-retry.png'],
   ['Ready', 'Replace passive success messaging with the next action required to use the resource.', '/images/crusoe/edge-banner-ready.png'],
-] as const
-
-const heuristicScope = [
-  ['3', 'critical journeys reviewed'],
-  ['10', 'usability principles applied'],
-  ['9', 'improvements shipped'],
 ] as const
 
 const heuristicMethod = [
@@ -755,13 +749,18 @@ export default function CrusoeCaseStudy() {
         className="crusoe-case-section project-section green-section crusoe-project-panel crusoe-empty-story"
       >
         <div className="crusoe-section-label"><span>Project overview</span><strong>Console empty states</strong></div>
-        <div className="crusoe-project-heading">
+        <div className="crusoe-project-heading crusoe-project-heading-visual">
           <h2>Turn an empty screen into a useful starting point.</h2>
           <p>
-            The Crusoe Console is the dashboard customers use to set up and manage cloud computing resources.
-            On a first visit, there may be no resources or data yet. The screen shown at that moment is an <strong>empty state</strong>.
-            I redesigned these first-run screens to explain the product and make the next step clearer.
+            New Console customers saw an empty table before creating a resource.
+            I redesigned that first encounter to explain the product and make the next action clear.
           </p>
+          <figure className="crusoe-opening-preview">
+            <a href="/images/crusoe/final-instances-empty.png" target="_blank" rel="noreferrer" aria-label="Open the first-release empty-state design preview">
+              <Image src="/images/crusoe/final-instances-empty.png" alt="Designed V1 Instances empty state with a resource explanation, clear create action, and documentation link" width={838} height={768} sizes="(max-width: 900px) 90vw, 520px" />
+            </a>
+            <figcaption>Designed · V1 first-run guidance <span aria-hidden="true">↗</span></figcaption>
+          </figure>
         </div>
 
         <CrusoeProjectBrief story={crusoeNarratives['empty-state-system']} label="Who this project helps and what I designed" />
@@ -773,7 +772,7 @@ export default function CrusoeCaseStudy() {
             <span>01 · The problem</span>
             <div>
               <h3 id="crusoe-clean-problem-title">A create button did not explain how to get started.</h3>
-              <p>Consider the Instances page. An instance is a virtual computer a customer can run in the cloud. Before creating one, the customer saw an empty table and a create button, with little explanation of what belonged here or where to learn more.</p>
+              <p>An instance is a virtual computer in the cloud. The original page offered a create button, but little explanation or nearby help.</p>
             </div>
           </div>
           <div className="crusoe-story-before">
@@ -786,24 +785,24 @@ export default function CrusoeCaseStudy() {
               <figcaption><span>Before · existing Instances page</span><a href="/images/crusoe/current-resource-empty.png" target="_blank" rel="noreferrer">Full-size image ↗</a></figcaption>
             </figure>
             <ol className="crusoe-story-observations" aria-label="What to notice in the original screen">
-              <li><span aria-hidden="true">1</span><div><h4>A status, but little context</h4><p>“No instances” describes what is missing. It does not explain what an instance is or what the customer can do with one.</p></div></li>
-              <li><span aria-hidden="true">2</span><div><h4>An action without nearby help</h4><p>“Create Instance” is available, but there is no first-run explanation or documentation link beside the empty message.</p></div></li>
+              <li><span aria-hidden="true">1</span><div><h4>A status, but little context</h4><p>“No instances” names what is missing—not what the product does.</p></div></li>
+              <li><span aria-hidden="true">2</span><div><h4>An action without nearby help</h4><p>The create button has no explanation or documentation beside it.</p></div></li>
             </ol>
           </div>
-          <div className="crusoe-story-takeaway"><span>What the screen needed to do</span><p>Explain the resource, make the first action understandable, and offer help before asking the customer to commit to setup.</p></div>
+          <div className="crusoe-story-takeaway"><span>The design opportunity</span><p>Explain the resource. Offer one action. Keep help close.</p></div>
         </section>
 
         <section className="crusoe-clean-section" aria-labelledby="crusoe-clean-audit-title">
           <div className="crusoe-clean-heading">
-            <span>02 · Investigation &amp; findings</span>
+            <span>02 · Research &amp; synthesis</span>
             <div>
               <h3 id="crusoe-clean-audit-title">Was this one screen, or a pattern across the Console?</h3>
-              <p>I reviewed twelve screens and interface patterns, then walked a fresh account through five product areas. I asked the same questions each time: does this page explain the resource, is the next action clear, and can the customer understand what is required to continue?</p>
+              <p>I audited 12 screens and patterns, explored five product areas with a fresh account, and grouped the repeated gaps in FigJam.</p>
             </div>
           </div>
           <div className="crusoe-story-research-note" id="crusoe-clean-competitive-title-section">
             <h4 id="crusoe-clean-competitive-title">What I looked for in comparable products</h4>
-            <p>I compared how other cloud products introduce resources, recommend a starting point, and make documentation available. That comparison helped me separate a useful first step from the longer tutorial the empty page should not become.</p>
+            <p>How do they explain a resource, suggest a first step, and keep documentation within reach?</p>
           </div>
           <div className="crusoe-clean-audit-layout">
             <figure>
@@ -855,7 +854,7 @@ export default function CrusoeCaseStudy() {
             </figure>
             </div>
           </details>
-          <div className="crusoe-story-takeaway"><span>What the audit changed</span><p>The answer was not to write a different explanation for every blank table. It was to define one guidance pattern that could adapt to each resource and state.</p></div>
+          <div className="crusoe-story-takeaway"><span>What the audit changed</span><p>One reusable hierarchy, with resource-specific guidance.</p></div>
         </section>
 
         <section className="crusoe-clean-section" aria-labelledby="crusoe-clean-v1-title">
@@ -863,7 +862,7 @@ export default function CrusoeCaseStudy() {
             <span>03 · Design decisions</span>
             <div>
               <h3 id="crusoe-clean-v1-title">The same task, with a clearer starting point.</h3>
-              <p>For the first-release design, I replaced the empty table with a resource-specific illustration, a clear title, a short explanation, one primary action, and a documentation link. The progression below compares the original Instances page, V1, and the proposed V2 with setup options and progress feedback.</p>
+              <p>V1 brings purpose, a primary action, and help together. Proposed V2 adds setup choices and progress feedback.</p>
             </div>
           </div>
           <div className="crusoe-story-comparison crusoe-story-comparison-three" aria-label="Instances empty-state progression: Before, V1, and V2">
@@ -901,14 +900,14 @@ export default function CrusoeCaseStudy() {
             <span>04 · Review &amp; iteration</span>
             <div>
               <h3 id="crusoe-clean-collaboration-title">Make the foundation usable without waiting for every future feature.</h3>
-              <p>I used design critique to review hierarchy and density, product review to prioritize the first release, and engineering review to check available actions and states. Brand and technical writing refined the illustrations and terminology. Those reviews helped separate the foundation from the more ambitious onboarding direction.</p>
+              <p>Reviews with design, product, engineering, brand, and writing shaped the copy, visuals, and release scope.</p>
             </div>
           </div>
           <div className="crusoe-story-release-scope">
             <article><span>First-release design · V1</span><h4>Explain the empty page.</h4><p>A consistent illustration, title, description, primary action, and documentation path that fit the existing Console.</p></article>
             <article><span>Proposed next iteration · V2</span><h4>Guide the wider setup journey.</h4><p>Recommended configurations and state-aware messages require richer product logic, so I kept them separate from the foundation.</p></article>
           </div>
-          <div className="crusoe-story-takeaway"><span>The tradeoff</span><p>Keep the immediate design simple enough to implement, while documenting how the same pattern could support more complex situations later.</p></div>
+          <div className="crusoe-story-takeaway"><span>The tradeoff</span><p>Keep V1 buildable. Preserve the richer setup journey as a separate next step.</p></div>
         </section>
 
         <section className="crusoe-clean-section" aria-labelledby="crusoe-clean-v2-title">
@@ -948,9 +947,10 @@ export default function CrusoeCaseStudy() {
             <span>06 · Outcome &amp; next steps</span>
             <div>
               <h3 id="crusoe-clean-outcome-title">One documented pattern, ready to reuse.</h3>
-              <p>I delivered the first-release design, product-specific examples, and implementation guidance, with the more advanced direction documented separately. The outcome presented here is the design system and handoff, rather than a measured change in onboarding performance.</p>
+              <p>The first-use work improved creation and setup, while reusable patterns reduced design effort. The figures are reported in my résumé; the proposed V2 remains a separate direction.</p>
             </div>
           </div>
+          <CrusoeMetricList metrics={crusoeNarratives['empty-state-system'].additionalMetrics} label="Reported pattern adoption and onboarding outcomes" />
           <dl className="crusoe-story-context crusoe-story-deliverables" aria-label="Project deliverables and status">
             <div><dt>Delivered</dt><dd>A reusable first-release empty-state pattern and product examples</dd></div>
             <div><dt>Documented for implementation</dt><dd>Content hierarchy, actions, variants, and behavior notes</dd></div>
@@ -983,20 +983,19 @@ export default function CrusoeCaseStudy() {
         className="crusoe-case-section project-section blue-section crusoe-project-panel crusoe-interactive-study"
       >
         <div className="crusoe-section-label"><span>Project overview</span><strong>Cloud Console usability evaluation</strong></div>
-        <div className="crusoe-project-heading">
+        <div className="crusoe-project-heading crusoe-project-heading-visual">
           <h2>A structured usability review became nine shipped improvements.</h2>
           <p>
-            A heuristic evaluation is a structured way to find usability problems. I reviewed three important tasks: checking
-            costs, setting up an API key, and debugging a resource. I then turned the most serious findings into Jira tickets
-            and worked with engineering through implementation and QA.
+            I reviewed API keys, billing, and resource debugging, then worked with engineering to turn priority findings into fixes.
           </p>
+          <figure className="crusoe-opening-preview">
+            <a href="/images/crusoe/figma/api-create-before.png" target="_blank" rel="noreferrer" aria-label="Open the API-key evaluation preview">
+              <Image src="/images/crusoe/figma/api-create-before.png" alt="API-key creation screen used as audit evidence in the heuristic evaluation" width={1440} height={900} sizes="(max-width: 900px) 90vw, 520px" />
+            </a>
+            <figcaption>Audit evidence · API-key creation <span aria-hidden="true">↗</span></figcaption>
+          </figure>
         </div>
 
-        <div className="crusoe-he-scope" aria-label="Heuristic evaluation scope">
-          {heuristicScope.map(([value, label]) => (
-            <div key={label}><strong>{value}</strong><span>{label}</span></div>
-          ))}
-        </div>
         <CrusoeProjectBrief story={crusoeNarratives['heuristic-evaluation']} />
         <CrusoeProjectProcess story={crusoeNarratives['heuristic-evaluation']} />
         <CrusoeProjectCollaboration story={crusoeNarratives['heuristic-evaluation']} />
@@ -1006,7 +1005,7 @@ export default function CrusoeCaseStudy() {
             <span>01 · How I investigated</span>
             <div>
               <h3 id="crusoe-he-method-title">Every finding needed to lead to a clear fix.</h3>
-              <p>For the heuristic evaluation, I walked through the complete tasks and compared what happened against ten usability principles. Each finding recorded the behavior, its user consequence, severity, and a possible response. I kept each observation linked to the screen and task that demonstrated it.</p>
+              <p>I evaluated each complete task against ten usability principles, recording the issue, its consequence, severity, and a possible fix.</p>
             </div>
           </div>
 
@@ -1018,7 +1017,7 @@ export default function CrusoeCaseStudy() {
 
           <div className="crusoe-he-principle-band">
             <span>Evaluation logic</span>
-            <p>I did not stop at naming a principle. Every finding followed the same path: <strong>what happened → why it was a problem → how it affected users → what should change.</strong></p>
+            <p><strong>Observation → user consequence → severity → design response.</strong></p>
           </div>
 
           <details className="crusoe-study-support" open>
@@ -1034,7 +1033,7 @@ export default function CrusoeCaseStudy() {
         <section className="crusoe-clean-section crusoe-he-section" aria-labelledby="crusoe-he-insights-title">
           <div className="crusoe-clean-heading">
             <span>02 · Findings</span>
-            <div><h3 id="crusoe-he-insights-title">Three recurring problems shaped the recommendations.</h3><p>The review mattered when a finding could be traced to a customer consequence and a specific design response. These examples connect the evaluation to the screens and iterations that follow.</p></div>
+            <div><h3 id="crusoe-he-insights-title">Three recurring problems shaped the recommendations.</h3><p>Each research finding led to a specific design decision.</p></div>
           </div>
           <CrusoeEvidenceChain rows={heuristicInsights} caption="From evaluation evidence to a design response" />
         </section>
@@ -1044,7 +1043,7 @@ export default function CrusoeCaseStudy() {
             <span>03 · Design decisions &amp; iterations</span>
             <div>
               <h3 id="crusoe-he-findings-title">The important work was deciding what should change, and why.</h3>
-              <p>These three decisions show how an observation became a design response and a buildable scope. Nine improvements shipped across the evaluation; the supporting frames also include proposed and longer-term directions, labeled separately below.</p>
+              <p>Choose a decision to explore the design. Additional proposals are labeled separately from the nine shipped improvements.</p>
             </div>
           </div>
 

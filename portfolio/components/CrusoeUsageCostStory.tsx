@@ -32,20 +32,26 @@ function CostScreenshot({ file, step, title, alt, note }: StoryShot) {
 }
 
 function DecisionNote({ problem, decision, why }: { problem: string; decision: string; why: string }) {
-  return <dl className="crusoe-cost-change-note" aria-label="Problem, design decision, and rationale"><div><dt>The problem</dt><dd>{problem}</dd></div><div><dt>My design decision</dt><dd>{decision}</dd></div><div><dt>Why it helps</dt><dd>{why}</dd></div></dl>
+  return <details className="crusoe-research-detail"><summary>The reasoning behind this change</summary><dl className="crusoe-cost-change-note" aria-label="Problem, design decision, and rationale"><div><dt>The problem</dt><dd>{problem}</dd></div><div><dt>My design decision</dt><dd>{decision}</dd></div><div><dt>Why it helps</dt><dd>{why}</dd></div></dl></details>
 }
 
 export default function CrusoeUsageCostStory() {
   return (
     <section id="crusoe-panel-usage-to-cost" role="tabpanel" aria-label="Usage-to-cost project" className="crusoe-case-section project-section coral-section crusoe-project-panel crusoe-cost-story">
       <div className="crusoe-section-label"><span>Project overview</span><strong>Intelligence Foundry · Usage &amp; billing</strong></div>
-      <div className="crusoe-project-heading">
+      <div className="crusoe-project-heading crusoe-project-heading-visual">
         <h2>Turn a cost total into a clear next step.</h2>
-        <p>When an AI bill changes, a team needs more than a number. They need to know which product contributed, what the workload did, and where to investigate. I designed a path connecting those questions instead of treating Usage, Billing, and logs as isolated pages.</p>
+        <p>I connected Billing, Usage, Analytics, and logs so teams can follow a cost change without rebuilding the investigation.</p>
+        <figure className="crusoe-opening-preview">
+          <a href={`${imageRoot}/billing-comparison.jpg`} target="_blank" rel="noreferrer" aria-label="Open the proposed Billing overview preview">
+            <Image src={`${imageRoot}/billing-comparison.jpg`} alt="Proposed Billing overview with dated period totals and daily spending" width={1280} height={690} sizes="(max-width: 900px) 90vw, 520px" />
+          </a>
+          <figcaption>Proposed · Billing overview <span aria-hidden="true">↗</span></figcaption>
+        </figure>
       </div>
       <CrusoeProjectBrief story={crusoeNarratives['usage-to-cost']} />
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-problem-title">
-        <div className="crusoe-clean-heading"><span>01 · The problem, then the change</span><div><h3 id="crusoe-cost-problem-title">Seeing the bill was not the same as understanding it.</h3><p>Intelligence Foundry lets developers run hosted AI models. Text usage is measured in tokens—pieces of processed text—while video usage is measured in generation time. A dollar total cannot explain those different activities on its own.</p></div></div>
+        <div className="crusoe-clean-heading"><span>01 · Research / Map the current workflow</span><div><h3 id="crusoe-cost-problem-title">Seeing the bill was not the same as understanding it.</h3><p>The investigation crossed separate views with different units and repeated filters. I mapped where that context broke down.</p></div></div>
         <div className="crusoe-cost-flow-comparison" aria-label="Cost investigation before and after">
           <div className="crusoe-cost-workflow-before"><span>Before · Previous workflow</span><h4>The customer connected the evidence by hand.</h4><ol>{beforeFlow.map(step => <li key={step}>{step}</li>)}</ol><p>Workflow summary of the documented problem. This is not a screenshot of the old interface.</p></div>
           <div className="crusoe-cost-workflow-after"><span>After · Proposed redesign</span><h4>Each question leads to the next relevant view.</h4><ol>{afterFlow.map(step => <li key={step}>{step}</li>)}</ol><p>The video and all six screenshots below demonstrate this proposed direction.</p></div>
@@ -58,7 +64,7 @@ export default function CrusoeUsageCostStory() {
       <CrusoeProjectCollaboration story={crusoeNarratives['usage-to-cost']} />
 
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-process-title">
-        <div className="crusoe-clean-heading"><span>02 · After / The redesigned journey</span><div><h3 id="crusoe-cost-process-title">How the redesign helps investigate a bill.</h3><p>The idea is to move from “What am I paying?” to “What should I inspect?” The clip shows the proposed screens for that investigation: the bill, product charges, usage, performance, and logs. Each timestamp below explains what is on screen and why I designed it that way.</p></div></div>
+        <div className="crusoe-clean-heading"><span>02 · Design / The connected prototype</span><div><h3 id="crusoe-cost-process-title">How the redesign helps investigate a bill.</h3><p>Follow the proposed journey from the bill to product detail, usage, and request evidence. Choose a timestamp to inspect a step.</p></div></div>
         <CrusoeCostWalkthrough />
         <details className="crusoe-story-evidence"><summary>How I mapped and reviewed the investigation</summary><div className="crusoe-story-evidence-body"><p>I mapped the customer’s questions to the evidence on each screen, explored the connected path in a prototype, and refined it through cross-functional reviews. One constraint shaped the design: tokens, seconds, dollars, request counts, and response times needed to connect without being treated as the same measure.</p><CrusoeEvidenceChain rows={usageToCostInsights} caption="How the workflow analysis shaped the design" /></div></details>
       </section>

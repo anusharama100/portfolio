@@ -16,6 +16,30 @@ vi.mock('@/portfolio/components/FlowingArtwork', () => ({ FlowingArtwork: () => 
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
 describe('Krokos Bio case study', () => {
+  it('presents all five questions as one numbered reading sequence with their design rationale', () => {
+    render(<KrokosCaseStudy />)
+    const path = screen.getByRole('list', { name: 'The redesigned website’s reading path' })
+    expect(path.tagName).toBe('OL')
+    const stages = within(path).getAllByRole('listitem')
+    const questions = [
+      ['The need', 'Why should sourcing botanicals change?', 'Start with the supply-chain problem, not a technical definition.'],
+      ['The mechanism', 'How does plant cell culture work?', 'Move from a familiar plant to the science behind production.'],
+      ['The application', 'What is Krokos building first?', 'Make the platform tangible through its initial saffron focus.'],
+      ['The credibility', 'Who is behind the work?', 'Connect the story to the team and independent press coverage.'],
+      ['The next step', 'How can I learn more or connect?', 'Keep contact and newsletter paths easy to find.'],
+    ]
+    expect(stages).toHaveLength(5)
+    for (const [index, [label, question, rationale]] of questions.entries()) {
+      expect(stages[index].querySelector('.krokos-reading-step')).toHaveTextContent(`0${index + 1}`)
+      expect(stages[index].querySelector('.krokos-reading-step')).toHaveAttribute('aria-hidden', 'true')
+      expect(within(stages[index]).getByText(label).parentElement).toHaveClass('krokos-reading-question')
+      expect(within(stages[index]).getByRole('heading', { level: 3, name: question })).toBeInTheDocument()
+      expect(within(stages[index]).getByText(rationale)).toBeInTheDocument()
+    }
+    expect(within(path).queryByRole('button')).not.toBeInTheDocument()
+    expect(within(path).queryByRole('link')).not.toBeInTheDocument()
+  })
+
   it('keeps the four brand colors and their purpose labels together in the palette', () => {
     render(<KrokosCaseStudy />)
     const palette = screen.getByRole('list', { name: 'Colors used in the redesign' })

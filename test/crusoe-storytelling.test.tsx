@@ -23,6 +23,67 @@ const projects = [
 ] as const
 
 describe('Crusoe evidence-led storytelling', () => {
+  it.each(projects)('gives %s a visual quick read with correctly scoped and attributed metrics', (id, button, name) => {
+    render(<CrusoeCaseStudy />)
+    fireEvent.click(screen.getByRole('button', { name: button }))
+    const panel = screen.getByRole('tabpanel', { name })
+    const story = crusoeNarratives[id]
+    const metrics = within(panel).getByLabelText(`${story.projectName} scope and outcomes`)
+    expect(metrics.querySelectorAll('dd')).toHaveLength(3)
+    for (const [index, [value, description, context]] of story.metrics.entries()) {
+      const metric = metrics.children[index]
+      expect(metric.querySelector('dt')).toHaveTextContent(context)
+      expect(metric.querySelector('.crusoe-metric-value')).toHaveTextContent(value)
+      expect(metric).toHaveTextContent(description)
+    }
+    if (story.metricSource) {
+      expect(within(panel).getByLabelText(`${story.projectName} metric source`)).toHaveTextContent(story.metricSource)
+      expect(story.metricSource).toContain('supplied résumé')
+      expect(story.metricSource.toLowerCase()).toContain('sample sizes')
+    } else {
+      expect(metrics).not.toHaveTextContent(/%|conversion|faster|retention/i)
+    }
+    expect(panel.querySelector('.crusoe-opening-preview img')).toBeVisible()
+    expect(panel.querySelector('.crusoe-opening-preview')!.compareDocumentPosition(metrics) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(panel.querySelector('.crusoe-project-context')).not.toHaveAttribute('open')
+    expect(panel.querySelector('.crusoe-collaboration-details')).not.toHaveAttribute('open')
+    expect(panel.querySelector('.crusoe-project-heading > p')!.textContent!.trim().split(/\s+/).length).toBeLessThan(40)
+    expect(panel.querySelector('.crusoe-project-process')!.textContent!.trim().split(/\s+/).length).toBeLessThan(80)
+    expect(story.goal.split(/\s+/).length).toBeLessThan(20)
+    expect(panel).not.toHaveTextContent(/customer interviews|usability testing|participants?/i)
+  })
+
+  it('uses the latest résumé’s first-use and workflow rates without assigning them to the billing prototype', () => {
+    render(<CrusoeCaseStudy />)
+    const firstUse = screen.getByLabelText('Empty-state system scope and outcomes')
+    expect([...firstUse.querySelectorAll('.crusoe-metric-value')].map(el => el.textContent)).toEqual(['60% → 72%', '−20%', '70% → 85%'])
+    const systems = screen.getByLabelText('Reported pattern adoption and onboarding outcomes')
+    expect([...systems.querySelectorAll('.crusoe-metric-value')].map(el => el.textContent)).toEqual(['80%', '−25%', '30% → 22%'])
+    expect(systems).toHaveTextContent('of in-scope surfaces')
+    expect(systems).toHaveTextContent('average design time per state')
+    expect(screen.queryByText('Onboarding performance has not been measured.')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', {name: 'Read project 02: Heuristic evaluation'}))
+    const workflows = screen.getByLabelText('Heuristic evaluation scope and outcomes')
+    expect([...workflows.querySelectorAll('.crusoe-metric-value')].map(el => el.textContent)).toEqual(['75% → 85%', '60% → 75%', '9'])
+    expect(workflows).toHaveTextContent('Across 3 reviewed workflows')
+    fireEvent.click(screen.getByRole('button', {name: 'Read project 03: Usage → cost'}))
+    const prototype = screen.getByLabelText('Usage → cost scope and outcomes')
+    expect(prototype).not.toHaveTextContent(/%/)
+    expect(prototype).toHaveTextContent('Not measured impact')
+    expect(screen.queryByLabelText('Reported pattern adoption and onboarding outcomes')).not.toBeInTheDocument()
+  })
+
+  it('keeps research findings scannable while preserving the full evidence on demand', () => {
+    render(<CrusoeCaseStudy />)
+    fireEvent.click(screen.getByRole('button', { name: 'Read project 02: Heuristic evaluation' }))
+    const summary = screen.getByRole('region', { name: 'From evaluation evidence to a design response summary' })
+    expect(summary.querySelectorAll('.crusoe-research-cards article')).toHaveLength(3)
+    expect(summary.querySelector('details')).not.toHaveAttribute('open')
+    expect(summary.querySelector('table')).not.toBeVisible()
+    fireEvent.click(within(summary).getByText('View the evidence and rationale'))
+    expect(within(summary).getByRole('table', { name: 'From evaluation evidence to a design response' })).toBeVisible()
+  })
+
   it.each(projects)('frames %s with the user, challenge, role, goal, and project-specific reflection', (id, button, name) => {
     render(<CrusoeCaseStudy />)
     fireEvent.click(screen.getByRole('button', { name: button }))
@@ -46,6 +107,9 @@ describe('Crusoe evidence-led storytelling', () => {
     expect(process.compareDocumentPosition(designStart) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     expect(document.querySelectorAll('.crusoe-project-process')).toHaveLength(1)
     const collaboration = within(panel).getByRole('region', { name: `${story.projectName} collaboration` })
+    const collaborationNotes = collaboration.querySelector('details')!
+    expect(collaborationNotes).not.toHaveAttribute('open')
+    fireEvent.click(within(collaboration).getByText('Collaboration & delivery notes'))
     expect(within(collaboration).getByRole('heading', { name: story.collaborationTitle })).toBeInTheDocument()
     expect(within(collaboration).getAllByRole('listitem')).toHaveLength(4)
     for (const step of story.collaboration) {
@@ -140,6 +204,7 @@ describe('Crusoe evidence-led storytelling', () => {
   it('puts heuristic findings before the design explorer and distinguishes additional proposals from shipped work', () => {
     render(<CrusoeCaseStudy />)
     fireEvent.click(screen.getByRole('button', { name: 'Read project 02: Heuristic evaluation' }))
+    fireEvent.click(screen.getByText('View the evidence and rationale'))
     const table = screen.getByRole('table', { name: 'From evaluation evidence to a design response' })
     expect(within(table).getAllByRole('row')).toHaveLength(4)
     expect(within(table).getByRole('columnheader', { name: 'Why it mattered' })).toBeInTheDocument()
@@ -171,6 +236,7 @@ describe('Crusoe evidence-led storytelling', () => {
     expect(screen.getByRole('heading', { name: 'How the redesign helps investigate a bill.' })).toBeInTheDocument()
     expect(screen.queryByText('Follow the question, not a long screen recording.')).not.toBeInTheDocument()
     fireEvent.click(screen.getByText('How I mapped and reviewed the investigation'))
+    fireEvent.click(screen.getByText('View the evidence and rationale'))
     expect(screen.getByRole('table', { name: 'How the workflow analysis shaped the design' })).toBeInTheDocument()
     expect(screen.getByLabelText('Questions guiding the investigation')).toBeInTheDocument()
     expect(screen.getByText(/not evidence of a measured reduction in cost or investigation time/)).toBeInTheDocument()
