@@ -22,7 +22,7 @@ Each case study provides its own role, context, and evidence. Concept work and p
 Use Node.js 20 or a compatible newer version with npm:
 
 ```sh
-git clone https://github.com/anushaxrama/portfolio.git
+git clone https://github.com/anusharama100/portfolio.git
 cd portfolio
 npm install
 npm run dev
