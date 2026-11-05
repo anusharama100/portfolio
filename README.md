@@ -21,12 +21,12 @@ Each case study provides its own role, context, and evidence. Concept work and p
 
 ## Run locally
 
-Use Node.js 20 or a compatible newer version with npm:
+Use Node.js 24 with npm (the version used for the latest local checks):
 
 ```sh
 git clone https://github.com/anusharama100/portfolio.git
 cd portfolio
-npm install
+npm ci
 npm run dev
 ```
 
@@ -68,3 +68,7 @@ HABITat and Spotify Threads remain in the source but are intentionally unfeature
 Preserve the static export, natural screenshot proportions, evidence labels, and reduced-motion behavior. Keep published Git history intact and avoid adding large media files.
 
 The portfolio presents the work and its story. Individual project repositories contain the corresponding application or prototype source where available.
+
+## Latest local check
+
+See [local verification](docs/LOCAL_VERIFICATION.md) for the November 5, 2026 setup, runtime checks, and remaining test boundaries.
