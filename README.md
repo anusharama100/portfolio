@@ -2,7 +2,9 @@
 
 My portfolio brings together product-design work, interactive prototypes, and the decisions behind them. The case studies cover cloud infrastructure, AI-assisted tools, learning experiences, enterprise workflows, and a biotechnology website redesign.
 
-This is the maintained portfolio repository. Earlier versions live in `anusha-portfolio-codex`, `ui-ux-portfolio-`, and `rama-pop-animation`; current presentation work belongs here.
+**[Visit my portfolio →](https://www.anusharamachandran.com)**
+
+This is the maintained source repository. It brings the case studies together; each project repository contains its own implementation details.
 
 ## Start with the case studies
 
