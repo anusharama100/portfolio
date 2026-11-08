@@ -1,17 +1,17 @@
 "use client"
 
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from '@/portfolio/compat'
-import { caseStudyOrder, caseStudyProjects, type CaseStudySlug } from './caseStudyProjects'
+import { caseStudyOrder, caseStudyProjects, featuredCaseStudyOrder, type CaseStudySlug } from './caseStudyProjects'
 import { collectStudySections } from './caseStudySections'
+import CaseStudyProjectActions from './CaseStudyProjectActions'
 
 export default function CaseStudyExperience({ slug, children, preview }: { slug: CaseStudySlug; children: ReactNode; preview?: ReactNode }) {
   const project = caseStudyProjects[slug]
   const isProjectCollection = slug === 'crusoe'
   const content = useRef<HTMLDivElement>(null)
-  const [fullscreen, setFullscreen] = useState(false)
-  const nextSlug = caseStudyOrder[(caseStudyOrder.indexOf(slug) + 1) % caseStudyOrder.length] ?? 'crusoe'
+  const projectOrder = featuredCaseStudyOrder.includes(slug) ? featuredCaseStudyOrder : caseStudyOrder
+  const nextSlug = projectOrder[(projectOrder.indexOf(slug) + 1) % projectOrder.length] ?? 'crusoe'
   const next = caseStudyProjects[nextSlug]
 
   useEffect(() => {
@@ -26,46 +26,21 @@ export default function CaseStudyExperience({ slug, children, preview }: { slug:
     update()
     const mutations = new MutationObserver(update)
     mutations.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] })
-    const onFullscreen = () => setFullscreen(Boolean(document.fullscreenElement))
-    document.addEventListener('fullscreenchange', onFullscreen)
-    return () => {
-      mutations.disconnect()
-      document.removeEventListener('fullscreenchange', onFullscreen)
-    }
+    return () => mutations.disconnect()
   }, [slug])
-
-  const toggleFullscreen = async () => {
-    try {
-      if (document.fullscreenElement) await document.exitFullscreen()
-      else await document.documentElement.requestFullscreen()
-    } catch { setFullscreen(false) }
-  }
 
   return (
     <div data-study-slug={slug} className={`case-study-experience study-tone-${project.tone}${isProjectCollection ? ' study-project-collection' : ''}`}>
-      <Link href="/#projects" className="study-back-link" aria-label="Back to selected work">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7" /></svg>
-        <span>Back to work</span>
-      </Link>
       <div className="study-intro">
         <div className="study-intro-art" aria-hidden="true">
           <img src="/landing/editorial-flow.jpg" alt="" width={1376} height={768} decoding="async" />
         </div>
-        <nav className="study-header" aria-label="Portfolio navigation">
-          <Link href="/" className="study-brand" aria-label="Anusha Ramachandran, home"><img src="/landing/ar-logo-final.png" alt="AR monogram" width={38} height={38} /><span>Anusha Ramachandran</span></Link>
-          <div className="study-header-actions">
-            <Button asChild variant="link"><a href="mailto:anusharama100@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a></Button>
-            <Button variant="ghost" size="icon" onClick={toggleFullscreen} aria-label={fullscreen ? 'Exit fullscreen' : 'Enter fullscreen'} title={fullscreen ? 'Exit fullscreen' : 'Fullscreen'}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d={fullscreen ? 'M8 3v5H3m13-5v5h5M8 21v-5H3m13 5v-5h5' : 'M3 8V3h5m8 0h5v5M3 16v5h5m8 0h5v-5'} /></svg>
-            </Button>
-          </div>
-        </nav>
-
         <header className="study-cover" id="study-top">
           <div className="study-width">
-            <p className="study-eyebrow"><span>selected work / {String(caseStudyOrder.indexOf(slug) + 1).padStart(2, '0')}</span><span>{project.category}</span></p>
+            <p className="study-eyebrow"><span>selected work / {String(projectOrder.indexOf(slug) + 1).padStart(2, '0')}</span><span>{project.category}</span></p>
             <h1>{project.name}</h1>
             <p className="study-headline">{project.headline}</p>
+            <CaseStudyProjectActions slug={slug} />
             <p className="study-description">{project.description}</p>
             <dl className="study-meta">{project.meta.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
           </div>

@@ -75,6 +75,19 @@
 .case-study-experience .krokos-swatch-cream { background: var(--krokos-cream); }
 .case-study-experience .krokos-swatch-clay { background: var(--krokos-clay); }
 .case-study-experience .krokos-swatch-saffron { background: var(--krokos-saffron); }
+.case-study-experience .krokos-case .krokos-mobile-help { margin: 0 0 28px; color: var(--muted-foreground); font-size: 14px; line-height: 1.7; }
+.case-study-experience .krokos-mobile-layouts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); align-items: start; }
+.case-study-experience .krokos-mobile-layout { width: min(100%, 360px); min-width: 0; justify-self: center; }
+.case-study-experience .krokos-mobile-device { padding: 8px; border: 1px solid color-mix(in oklch, var(--krokos-olive) 28%, white); border-radius: 26px; background: var(--krokos-cream); }
+.case-study-experience .krokos-mobile-screen { aspect-ratio: 390 / 844; overflow-y: auto; overscroll-behavior-y: contain; border-radius: 18px; background: var(--krokos-cream); }
+.case-study-experience .krokos-mobile-screen:focus-visible { outline: 2px solid var(--krokos-olive); outline-offset: 4px; }
+.case-study-experience .krokos-mobile-screen img { width: 100%; height: auto; }
+.case-study-experience .krokos-mobile-layout figcaption { margin-top: 24px; }
+.case-study-experience .krokos-mobile-number { display: block; margin-bottom: 8px; color: var(--krokos-olive); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.case-study-experience .krokos-mobile-layout h3 { font-size: 20px; font-weight: 600; }
+.case-study-experience .krokos-case .krokos-mobile-layout p { margin-top: 8px; color: var(--muted-foreground); font-size: 15px; line-height: 1.65; }
+.case-study-experience .krokos-mobile-layout a { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.case-study-experience .krokos-case .krokos-mobile-source { margin-top: 28px; color: var(--muted-foreground); font-size: 13px; line-height: 1.6; }
 .case-study-experience .krokos-production-decisions { margin: 0; }
 .case-study-experience .krokos-production-decisions > div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 40px; padding: 28px 0; border-top: 1px solid var(--border); }
 .case-study-experience .krokos-production-decisions dt { display: flex; gap: 14px; align-items: baseline; font-size: 17px; font-weight: 500; line-height: 1.5; }
@@ -100,6 +113,7 @@
  .case-study-experience .krokos-science-evidence > figure { width: min(100%, 840px); }
 }
 @media (max-width: 700px) {
+ .case-study-experience .krokos-mobile-layouts { grid-template-columns: minmax(0, 1fr); gap: 48px; }
  .case-study-experience .krokos-comparison-reasoning { grid-template-columns: minmax(0, 1fr); gap: 20px; }
  .case-study-experience .krokos-scrollthrough-header { padding: 14px 16px; }
  .case-study-experience .krokos-case .krokos-archived-section > figcaption { padding: 12px 16px; }

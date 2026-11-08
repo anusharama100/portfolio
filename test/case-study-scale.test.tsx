@@ -17,7 +17,7 @@ describe('Shared desktop case-study reading scale', () => {
     const roots = container.querySelectorAll('.case-study-experience')
     expect(roots).toHaveLength(1)
     expect(roots[0]).toHaveAttribute('data-study-slug', slug)
-    expect(roots[0]).toContainElement(container.querySelector('.study-back-link'))
+    expect(roots[0]).toContainElement(container.querySelector('.study-cover'))
     expect(roots[0]).toContainElement(container.querySelector('.study-original-content'))
     expect(roots[0]).toContainElement(container.querySelector('.study-footer'))
   })

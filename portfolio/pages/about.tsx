@@ -33,7 +33,7 @@ export default function AboutPage() {
       <main className="about-main">
         <div className="about-intro site-container">
           <h1>a little about me</h1>
-          <p>I’m <span className="person-name">Anusha</span>, a visual and product designer drawn to clear systems, playful details, and the small choices that make digital products feel human.</p>
+          <p>I’m <span className="person-name">Anusha</span>, a product designer and engineer bringing product thinking and frontend development together to make complex tools easier to use.</p>
         </div>
 
         <section className="about-stories site-container" aria-label="More about Anusha">
@@ -41,9 +41,9 @@ export default function AboutPage() {
             <PhotoBoard photos={firstPhotos} label="Graduation, nature, and travel photos" />
             <div className="about-story-copy">
               <span className="about-story-index">01 / what drives me</span>
-              <h2>making complexity feel <em>clear.</em></h2>
-              <p>My work lives around AI, complex workflows, and the tiny interaction choices that make a product feel trustworthy.</p>
-              <p>I bring research, visual design, prototypes, and storytelling together to make useful things feel easy to use without making them boring.</p>
+              <h2>from an idea to an <em>interface.</em></h2>
+              <p>I move between research, interaction design, and implementation. I use React, TypeScript, Next.js, and HTML/CSS to turn workflows into interfaces people can try.</p>
+              <p>I care about the details that show up in use: responsive layouts, clear loading and error states, accessible controls, and motion that supports the task.</p>
             </div>
           </div>
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
         <div className="about-next site-container">
           <p>have something in mind?</p>
           <a href="mailto:anusharama100@gmail.com">let’s make it happen <ArrowUpRight size={25} strokeWidth={1.5} /></a>
-          <div className="about-next-links"><a href="/#projects">view selected work</a><a href="/Anusha_Ramachandran_Resume.pdf" target="_blank" rel="noreferrer">view résumé <ArrowUpRight size={14} /></a></div>
+          <div className="about-next-links"><a href="/#projects">view selected work</a><a href="https://github.com/anusharama100" target="_blank" rel="noreferrer">explore my code <ArrowUpRight size={14} /></a><a href="/Anusha_Ramachandran_Resume.pdf" target="_blank" rel="noreferrer">view résumé <ArrowUpRight size={14} /></a></div>
         </div>
       </main>
     </div>

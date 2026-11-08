@@ -23,13 +23,14 @@ const flowopsImage2 = "/landing/project-flowops-2.png";
 const flowopsImage3 = "/landing/project-flowops-3.png";
 
 const linkedin = "https://www.linkedin.com/in/anusha-ramachandran-45882724a";
+const github = "https://github.com/anusharama100";
 const projects = [
   {
     name: "Crusoe",
     title: "Making the complex cloud feel clear.",
     type: "Cloud infrastructure",
     description: "Three connected initiatives that made dense cloud workflows clearer, more actionable, and easier to trust.",
-    tags: ["Enterprise UX", "Systems thinking"],
+    tags: ["Interface systems", "Engineering collaboration"],
     path: "crusoe",
     images: [
       { src: crusoeImage, alt: "Crusoe cloud resource provisioning interface" },
@@ -41,17 +42,17 @@ const projects = [
     name: "Krokos Bio",
     title: "A warmer welcome to botanical science.",
     type: "Biotechnology website",
-    description: "A complete website redesign that brings plant science into a warm, clear, and approachable digital story.",
-    tags: ["Visual design", "Website redesign"],
+    description: "A responsive website that brings plant science into a clear digital story, from interaction prototypes to the published Squarespace build.",
+    tags: ["Responsive web", "Scroll interactions"],
     path: "krokos",
     images: krokosDesignPreviews,
   },
   {
     name: "ToniPR",
     title: "One conversation. A world of content.",
-    type: "AI-powered platform",
-    description: "A guided platform that turns one founder interview into useful PR and marketing content.",
-    tags: ["Product strategy", "AI experiences"],
+    type: "Product interface prototype",
+    description: "An HTML, CSS, and JavaScript frontend connecting onboarding, interview setup, and content review in one guided workflow.",
+    tags: ["HTML / CSS / JavaScript", "Interactive prototype"],
     path: "tonipr",
     images: toniProjectPreviews,
   },
@@ -60,7 +61,7 @@ const projects = [
     title: "Multiple models. One clear answer.",
     type: "AI learning experience",
     description: "Consensus-backed answers from multiple models for students who need clarity without the noise.",
-    tags: ["Interaction design", "Trust & clarity"],
+    tags: ["Interaction systems", "Coded prototyping"],
     path: "nexus",
     images: [
       { src: nexusImage, alt: "Nexus multi-model answer interface" },
@@ -71,9 +72,9 @@ const projects = [
   {
     name: "NeuraNote",
     title: "A little less noise. A lot more learning.",
-    type: "Learning & productivity",
-    description: "A calmer note-taking system built around concept maps, memory cues, and thoughtful review rituals.",
-    tags: ["Product design", "Learning systems"],
+    type: "Learning application prototype",
+    description: "A React and TypeScript study prototype connecting note capture, concept maps, and review flows, with notes saved in the browser.",
+    tags: ["React + TypeScript", "Stateful interfaces"],
     path: "neuranote",
     images: [
       { src: neuranoteImage, alt: "NeuraNote learning dashboard" },
@@ -84,14 +85,27 @@ const projects = [
   {
     name: "FlowOps",
     title: "Bringing flow to everyday operations.",
-    type: "Enterprise platform",
-    description: "Request management made more readable across complex roles, approvals, and time-sensitive SLAs.",
-    tags: ["Enterprise UX", "Workflow design"],
+    type: "Workflow application prototype",
+    description: "An interactive Next.js prototype for creating, approving, and resolving requests, with role switching and a browser-side data store.",
+    tags: ["Next.js + TypeScript", "Role-specific workflows"],
     path: "flowops",
     images: [
       { src: flowopsImage, alt: "FlowOps request management interface" },
       { src: flowopsImage2, alt: "FlowOps operational workflow interface" },
       { src: flowopsImage3, alt: "FlowOps request details interface" },
+    ],
+  },
+  {
+    name: "HABITat",
+    title: "Small habits. A world worth growing.",
+    type: "Mobile app concept",
+    description: "A playful habit-building experience that turns small daily wins into a growing habitat, with rewards and shared goals that make consistency feel encouraging.",
+    tags: ["Figma prototype", "Interaction design"],
+    path: "habitat",
+    images: [
+      { src: "/habitat/habitat-hero.png", alt: "HABITat sign-in and habitat profile phone previews" },
+      { src: "/habitat/home-screen.jpeg", alt: "HABITat home screen with habit progress and animal rewards" },
+      { src: "/habitat/shared-habits.jpeg", alt: "HABITat shared habits and social accountability interface" },
     ],
   },
 ];
@@ -201,13 +215,17 @@ export default function PortfolioLanding() {
           <img className="hero-art" src={ribbon} alt="" width={1920} height={1024} fetchPriority="high" />
           <FlowingArtwork src={ribbon} />
           <div className="hero-content site-container">
-            <h1 id="intro-title"><span className="headline-line"><span>visual + product designer.</span></span></h1>
-            <p className="hero-description">Turning complex ideas into clear,<br className="desktop-break" /> intuitive digital experiences.</p>
-            <a className="hero-cta" href="#projects"><span className="circle-arrow"><ArrowDownRight size={34} strokeWidth={1} /></span><span>view selected work</span></a>
+            <h1 id="intro-title"><span className="headline-line"><span>product designer + engineer.</span></span></h1>
+            <p className="hero-description">I design and build interfaces,<br className="desktop-break" /> from first idea to working frontend.</p>
+            <ul className="hero-stack" aria-label="Frontend tools"><li>React</li><li>TypeScript</li><li>Next.js</li><li>HTML + CSS</li></ul>
+            <div className="hero-actions">
+              <a className="hero-cta" href="#projects"><span className="circle-arrow"><ArrowDownRight size={34} strokeWidth={1} /></span><span>view selected work</span></a>
+              <a className="hero-code-link" href={github} target="_blank" rel="noreferrer" aria-label="View GitHub repositories">view GitHub <ArrowUpRight size={18} strokeWidth={1.5} /></a>
+            </div>
           </div>
         </section>
         <section className="work-section site-container" id="projects" aria-labelledby="work-title">
-          <div className="section-heading" data-reveal><h2 id="work-title">Selected work</h2><span>AI, enterprise & everything in between</span></div>
+          <div className="section-heading" data-reveal><h2 id="work-title">Selected work</h2><span>interfaces, interactions & code</span></div>
           <div className="projects-list">
             {projects.map((project, index) => (
               <article className={`project-row ${index % 2 === 1 ? "reverse" : ""}`} key={project.path}>
@@ -227,7 +245,7 @@ export default function PortfolioLanding() {
       <footer className="contact-section" id="contact">
         <div className="site-container">
           <div className="contact-top" data-reveal><div><span className="eyebrow">Good things start with a conversation</span><h2>Let’s make something<br /><em>meaningful.</em></h2><a className="text-sm" href="mailto:anusharama100@gmail.com">anusharama100@gmail.com</a></div><a href="mailto:anusharama100@gmail.com" aria-label="Email Anusha"><span className="circle-arrow"><ArrowUpRight size={30} strokeWidth={1} /></span></a></div>
-          <div className="footer-bottom"><span>© {new Date().getUTCFullYear()} <span className="person-name">Anusha Ramachandran</span></span><div className="footer-links"><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight className="inline size-3" /></a><a href="/Anusha_Ramachandran_Resume.pdf" target="_blank" rel="noreferrer">Résumé <ArrowUpRight className="inline size-3" /></a><a href="#">Back to top ↑</a></div></div>
+          <div className="footer-bottom"><span>© {new Date().getUTCFullYear()} <span className="person-name">Anusha Ramachandran</span></span><div className="footer-links"><a href={github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight className="inline size-3" /></a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight className="inline size-3" /></a><a href="/Anusha_Ramachandran_Resume.pdf" target="_blank" rel="noreferrer">Résumé <ArrowUpRight className="inline size-3" /></a><a href="#">Back to top ↑</a></div></div>
         </div>
       </footer>
     </div>

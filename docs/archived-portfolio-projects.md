@@ -1,13 +1,10 @@
 # Archived portfolio projects
 
-These projects are intentionally unfeatured from the public portfolio homepage, but their complete case studies and assets remain in the repository for future review or restoration.
+Spotify Threads is not featured on the portfolio homepage. Its case study and assets remain available by direct route.
 
-## HABITat
+## HABITat is featured
 
-- Local route: `http://localhost:3000/case-study/habitat/`
-- Site route: `/case-study/habitat/`
-- Page source: `app/case-study/habitat/page.tsx`
-- Assets: `public/habitat/`
+HABITat has been restored as the last selected project on the homepage at `/case-study/habitat/`.
 
 ## Spotify Threads
 
@@ -16,4 +13,4 @@ These projects are intentionally unfeatured from the public portfolio homepage, 
 - Page source: `app/case-study/spotify/page.tsx`
 - Assets: `public/spotify/`
 
-To restore either project, add its configuration back to the `projects`, `showcaseSlides`, or `supportTabs` collections in `components/HousePortfolio.tsx`.
+To feature Spotify Threads, add it to the `projects` collection in `portfolio/components/PortfolioLanding.tsx` and to `featuredCaseStudyOrder` in `portfolio/components/caseStudyProjects.ts`. The older `components/HousePortfolio.tsx` layout is not the current homepage.

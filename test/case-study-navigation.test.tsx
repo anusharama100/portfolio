@@ -22,12 +22,12 @@ describe('Case study section navigation', () => {
     expect(artwork).toHaveAttribute('aria-hidden', 'true')
     expect(artwork.querySelector('img')).toHaveAttribute('src', '/landing/editorial-flow.jpg')
     expect(artwork.querySelector('img')).toHaveAttribute('alt', '')
-    expect(container.querySelector('.study-intro .study-header')).toBeInTheDocument()
+    expect(container.querySelector('.study-intro .study-header')).toBeNull()
     expect(container.querySelector('.study-intro .study-cover')).toBeInTheDocument()
     expect(container.querySelector('.study-original-content .study-intro-art')).toBeNull()
   })
 
-  it.each(caseStudyOrder)('keeps %s free of section menus and reading progress while preserving the back link', slug => {
+  it.each(caseStudyOrder)('opens %s without the portfolio header and retains navigation in the footer', slug => {
     const { container } = render(<CaseStudyExperience slug={slug}>
       <section className="legacy-case-section" id="overview"><h2 className="legacy-section-title">Overview</h2></section>
       <section className="legacy-case-section" id="research"><h2 className="legacy-section-title">Research</h2></section>
@@ -35,7 +35,10 @@ describe('Case study section navigation', () => {
     expect(screen.queryByRole('navigation', { name: 'Case study sections' })).not.toBeInTheDocument()
     expect(screen.queryByRole('combobox', { name: 'Jump to section' })).not.toBeInTheDocument()
     expect(container.querySelector('.study-chapters, .study-progress, .study-reading-track')).toBeNull()
-    expect(screen.getByRole('link', { name: 'Back to selected work' })).toHaveAttribute('href', '/#projects')
+    expect(screen.queryByRole('navigation', { name: 'Portfolio navigation' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Back to selected work' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Anusha Ramachandran, home' })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: '← All selected work' })).toHaveAttribute('href', '/#projects')
     expect(screen.getByRole('heading', { name: 'Research' })).toBeInTheDocument()
     expect(screen.queryByText('In this story')).not.toBeInTheDocument()
   })

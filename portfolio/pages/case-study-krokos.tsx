@@ -69,6 +69,45 @@ const productionDecisions = [
   ['Protect the surrounding site', 'Page-scoped styling avoids changing unrelated Squarespace pages, and existing article and contact destinations remain connected.'],
 ] as const
 
+// Actual captures of the published site at a 390px viewport, November 5, 2026.
+// Keep the full page images intact; the phone frames are user-controlled scrollers.
+const mobileLayouts = [
+  { id: 'homepage', title: 'Homepage', description: 'A clear opening and one Explore action.', height: 13635, scrollable: true },
+  { id: 'navigation', title: 'Navigation', description: 'A compact menu with clear, tappable destinations.', height: 844, scrollable: false },
+  { id: 'press', title: 'Press page', description: 'Coverage cards become a single reading column.', height: 2652, scrollable: true },
+] as const
+
+export function KrokosMobileLayouts() {
+  return (
+    <section className="crusoe-case-section krokos-section" id="krokos-mobile" aria-labelledby="krokos-mobile-title" data-study-title="Mobile layouts">
+      <div className="krokos-section-heading" data-study-reveal>
+        <p className="krokos-kicker">04 / Mobile layouts</p>
+        <h2 id="krokos-mobile-title">The same story, on a smaller screen.</h2>
+        <p>Actual mobile captures of the published redesign—not scaled-down desktop screens.</p>
+      </div>
+      <p className="krokos-mobile-help" id="krokos-mobile-help">Scroll inside the homepage and Press previews to explore. You can also focus a preview and use the arrow keys.</p>
+      <div className="krokos-mobile-layouts">
+        {mobileLayouts.map((layout, index) => (
+          <figure key={layout.id} className="krokos-mobile-layout" data-study-reveal>
+            <div className="krokos-mobile-device">
+              <div className="krokos-mobile-screen" {...(layout.scrollable ? { role: 'region', tabIndex: 0, 'aria-label': `Mobile ${layout.title.toLowerCase()} capture`, 'aria-describedby': 'krokos-mobile-help' } : {})}>
+                <img src={`/krokos/mobile/${layout.id}.png`} alt={`Published Krokos ${layout.title.toLowerCase()} at phone width`} width={390} height={layout.height} loading="lazy" />
+              </div>
+            </div>
+            <figcaption>
+              <span className="krokos-mobile-number">0{index + 1}</span>
+              <h3>{layout.title}</h3>
+              <p>{layout.description}</p>
+              <a href={`/krokos/mobile/${layout.id}.png`} target="_blank" rel="noreferrer" aria-label={`Open mobile ${layout.title.toLowerCase()} capture at full size`}>Open full capture ↗</a>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p className="krokos-mobile-source">Published site · Captured at a 390px viewport</p>
+    </section>
+  )
+}
+
 export default function KrokosCaseStudy() {
   const root = useRef<HTMLElement>(null)
   useCaseStudyMotion(root, 'krokos')
@@ -141,9 +180,11 @@ export default function KrokosCaseStudy() {
         </ul>
       </section>
 
+      <KrokosMobileLayouts />
+
       <section className="crusoe-case-section krokos-section" id="krokos-delivery" aria-labelledby="krokos-delivery-title" data-study-title="Implementation and tradeoffs">
         <div className="krokos-section-heading" data-study-reveal>
-          <p className="krokos-kicker">04 / Making it work in production</p>
+          <p className="krokos-kicker">05 / Making it work in production</p>
           <h2 id="krokos-delivery-title">The finished experience had to fit the platform.</h2>
           <p>The richer prototype explored scroll sequences and pointer interactions. The live Squarespace plan did not support that custom JavaScript, so the published version prioritizes the design, the content, and reliable navigation without requiring an upgrade.</p>
         </div>
@@ -155,7 +196,7 @@ export default function KrokosCaseStudy() {
 
       <section className="crusoe-case-section krokos-section krokos-outcome" id="krokos-outcome" aria-labelledby="krokos-outcome-title" data-study-title="The live outcome">
         <div className="krokos-section-heading" data-study-reveal>
-          <p className="krokos-kicker">05 / The outcome</p>
+          <p className="krokos-kicker">06 / The outcome</p>
           <h2 id="krokos-outcome-title">A new presence, rooted in the same company.</h2>
           <p>The redesign is live on Krokos Bio’s existing Squarespace site. The homepage and Press page share the refreshed visual language, while established content, contact, and newsletter destinations remain part of the experience.</p>
         </div>

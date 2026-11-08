@@ -67,3 +67,5 @@ export const caseStudyProjects = {
 
 export type CaseStudySlug = keyof typeof caseStudyProjects
 export const caseStudyOrder: CaseStudySlug[] = ['crusoe', 'krokos', 'tonipr', 'nexus', 'neuranote', 'flowops', 'habitat', 'spotify']
+// Keep older case-study routes available without inserting them into selected work.
+export const featuredCaseStudyOrder: CaseStudySlug[] = caseStudyOrder.filter(slug => slug !== 'spotify')

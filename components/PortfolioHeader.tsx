@@ -7,7 +7,7 @@ export function PortfolioHeader({ active = 'work' }: { active?: 'work' | 'about'
     <header className="site-header site-container">
       <a className="wordmark" href="/" aria-label="Anusha Ramachandran, home">
         <img className="monogram" src="/landing/ar-logo-final.png" alt="AR monogram" width={1024} height={1024} />
-        <span className="wordmark-name">Anusha Ramachandran<small>visual + product designer</small></span>
+        <span className="wordmark-name">Anusha Ramachandran<small>product designer + engineer</small></span>
       </a>
       <nav className="site-nav" aria-label="Main navigation">
         <a href="/#projects" className={active === 'work' ? 'nav-active' : undefined} aria-current={active === 'work' ? 'page' : undefined}>work</a>

@@ -16,6 +16,28 @@ vi.mock('@/portfolio/components/FlowingArtwork', () => ({ FlowingArtwork: () => 
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
 describe('Krokos Bio case study', () => {
+  it('shows actual mobile homepage, navigation, and Press captures without removing desktop evidence', () => {
+    const { container } = render(<KrokosCaseStudy />)
+    const mobile = screen.getByRole('region', { name: 'The same story, on a smaller screen.' })
+    expect(mobile.querySelectorAll('figure')).toHaveLength(3)
+    for (const [id, title, height] of [['homepage', 'homepage', '13635'], ['navigation', 'navigation', '844'], ['press', 'press page', '2652']]) {
+      const image = within(mobile).getByRole('img', { name: `Published Krokos ${title} at phone width` })
+      expect(image).toHaveAttribute('src', `/krokos/mobile/${id}.png`)
+      expect(image).toHaveAttribute('width', '390')
+      expect(image).toHaveAttribute('height', height)
+      expect(within(mobile).getByRole('link', { name: `Open mobile ${title} capture at full size` })).toHaveAttribute('href', `/krokos/mobile/${id}.png`)
+    }
+    for (const label of ['Mobile homepage capture', 'Mobile press page capture']) {
+      const preview = within(mobile).getByRole('region', { name: label })
+      expect(preview).toHaveAttribute('tabindex', '0')
+      expect(preview).toHaveAttribute('aria-describedby', 'krokos-mobile-help')
+    }
+    expect(mobile.querySelector('video')).toBeNull()
+    expect(screen.getByRole('button', { name: '01 Original site' })).toBeInTheDocument()
+    expect(container.querySelector('img[src="/krokos/redesign-landing-flow.jpg"]')).toBeInTheDocument()
+    expect(mobile.compareDocumentPosition(document.getElementById('krokos-delivery')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
   it('presents all five questions as one numbered reading sequence with their design rationale', () => {
     render(<KrokosCaseStudy />)
     const path = screen.getByRole('list', { name: 'The redesigned website’s reading path' })

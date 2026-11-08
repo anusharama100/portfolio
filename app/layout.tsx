@@ -9,8 +9,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Anusha Ramachandran | Visual + Product Designer',
-  description: 'Product and visual designer shaping complex AI tools, enterprise systems, and digital stories into clear, trustworthy experiences.',
+  title: 'Anusha Ramachandran | Product Designer + Engineer',
+  description: 'Product designer and engineer combining product thinking, React, TypeScript, and frontend development to build clear interfaces and interactive prototypes.',
+  openGraph: {
+    title: 'Anusha Ramachandran | Product Designer + Engineer',
+    description: 'Product designer and engineer combining product thinking, React, TypeScript, and frontend development to build clear interfaces and interactive prototypes.',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
