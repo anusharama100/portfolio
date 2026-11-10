@@ -283,7 +283,7 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 .project-row.reverse .project-info.reveal-ready { transform: translateX(-46px); }
 @media (prefers-reduced-motion: reduce) { .project-image-link.reveal-ready, .project-info.reveal-ready { opacity: 1; transform: none; } }
 
-/* Staggered case studies with equal-size, independent image slideshows */
+/* Staggered case studies with uncropped, independently controlled slideshows. */
 .projects-list .project-row {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(42px, 6vw, 72px);
@@ -308,12 +308,11 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 
 .project-card-slideshow .project-image-stage {
   position: relative;
-  display: grid;
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: auto;
   min-width: 0;
   min-height: 0;
-  place-items: center;
   overflow: hidden;
   padding: 0;
   border: 2px solid #111;
@@ -324,13 +323,13 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 .project-card-slideshow .project-image-stage:hover img,
 .project-row.reverse .project-card-slideshow .project-image-stage:hover img {
   display: block;
-  position: absolute;
-  inset: 0;
+  position: static;
+  inset: auto;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: none;
   min-height: 0;
   object-fit: contain;
   object-position: center;
@@ -370,7 +369,7 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
   /* In the stacked layout, controls stay in flow above the project copy. */
   .project-card-slideshow { display: grid; grid-template-rows: auto auto; gap: 14px; }
   .project-card-slideshow .image-slideshow-controls { position: relative; top: auto; left: auto; justify-self: center; transform: none; }
-  .project-card-slideshow .project-image-stage { aspect-ratio: 16 / 10; }
+  .project-card-slideshow .project-image-stage { aspect-ratio: auto; }
   /* Larger galleries keep full-size arrow targets without widening the page. */
   .project-card-slideshow-expanded .image-slideshow-dots { display: none; }
   .project-card-slideshow-expanded .image-slideshow-count { display: block; min-width: 52px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; }

@@ -114,17 +114,7 @@ type Project = (typeof projects)[number];
 
 function ProjectImageSlideshow({ project }: { project: Project }) {
   const [activeImage, setActiveImage] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const currentImage = project.images[activeImage] ?? project.images[0]!;
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isPaused || reduceMotion) return;
-    const timer = window.setInterval(() => {
-      setActiveImage(current => (current + 1) % project.images.length);
-    }, 3600);
-    return () => window.clearInterval(timer);
-  }, [isPaused, project.images.length]);
 
   const previousImage = () => setActiveImage(current => (current - 1 + project.images.length) % project.images.length);
   const nextImage = () => setActiveImage(current => (current + 1) % project.images.length);
@@ -134,12 +124,6 @@ function ProjectImageSlideshow({ project }: { project: Project }) {
       className={`project-image-link project-card-slideshow${project.images.length > 5 ? " project-card-slideshow-expanded" : ""}`}
       aria-label={`${project.name} image slideshow`}
       data-reveal
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
-      onBlurCapture={event => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsPaused(false);
-      }}
     >
       <Link className="project-image-stage" href={`/case-study/${project.path}/`} aria-label={`View ${project.name} case study`}>
         <img
