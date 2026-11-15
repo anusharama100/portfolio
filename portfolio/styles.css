@@ -17,6 +17,7 @@
 @import "./crusoe-reading.css";
 @import "./case-study-scale.css";
 @import "./refined-stories.css";
+@import "./trace-case-study.css";
 
 @custom-variant dark (&:is(.dark *));
 

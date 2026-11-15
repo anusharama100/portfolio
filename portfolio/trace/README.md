@@ -7,14 +7,14 @@ A small research workspace that keeps observations, insights, and decisions conn
 ## What works
 
 - Create studies and capture observations with source labels and tags.
-- Search, filter, and select observations to form an insight.
+- Search, filter, sort, and select observations to form an insight. Switch between a compact log and card view without losing selection.
 - Attach insights to a decision and record its rationale and an alternative.
 - Accept a decision only when it has ready insights with supporting evidence.
 - Flag an accepted decision when its linked evidence changes.
 - Edit and delete records, update dependent links, and undo changes.
 - Persist a workspace in IndexedDB and move it through validated JSON exports and imports. Export observations as CSV.
 
-The initial study is fictional sample data. There is no model-generated analysis, account service, server database, or team synchronization. Work stays in the current browser. Export a copy before clearing site data.
+The initial study is fictional sample data. Work is saved in the current browser, with JSON export and import for portable backups. Export a copy before clearing site data.
 
 ## Code map
 
@@ -23,9 +23,13 @@ The initial study is fictional sample data. There is no model-generated analysis
 | `domain.ts` | Types, runtime validation, reference integrity, acceptance rules, review flags, search, deletion cleanup |
 | `storage.ts` | IndexedDB transactions and portable file exports |
 | `seed.ts` | Clearly marked, fictional sample study |
-| `TraceApp.tsx` | React views, forms, native dialogs, keyboard interactions, undo, storage feedback |
+| `TraceApp.tsx` | Workspace state, forms, keyboard interactions, undo, storage feedback |
+| `EvidenceLibrary.tsx` | Evidence log, card view, visible-record selection, source and connection metadata |
+| `StudyOverview.tsx` | Study brief, record counts, decisions and actionable review filters |
+| `TracePrimitives.tsx` | Native dialog wrapper, source links, status labels and record references |
 | `trace.css` | Scoped desktop and mobile interface styles |
-| `../../test/trace-domain.test.ts` | Data integrity and workflow tests |
+| `../../test/trace-domain.test.ts` | Data integrity, acceptance, import and deletion rules |
+| `../../test/trace-app.test.tsx` | Selection, synthesis, review filters, acceptance and persistence feedback |
 
 ## Run locally
 
@@ -39,7 +43,7 @@ npm run dev
 Open `http://localhost:3000/lab/trace/`.
 
 ```sh
-npm test -- test/trace-domain.test.ts
+npm test -- test/trace-domain.test.ts test/trace-app.test.tsx
 npm run build
 ```
 

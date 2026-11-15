@@ -80,8 +80,8 @@ const projectCatalog = [
     tags: ["Working demo", "IndexedDB + validated data"],
     path: "trace",
     images: [
-      { src: "/trace/trace-evidence.jpg", alt: "Trace evidence library with source labels and tag filters" },
-      { src: "/trace/trace-decision.jpg", alt: "Trace decision detail tracing insights to original observations" },
+      { src: "/trace/trace-evidence.png", alt: "Trace evidence library with source labels and tag filters" },
+      { src: "/trace/trace-decision.png", alt: "Trace decision detail tracing insights to original observations" },
     ],
   },
   {
