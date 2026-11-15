@@ -149,6 +149,9 @@ export default function PortfolioLanding() {
   useEffect(() => {
     const page = pageRef.current;
     if (!page) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion || !("IntersectionObserver" in window)) return;
+
     const elements = page.querySelectorAll<HTMLElement>("[data-reveal]");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -157,28 +160,15 @@ export default function PortfolioLanding() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
     elements.forEach(element => {
       element.classList.add("reveal-ready");
       observer.observe(element);
     });
-    const images = page.querySelectorAll<HTMLElement>(".project-image-link");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const vh = window.innerHeight;
-      images.forEach(image => {
-        const rect = image.getBoundingClientRect();
-        const progress = Math.min(1, Math.max(0, (vh - rect.top) / (vh * 0.75)));
-        image.style.setProperty("--zoom", reduce ? "1" : String(progress));
-      });
+    return () => {
+      observer.disconnect();
+      elements.forEach(element => element.classList.remove("reveal-ready", "is-visible"));
     };
-    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => { observer.disconnect(); window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); cancelAnimationFrame(frame); };
   }, []);
 
   return (
@@ -215,7 +205,7 @@ export default function PortfolioLanding() {
             ))}
           </div>
           <div className="supporting-work-heading" data-reveal><h2>More explorations</h2><p>Responsive web, learning tools, and mobile interaction design.</p></div>
-          <div className="supporting-work-grid">{projects.slice(4).map((project, index) => <article className="supporting-project" key={project.path}><ProjectImageSlideshow project={project} /><div><p className="project-number">0{index + 5} / {project.name}</p><h3>{project.type}</h3><p>{project.path === 'nexus' ? 'A research-led question-to-answer experience with model controls and persistent history.' : project.path === 'neuranote' ? 'A research-informed learning concept with a working browser prototype.' : 'A four-week mobile design sprint exploring encouraging habit formation.'}</p><Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} /></Link></div></article>)}</div>
+          <div className="supporting-work-grid">{projects.slice(4).map((project, index) => <article className="supporting-project" key={project.path}><ProjectImageSlideshow project={project} /><div data-reveal><p className="project-number">0{index + 5} / {project.name}</p><h3>{project.type}</h3><p>{project.path === 'nexus' ? 'A research-led question-to-answer experience with model controls and persistent history.' : project.path === 'neuranote' ? 'A research-informed learning concept with a working browser prototype.' : 'A four-week mobile design sprint exploring encouraging habit formation.'}</p><Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} /></Link></div></article>)}</div>
         </section>
       </main>
       <footer className="contact-section" id="contact">
