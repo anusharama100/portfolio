@@ -496,141 +496,7 @@ export default function SpotifyCaseStudy() {
           </div>
         </section>
 
-        {/* User Surveys */}
-        <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-white/30">Survey synthesis</p>
-            <h3 className="text-xl font-semibold text-[#1db954] md:text-2xl">What listeners told me</h3>
-          </div>
-          <p className="w-fit rounded-full border border-white/10 px-4 py-2 text-xs text-white/45">24 Spotify users</p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
-          {/* Listening Habits */}
-          <div>
-            <h4 className="text-white/80 text-sm font-medium mb-6">Listening Habits</h4>
-            <div className="space-y-4">
-              {[
-                { label: 'Background listening', value: 72, color: '#1db954' },
-                { label: 'Active discovery', value: 45, color: '#1ed760' },
-                { label: 'Nostalgic replay', value: 38, color: '#2de26d' },
-                { label: 'Mood-based', value: 62, color: '#4ade80' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="text-white/50 text-xs w-32 shrink-0">{item.label}</span>
-                  <div className="flex-1 h-6 bg-white/5 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-1000"
-                      style={{ width: `${item.value}%`, backgroundColor: item.color }}
-                    />
-                  </div>
-                  <span className="text-white/50 text-xs w-10 text-right">{item.value}%</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-white/30 text-xs mt-4 leading-relaxed">
-              Most listening is passive, but users crave more intentional moments.
-            </p>
-          </div>
-
-          {/* Pain Points */}
-          <div>
-            <h4 className="text-white/80 text-sm font-medium mb-6">Pain Points</h4>
-            <div className="space-y-3">
-              {[
-                { label: 'Forgotten saves', value: 78, color: '#1db954' },
-                { label: 'Opaque recs', value: 65, color: '#1ed760' },
-                { label: 'Choice overload', value: 54, color: '#2de26d' },
-                { label: 'Lost context', value: 48, color: '#4ade80' },
-                { label: 'No memory', value: 42, color: '#86efac' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="text-white/50 text-xs w-28 shrink-0">{item.label}</span>
-                  <div className="flex-1 h-5 bg-white/5 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-1000"
-                      style={{ width: `${item.value}%`, backgroundColor: item.color }}
-                    />
-                  </div>
-                  <span className="text-white/50 text-xs w-8 text-right">{item.value}%</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-white/30 text-xs mt-4 leading-relaxed">
-              Saved songs become forgotten. Users don't know why songs are recommended.
-            </p>
-          </div>
-
-          {/* What Users Want */}
-          <div>
-            <h4 className="text-white/80 text-sm font-medium mb-6">Desired Features</h4>
-            <div className="flex items-center gap-6">
-              {/* Pie Chart */}
-              <div className="relative w-32 h-32 shrink-0">
-                <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                  {/* Memory/Context 35% */}
-                  <circle
-                    cx="50" cy="50" r="40"
-                    fill="transparent"
-                    stroke="#1db954"
-                    strokeWidth="20"
-                    strokeDasharray="87.9 251.2"
-                    strokeDashoffset="0"
-                  />
-                  {/* Better Recs 28% */}
-                  <circle
-                    cx="50" cy="50" r="40"
-                    fill="transparent"
-                    stroke="#1ed760"
-                    strokeWidth="20"
-                    strokeDasharray="70.3 251.2"
-                    strokeDashoffset="-87.9"
-                  />
-                  {/* Rediscovery 22% */}
-                  <circle
-                    cx="50" cy="50" r="40"
-                    fill="transparent"
-                    stroke="#4ade80"
-                    strokeWidth="20"
-                    strokeDasharray="55.3 251.2"
-                    strokeDashoffset="-158.2"
-                  />
-                  {/* Other 15% */}
-                  <circle
-                    cx="50" cy="50" r="40"
-                    fill="transparent"
-                    stroke="#86efac"
-                    strokeWidth="20"
-                    strokeDasharray="37.7 251.2"
-                    strokeDashoffset="-213.5"
-                  />
-                </svg>
-              </div>
-
-              {/* Legend */}
-              <div className="space-y-2">
-                {[
-                  { label: 'Context', value: '35%', color: '#1db954' },
-                  { label: 'Better Recs', value: '28%', color: '#1ed760' },
-                  { label: 'Rediscovery', value: '22%', color: '#4ade80' },
-                  { label: 'Other', value: '15%', color: '#86efac' },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div
-                      className="w-3 h-3 rounded-full"
-                      style={{ backgroundColor: item.color }}
-                    />
-                    <span className="text-white/50 text-xs">{item.label}</span>
-                    <span className="text-white/40 text-xs">{item.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <p className="text-white/30 text-xs mt-4 leading-relaxed">
-              Users want to know why they listen, not just what to play.
-            </p>
-          </div>
-        </div>
+        <div className="study-callout"><strong>Survey scope</strong><p>The concept research included 24 survey respondents. The useful themes were remembering saved music, recovering the context of a past listen, and understanding recommendations. These themes shaped the concept; they are not product-impact metrics.</p></div>
 
         {/* Key Takeaways */}
         <div className="max-w-3xl mt-16 pt-12 border-t border-white/10">
@@ -638,11 +504,11 @@ export default function SpotifyCaseStudy() {
           <div className="space-y-4 text-white/50 leading-relaxed">
             <p>
               <span className="text-white/70 font-medium">Music has become wallpaper.</span>{' '}
-              72% of listening is background noise. Users rarely engage actively with what's playing, missing the emotional connection music once provided.
+              Research notes described listening as a background activity. Users rarely engage actively with what's playing, missing the emotional connection music once provided.
             </p>
             <p>
               <span className="text-white/70 font-medium">Saved songs disappear.</span>{' '}
-              78% said they forget songs they've saved. Spotify's library becomes a graveyard of good intentions rather than a living collection.
+              Research notes described difficulty remembering and returning to saved songs. I explored bringing the context of a listen back into the library.
             </p>
             <p>
               <span className="text-white/70 font-medium">Recommendations feel random.</span>{' '}
@@ -1669,28 +1535,7 @@ export default function SpotifyCaseStudy() {
           While this is a concept redesign, I validated the designs through user testing sessions with Spotify users.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mb-12">
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <p className="text-4xl font-bold text-[#1db954] mb-2">87%</p>
-            <p className="text-white/50 text-sm">of users preferred Threads over current discovery</p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <p className="text-4xl font-bold text-[#1db954] mb-2">4.6/5</p>
-            <p className="text-white/50 text-sm">average rating for Listening Memory feature</p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <p className="text-4xl font-bold text-[#1db954] mb-2">92%</p>
-            <p className="text-white/50 text-sm">said they'd use Emotional Clusters regularly</p>
-          </div>
-        </div>
-
-        {/* Key Decision */}
-        <div className="study-callout p-6 rounded-2xl bg-gradient-to-r from-[#1db954]/10 to-transparent border-l-2 border-[#1db954] max-w-3xl">
-          <p className="text-[#1db954] text-xs font-medium uppercase tracking-wider mb-2">Key Insight from Testing</p>
-          <p className="text-white/70 leading-relaxed">
-            Users described the redesign as making them feel like they were "rediscovering their own music." The most common feedback: <strong className="text-white">"This makes Spotify feel personal again."</strong>
-          </p>
-        </div>
+        <div className="study-callout"><strong>Prototype outcome</strong><p>The concept explores memory-based rediscovery through Threads, Listening Memory, and Emotional Clusters. Preference, repeat usage, and retention improvements have not been verified.</p></div>
       </Section>
 
       {/* Reflection */}

@@ -12,24 +12,18 @@ const ribbon = "/landing/editorial-flow.jpg";
 const crusoeImage = "/landing/project-crusoe.png";
 const crusoeImage2 = "/landing/project-crusoe-2.png";
 const crusoeImage3 = "/landing/project-crusoe-3.png";
-const nexusImage = "/landing/project-nexus.png";
-const nexusImage2 = "/landing/project-nexus-2.png";
-const nexusImage3 = "/landing/project-nexus-3.png";
 const neuranoteImage = "/landing/project-neuranote.png";
 const neuranoteImage2 = "/landing/project-neuranote-2.png";
 const neuranoteImage3 = "/landing/project-neuranote-3.png";
-const flowopsImage = "/landing/project-flowops.png";
-const flowopsImage2 = "/landing/project-flowops-2.png";
-const flowopsImage3 = "/landing/project-flowops-3.png";
 
 const linkedin = "https://www.linkedin.com/in/anusha-ramachandran-45882724a";
 const github = "https://github.com/anusharama100";
-const projects = [
+const projectCatalog = [
   {
     name: "Crusoe",
     title: "Making the complex cloud feel clear.",
     type: "Cloud infrastructure",
-    description: "Three connected initiatives that made dense cloud workflows clearer, more actionable, and easier to trust.",
+    description: "Product design internship: a reusable first-run guidance system, from interface audit and design decisions to engineering handoff.",
     tags: ["Interface systems", "Engineering collaboration"],
     path: "crusoe",
     images: [
@@ -60,14 +54,10 @@ const projects = [
     name: "Nexus",
     title: "Multiple models. One clear answer.",
     type: "AI learning experience",
-    description: "Consensus-backed answers from multiple models for students who need clarity without the noise.",
+    description: "A question-to-answer experience shaped by research with 48 users, with visible model controls and conversation history.",
     tags: ["Interaction systems", "Coded prototyping"],
     path: "nexus",
-    images: [
-      { src: nexusImage, alt: "Nexus multi-model answer interface" },
-      { src: nexusImage2, alt: "Nexus research and comparison interface" },
-      { src: nexusImage3, alt: "Nexus consensus-backed response interface" },
-    ],
+    images: [{ src: "/narbl/narbl-9.png?v=5", alt: "Nexus question composer, model controls, and conversation history" }],
   },
   {
     name: "NeuraNote",
@@ -83,16 +73,15 @@ const projects = [
     ],
   },
   {
-    name: "FlowOps",
-    title: "Bringing flow to everyday operations.",
-    type: "Workflow application prototype",
-    description: "An interactive Next.js prototype for creating, approving, and resolving requests, with role switching and a browser-side data store.",
-    tags: ["Next.js + TypeScript", "Role-specific workflows"],
-    path: "flowops",
+    name: "Trace",
+    title: "Keep the evidence with the decision.",
+    type: "Designed + built",
+    description: "A working research workspace: source-linked findings, decision review, persistent data, and recovery. Built in React and TypeScript.",
+    tags: ["Working demo", "IndexedDB + validated data"],
+    path: "trace",
     images: [
-      { src: flowopsImage, alt: "FlowOps request management interface" },
-      { src: flowopsImage2, alt: "FlowOps operational workflow interface" },
-      { src: flowopsImage3, alt: "FlowOps request details interface" },
+      { src: "/trace/trace-evidence.jpg", alt: "Trace evidence library with source labels and tag filters" },
+      { src: "/trace/trace-decision.jpg", alt: "Trace decision detail tracing insights to original observations" },
     ],
   },
   {
@@ -110,6 +99,7 @@ const projects = [
   },
 ];
 
+const projects = ['crusoe', 'trace', 'tonipr', 'krokos', 'nexus', 'neuranote', 'habitat'].map(path => projectCatalog.find(project => project.path === path)!);
 type Project = (typeof projects)[number];
 
 function ProjectImageSlideshow({ project }: { project: Project }) {
@@ -121,7 +111,7 @@ function ProjectImageSlideshow({ project }: { project: Project }) {
 
   return (
     <div
-      className={`project-image-link project-card-slideshow${project.images.length > 5 ? " project-card-slideshow-expanded" : ""}`}
+      className={`project-image-link project-card-slideshow${project.path === "habitat" ? " project-card-slideshow-habitat" : ""}${project.images.length > 5 ? " project-card-slideshow-expanded" : ""}`}
       aria-label={`${project.name} image slideshow`}
       data-reveal
     >
@@ -200,7 +190,7 @@ export default function PortfolioLanding() {
           <FlowingArtwork src={ribbon} />
           <div className="hero-content site-container">
             <h1 id="intro-title"><span className="headline-line"><span>product designer + engineer.</span></span></h1>
-            <p className="hero-description">I design and build interfaces,<br className="desktop-break" /> from first idea to working frontend.</p>
+            <p className="hero-description">I turn complex workflows into clear products,<br className="desktop-break" /> from research and design to working frontend.</p>
             <ul className="hero-stack" aria-label="Frontend tools"><li>React</li><li>TypeScript</li><li>Next.js</li><li>HTML + CSS</li></ul>
             <div className="hero-actions">
               <a className="hero-cta" href="#projects"><span className="circle-arrow"><ArrowDownRight size={34} strokeWidth={1} /></span><span>view selected work</span></a>
@@ -211,7 +201,7 @@ export default function PortfolioLanding() {
         <section className="work-section site-container" id="projects" aria-labelledby="work-title">
           <div className="section-heading" data-reveal><h2 id="work-title">Selected work</h2><span>interfaces, interactions & code</span></div>
           <div className="projects-list">
-            {projects.map((project, index) => (
+            {projects.slice(0, 4).map((project, index) => (
               <article className={`project-row ${index % 2 === 1 ? "reverse" : ""}`} key={project.path}>
                 <ProjectImageSlideshow project={project} />
                 <div className="project-info" data-reveal>
@@ -219,11 +209,13 @@ export default function PortfolioLanding() {
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
                   <div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-                  <Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} strokeWidth={1.5} /></Link>
+                  <div className="project-entry-links"><Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} strokeWidth={1.5} /></Link>{project.path === 'trace' && <a className="case-link project-demo-link" href="/lab/trace/">Try the workspace <ArrowUpRight size={16} /></a>}</div>
                 </div>
               </article>
             ))}
           </div>
+          <div className="supporting-work-heading" data-reveal><h2>More explorations</h2><p>Responsive web, learning tools, and mobile interaction design.</p></div>
+          <div className="supporting-work-grid">{projects.slice(4).map((project, index) => <article className="supporting-project" key={project.path}><ProjectImageSlideshow project={project} /><div><p className="project-number">0{index + 5} / {project.name}</p><h3>{project.type}</h3><p>{project.path === 'nexus' ? 'A research-led question-to-answer experience with model controls and persistent history.' : project.path === 'neuranote' ? 'A research-informed learning concept with a working browser prototype.' : 'A four-week mobile design sprint exploring encouraging habit formation.'}</p><Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} /></Link></div></article>)}</div>
         </section>
       </main>
       <footer className="contact-section" id="contact">

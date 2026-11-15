@@ -9,12 +9,14 @@
 @import "./neuranote-case-study.css";
 @import "./flowops-case-study.css";
 @import "./krokos-case-study.css";
+@import "./habitat-case-study.css";
 @import "./toni-product-slideshow.css";
 @import "./case-study-labels.css";
 @import "./case-study-callouts.css";
 @import "./usage-cost-story.css";
 @import "./crusoe-reading.css";
 @import "./case-study-scale.css";
+@import "./refined-stories.css";
 
 @custom-variant dark (&:is(.dark *));
 

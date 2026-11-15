@@ -37,11 +37,13 @@ export default function CaseStudyExperience({ slug, children, preview }: { slug:
         </div>
         <header className="study-cover" id="study-top">
           <div className="study-width">
+            <div className="study-cover-overview"><div className="study-cover-copy">
             <p className="study-eyebrow"><span>selected work / {String(projectOrder.indexOf(slug) + 1).padStart(2, '0')}</span><span>{project.category}</span></p>
             <h1>{project.name}</h1>
             <p className="study-headline">{project.headline}</p>
             <CaseStudyProjectActions slug={slug} />
             <p className="study-description">{project.description}</p>
+            </div>{isProjectCollection && <figure className="study-crusoe-preview"><a href="/images/crusoe/final-instances-empty.png" target="_blank" rel="noreferrer"><img src="/images/crusoe/final-instances-empty.png" width={838} height={768} alt="Crusoe V1 empty-state design with resource explanation, primary create action, and documentation" fetchPriority="high" /></a><figcaption>Designed V1 · First-run guidance pattern</figcaption></figure>}</div>
             <dl className="study-meta">{project.meta.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
           </div>
           {!isProjectCollection && (preview ? <div className="study-preview-slot study-width">{preview}</div> : <figure className="study-product-stage study-width">

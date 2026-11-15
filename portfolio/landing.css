@@ -36,7 +36,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 32px; }
 .wordmark small { display: block; font-size: 11px; color: var(--muted-foreground); margin-top: 5px; font-weight: 400; text-transform: lowercase; }
 .site-nav { display: flex; align-items: center; gap: 40px; }
 .site-nav a { font-size: 17px; font-weight: 500; white-space: nowrap; text-decoration: none; position: relative; }
-.site-nav a:hover { color: var(--signal); }
 .site-nav .linkedin-link { display: inline-flex; align-items: center; justify-content: center; color: #111; }
 .site-nav .linkedin-link:hover { color: #111; }
 .linkedin-link svg { display: block; width: 26px; height: 26px; }
@@ -56,8 +55,16 @@ html { scroll-behavior: smooth; scroll-padding-top: 32px; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px 40px; margin-top: 42px; }
 .hero-actions .hero-cta { margin-top: 0; }
 .hero-code-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 0; font-size: 17px; font-weight: 500; text-decoration: underline; text-underline-offset: 6px; }
-.hero-code-link:hover { color: var(--signal); }
+.site-nav a:is(:hover, :focus-visible),
+.hero-code-link:is(:hover, :focus-visible) {
+  color: #111;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 0 7px #fff;
+}
 .hero-actions a:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+.site-nav a:focus-visible,
+.hero-actions .hero-code-link:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
 .hero-cta { display: inline-flex; align-items: center; gap: 32px; max-width: 100%; margin-top: 56px; font-size: 24px; font-weight: 500; line-height: 1.35; text-transform: lowercase; text-decoration: none; }
 .circle-arrow { width: 72px; height: 72px; border: 1px solid var(--foreground); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, color .2s, transform .2s; }
 .hero-cta .circle-arrow { flex: 0 0 auto; width: 112px; height: 112px; border-width: 1.5px; }
@@ -112,8 +119,8 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 .reveal-ready { opacity: 0; transform: translateY(38px); transition: opacity .95s cubic-bezier(.16,1,.3,1), transform 1.15s cubic-bezier(.16,1,.3,1); }
 .reveal-ready.is-visible { opacity: 1; transform: translateY(0); }
 .project-info.reveal-ready { transition-delay: .15s; }
-.site-nav a:not(:last-child)::before { content: ""; position: absolute; bottom: -5px; left: 0; right: 0; height: 1px; background: var(--motion-coral); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
-.site-nav a:hover::before { transform: scaleX(1); }
+.site-nav a:not(:last-child)::before { content: ""; position: absolute; bottom: -5px; left: 0; right: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.site-nav a:is(:hover, :focus-visible)::before { transform: scaleX(1); }
 .case-link { transition: gap .3s, color .3s; }
 .case-link:hover { gap: 28px; color: var(--motion-coral); }
 .contact-top h2 em { color: var(--surface-green); transition: color .4s; }
@@ -307,10 +314,11 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 }
 
 .project-card-slideshow .project-image-stage {
+  --project-preview-inset: 0px;
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: auto;
+  aspect-ratio: 16 / 10;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
@@ -323,11 +331,11 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 .project-card-slideshow .project-image-stage:hover img,
 .project-row.reverse .project-card-slideshow .project-image-stage:hover img {
   display: block;
-  position: static;
-  inset: auto;
+  position: absolute;
+  inset: var(--project-preview-inset);
   box-sizing: border-box;
-  width: 100%;
-  height: auto;
+  width: calc(100% - 2 * var(--project-preview-inset));
+  height: calc(100% - 2 * var(--project-preview-inset));
   max-width: 100%;
   max-height: none;
   min-height: 0;
@@ -347,8 +355,16 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
   right: auto;
   bottom: auto;
   transform: translateX(-50%);
-  width: max-content;
+  width: 250px;
+  max-width: 100%;
+  justify-content: space-between;
   box-shadow: none;
+}
+
+/* Phone captures use the same canvas, with room around the complete device. */
+.project-card-slideshow-habitat .project-image-stage {
+  --project-preview-inset: 12px;
+  background: #f4f7f0;
 }
 
 .project-card-slideshow.reveal-ready,
@@ -369,7 +385,29 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
   /* In the stacked layout, controls stay in flow above the project copy. */
   .project-card-slideshow { display: grid; grid-template-rows: auto auto; gap: 14px; }
   .project-card-slideshow .image-slideshow-controls { position: relative; top: auto; left: auto; justify-self: center; transform: none; }
-  .project-card-slideshow .project-image-stage { aspect-ratio: auto; }
+  /* Keep generous touch targets while drawing small, readable slide indicators. */
+  .project-card-slideshow .image-slideshow-dots { gap: 0; padding: 0; }
+  .project-card-slideshow .image-slideshow-dots button,
+  .project-card-slideshow .image-slideshow-dots button:hover,
+  .project-card-slideshow .image-slideshow-dots button.is-active {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+  }
+  .project-card-slideshow .image-slideshow-dots button::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--foreground) 24%, transparent);
+  }
+  .project-card-slideshow .image-slideshow-dots button.is-active::after,
+  .project-card-slideshow .image-slideshow-dots button:hover::after {
+    width: 20px;
+    background: var(--foreground);
+  }
   /* Larger galleries keep full-size arrow targets without widening the page. */
   .project-card-slideshow-expanded .image-slideshow-dots { display: none; }
   .project-card-slideshow-expanded .image-slideshow-count { display: block; min-width: 52px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; }
@@ -441,3 +479,25 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 @media (prefers-reduced-motion: reduce) {
   .about-polaroid, .about-next > a svg { transition: none; }
 }
+
+/* Recruiter reading order: primary work first, supporting concepts compact. */
+.landing-page .hero { min-height: min(760px, 85svh); }
+.landing-page .hero-content { padding-block: 130px 64px; }
+.landing-page .hero h1 { font-size: clamp(52px, 5.7vw, 105px); }
+.landing-page .hero-description { font-size: clamp(18px, 1.8vw, 23px); }
+.landing-page .project-number { font-size: 17px; font-weight: 650; color: #332e3b; }
+.project-entry-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.project-entry-links .case-link { margin-top: 28px; }
+.project-entry-links .project-demo-link { color: #5a347a; }
+.supporting-work-heading { border-top: 1px solid #ddd; padding-top: 56px; margin-bottom: 32px; }
+.supporting-work-heading h2 { font-size: 28px; font-weight: 600; margin: 0 0 12px; }
+.supporting-work-heading p { font-size: 17px; color: #665f6b; }
+.supporting-work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding-bottom: 70px; }
+.supporting-project { min-width: 0; }
+.supporting-project .project-image-link { width: 100%; }
+.supporting-project .project-number { margin: 26px 0 12px; }
+.supporting-project h3 { font-size: 23px; line-height: 1.3; margin: 0 0 14px; }
+.supporting-project p { font-size: 16px; line-height: 1.7; color: #665f6b; }
+.supporting-project .case-link { margin-top: 20px; font-size: 16px; }
+@media (max-width: 850px) { .supporting-work-grid { grid-template-columns: 1fr; gap: 48px; } .supporting-project { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; } }
+@media (max-width: 600px) { .landing-page .hero { min-height: 640px; } .landing-page .hero-content { padding-block: 130px 52px; } .landing-page .hero h1 { font-size: clamp(42px, 10vw, 60px); } .supporting-project { display: block; } .landing-page .project-number { font-size: 16px; } .supporting-work-heading { padding-top: 36px; } }

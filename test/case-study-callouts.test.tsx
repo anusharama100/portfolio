@@ -25,14 +25,14 @@ beforeEach(() => {
 })
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
-const stylesheet = readFileSync(resolve('portfolio/case-study-callouts.css'), 'utf8')
+const stylesheet = readFileSync(resolve('portfolio/case-study-callouts.css'), 'utf8') + readFileSync(resolve('portfolio/refined-stories.css'), 'utf8')
 
 describe('Shared ombré reading callouts', () => {
   it.each([
-    ['Crusoe', CrusoeCaseStudy, ['.crusoe-narrative-goal', '.crusoe-story-takeaway', '.crusoe-project-next-steps']],
+    ['Crusoe', CrusoeCaseStudy, ['.refined-note']],
     ['Krokos', KrokosCaseStudy, ['.krokos-design-question', '.krokos-implementation-note']],
     ['ToniPR', ToniCaseStudy, ['.toni-thesis-band', '.toni-edge-strip', '.toni-format-strip', '.toni-collaboration-takeaway']],
-    ['Nexus', NexusCaseStudy, ['.nexus-problem-statement', '.nexus-research-insight', '.nexus-comparison-takeaway', '.nexus-reflection-takeaway', '.nexus-design-notes']],
+    ['Nexus', NexusCaseStudy, ['.refined-note']],
     ['NeuraNote', NeuraCaseStudy, ['.neura-problem', '.neura-note-block']],
     ['FlowOps', FlowOpsCaseStudy, ['.flowops-problem', '.flowops-note-block', '.study-callout']],
     ['HABITat', HabitatCaseStudy, ['.study-callout']],

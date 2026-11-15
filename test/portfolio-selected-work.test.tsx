@@ -13,18 +13,17 @@ beforeEach(() => vi.stubGlobal('IntersectionObserver', class { observe() {} unob
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
 describe('Featured portfolio projects', () => {
-  it('restores HABITat as the seventh and final project without removing existing selected work', () => {
+  it('curates four primary projects and three supporting concepts, with HABITat last', () => {
     const { container } = render(<PortfolioLanding />)
-    const rows = [...container.querySelectorAll('.projects-list > article')]
-    expect(rows.map(row => row.querySelector('.case-link')?.getAttribute('href'))).toEqual(
-      featuredCaseStudyOrder.map(slug => `/case-study/${slug}/`)
-    )
-    expect(rows).toHaveLength(7)
-    expect(rows.at(-1)).toHaveTextContent('07 / HABITat')
-    expect(rows.at(-1)).toHaveTextContent('Mobile app concept')
-    expect(within(rows.at(-1) as HTMLElement).getByRole('heading', { name: 'Small habits. A world worth growing.' })).toBeInTheDocument()
-    expect(caseStudyOrder).toContain('spotify')
-    expect(featuredCaseStudyOrder).not.toContain('spotify')
+    const primary = [...container.querySelectorAll('.projects-list > article')]
+    const supporting = [...container.querySelectorAll('.supporting-work-grid > article')]
+    expect(primary).toHaveLength(4)
+    expect(supporting).toHaveLength(3)
+    expect([...primary, ...supporting].map(row => row.querySelector('.case-link')?.getAttribute('href'))).toEqual(featuredCaseStudyOrder.map(slug => `/case-study/${slug}/`))
+    expect(supporting.at(-1)).toHaveTextContent('07 / HABITat')
+    expect(featuredCaseStudyOrder).not.toContain('flowops')
+    expect(caseStudyOrder).toContain('flowops')
+    expect(screen.getByRole('link', { name: 'Try the workspace' })).toHaveAttribute('href', '/lab/trace/')
   })
 
   it('uses the original HABITat designs in an operable case-study slideshow', () => {
@@ -43,7 +42,7 @@ describe('Featured portfolio projects', () => {
     expect(within(gallery).getByRole('img')).toHaveAttribute('src', assets[2])
   })
 
-  it.each([['flowops', 'habitat'], ['habitat', 'crusoe']] as const)('takes %s to %s in the featured reading sequence', (slug: CaseStudySlug, next) => {
+  it.each([['crusoe', 'trace'], ['habitat', 'crusoe']] as const)('takes %s to %s in the featured reading sequence', (slug: CaseStudySlug, next) => {
     const { container } = render(<CaseStudyExperience slug={slug}><p>Project story</p></CaseStudyExperience>)
     expect(container.querySelector('.study-next')).toHaveAttribute('href', `/case-study/${next}`)
     if (slug === 'habitat') expect(container.querySelector('.study-cover .study-eyebrow')).toHaveTextContent('selected work / 07')

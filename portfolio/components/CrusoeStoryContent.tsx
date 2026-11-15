@@ -1,14 +1,12 @@
 "use client"
 
-// Project framing is grounded in the existing Console artifacts and delivery notes.
-// Performance figures are reported in the user's latest supplied résumé.
-// It does not specify sample sizes, dates, or a study protocol; do not infer them.
+// Counts describe scope. Customer outcome claims require verified measurement.
 export const crusoeNarratives = {
   'empty-state-system': {
     projectName: 'Empty-state system',
-    metrics: [['60% → 72%', 'first-resource creation', 'Reported first-use outcome'], ['−20%', 'median setup time', 'Reported first-use outcome'], ['70% → 85%', 'correct next-step identification', 'Reported guidance outcome']],
-    metricSource: 'Outcomes reported in the supplied résumé; sample sizes and measurement dates are not specified. Proposed V2 designs are shown separately.',
-    additionalMetrics: [['80%', 'of in-scope surfaces adopted the patterns', 'Pattern adoption'], ['−25%', 'average design time per state', 'Design efficiency'], ['30% → 22%', 'onboarding drop-off', 'Reported first-use outcome']],
+    metrics: [],
+    metricSource: null,
+    additionalMetrics: [],
     processTitle: 'From first-run gaps to a reusable system.',
     process: [
       { title: 'Research', body: 'Audit first-run screens and compare cloud-product patterns.' },
@@ -32,14 +30,14 @@ export const crusoeNarratives = {
       { title: 'Consistency needs room for context.', body: 'Reuse the hierarchy, not identical copy for every product.' },
       { title: 'Separate the foundation from the future.', body: 'Keep V1 buildable; document richer setup guidance as V2.' },
     ],
-    next: 'Break out creation, setup time, and drop-off by product and cohort; check whether the reported gains persist over time.',
+    next: 'Test first-resource creation and next-step comprehension by product and cohort.',
   },
   'heuristic-evaluation': {
     projectName: 'Heuristic evaluation',
-    metrics: [['75% → 85%', 'task completion', 'Across 3 reviewed workflows'], ['60% → 75%', 'error recovery', 'Across 3 reviewed workflows'], ['9', 'improvements shipped', 'Delivery outcome']],
-    metricSource: 'Completion and recovery rates are reported in the supplied résumé across API keys, node monitoring, and billing. Sample sizes and measurement dates are not specified.',
+    metrics: [['3', 'reviewed journeys', 'Audit scope']],
+    metricSource: null,
     additionalMetrics: [],
-    processTitle: 'From journey findings to shipped improvements.',
+    processTitle: 'From journey findings to actionable recommendations.',
     process: [
       { title: 'Research', body: 'Walk through API keys, billing, and resource debugging.' },
       { title: 'Synthesize', body: 'Rank findings by severity and task impact.' },
@@ -51,7 +49,7 @@ export const crusoeNarratives = {
       { title: 'Review the task, not just the screen', partner: 'Design + product', body: 'Discuss the cost, API-key, and debugging journeys in context and connect each finding to a concrete customer consequence.' },
       { title: 'Set a realistic scope', partner: 'Product + engineering', body: 'Rank recommendations by impact and effort, separating quick fixes from larger proposed directions.' },
       { title: 'Define the expected behavior', partner: 'Design + engineering', body: 'Translate recommendations into Jira tickets with the problem, proposed response, and clear acceptance criteria.' },
-      { title: 'Review implementation through QA', partner: 'Design + engineering', body: 'Check normal, loading, empty, and error states against the original finding; distinguish the nine shipped improvements from additional proposals.' },
+      { title: 'Review implementation through QA', partner: 'Design + engineering', body: 'Check normal, loading, empty, and error states against the original finding; distinguish implemented improvements from additional proposals.' },
     ],
     audience: 'A Console customer checking a bill, creating an API key, or diagnosing an unhealthy resource.',
     challenge: 'The necessary screens existed, but inconsistent guidance, risky defaults, and lost context made complete tasks harder to follow.',
@@ -62,7 +60,7 @@ export const crusoeNarratives = {
       { title: 'Follow the task, not just the screen.', body: 'Defaults, context, and recovery matter across the whole journey.' },
       { title: 'The work continues through QA.', body: 'Track recommendations through implementation; label extra proposals separately.' },
     ],
-    next: 'Break out task completion and recovery by journey, then check whether the gains persist. Evaluate additional proposals separately from shipped fixes.',
+    next: 'Evaluate completion and recovery with customers, one journey at a time; review implemented fixes separately from proposals.',
   },
   'usage-to-cost': {
     projectName: 'Usage → cost',
@@ -143,7 +141,7 @@ export function CrusoeProjectCollaboration({ story }: { story: ProjectNarrative 
 export function CrusoeProjectBrief({ story, label = 'Project brief' }: { story: ProjectNarrative; label?: string }) {
   return (
     <div className="crusoe-narrative-opening" data-study-reveal>
-      <CrusoeMetricList metrics={story.metrics} label={`${story.projectName} scope and outcomes`} />
+      {story.metrics.length > 0 && <CrusoeMetricList metrics={story.metrics} label={`${story.projectName} scope and outcomes`} />}
       {story.metricSource && <p className="crusoe-metric-source" aria-label={`${story.projectName} metric source`}>{story.metricSource}</p>}
       <aside className="crusoe-narrative-goal" aria-label="Design goal"><span>Design goal</span><p>{story.goal}</p></aside>
       <details className="crusoe-project-context"><summary>Project context &amp; my role</summary>

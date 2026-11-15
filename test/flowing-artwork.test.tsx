@@ -39,7 +39,7 @@ function advance(time: number) {
 }
 
 function baseFrame() {
-  return context.drawImage.mock.calls.filter(args => args.length === 5).at(-1)!.slice(1)
+  return context['drawImage'].mock.calls.filter(args => args.length === 5).at(-1)!.slice(1)
 }
 
 beforeEach(() => {
@@ -86,7 +86,7 @@ describe('Flowing artwork startup and continuity', () => {
     expect(frames.size).toBe(0)
     await act(async () => { resolveDecode(); await loading })
     expect(baseFrame()).toEqual([-174, 0, 1500, 800])
-    expect(context.transform).not.toHaveBeenCalled()
+    expect(context['transform']).not.toHaveBeenCalled()
     expect(canvas).toHaveClass('artwork-ready')
     expect(frames.size).toBe(1)
   })
@@ -99,7 +99,7 @@ describe('Flowing artwork startup and continuity', () => {
     expect(baseFrame()).toEqual(still)
     advance(90016.67)
     advance(90033.34)
-    expect(context.clearRect).toHaveBeenCalledTimes(4)
+    expect(context['clearRect']).toHaveBeenCalledTimes(4)
     expect(baseFrame()[2]).toBeGreaterThan(still[2])
     expect(baseFrame()[2] - still[2]).toBeLessThan(1)
     expect(frames.size).toBe(1)
@@ -109,8 +109,8 @@ describe('Flowing artwork startup and continuity', () => {
     fixture()
     await load()
     act(() => resize([], {} as ResizeObserver))
-    expect(context.clearRect).toHaveBeenCalledTimes(1)
-    expect(context.setTransform).toHaveBeenCalledTimes(1)
+    expect(context['clearRect']).toHaveBeenCalledTimes(1)
+    expect(context['setTransform']).toHaveBeenCalledTimes(1)
   })
 
   it('pauses offscreen and in background tabs, resuming at the same wave position', async () => {
@@ -168,6 +168,6 @@ describe('Flowing artwork startup and continuity', () => {
     await act(async () => { resolveDecode(); await loading })
     expect(canvas).not.toHaveClass('artwork-ready')
     expect(frames.size).toBe(0)
-    expect(context.drawImage).not.toHaveBeenCalled()
+    expect(context['drawImage']).not.toHaveBeenCalled()
   })
 })

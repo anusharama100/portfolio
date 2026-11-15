@@ -45,6 +45,7 @@ for (const file of readdirSync(join(source, 'src/test'))) {
   // covered separately instead of importing the local TanStack runtime.
   if (file === 'app-routing.test.tsx' || !/\.tsx?$/.test(file)) continue
   let test = readFileSync(join(source, 'src/test', file), 'utf8')
+  test = test.replaceAll('../../demos/neuranote/', '../demos/neuranote/')
   test = test.replaceAll('src/portfolio/', 'portfolio/').replaceAll('src/styles.css', 'portfolio/styles.css')
   test = test.replaceAll('@import "./portfolio/', '@import "./')
   test = test.replace(/src\/routes\/case-study\/([\w-]+)\.tsx/g, 'app/case-study/$1/page.tsx')
@@ -70,7 +71,7 @@ function copyAssets(relative = '') {
 copyAssets()
 
 const projects = [
-  ['crusoe', 'Crusoe'], ['krokos', 'Krokos Bio'], ['tonipr', 'ToniPR'],
+  ['trace', 'Trace'], ['crusoe', 'Crusoe'], ['krokos', 'Krokos Bio'], ['tonipr', 'ToniPR'],
   ['nexus', 'Nexus'], ['neuranote', 'NeuraNote'], ['flowops', 'FlowOps'],
   ['habitat', 'HABITat'], ['spotify', 'Spotify Threads'],
 ]

@@ -769,7 +769,7 @@ export default function FlowOpsCaseStudy() {
             <div>
               <p className="text-[#ef4444] text-xs font-medium uppercase tracking-wider mb-2">Why</p>
               <p className="text-white/50 text-sm leading-relaxed">
-                Agents process 50+ requests a day. Tables let them sort, filter, and bulk-select, which is critical for high-volume triage. Cards look prettier but hide data density. For productivity, tables win every time.
+                The concept assumes frequent request triage. A table supports comparing fields, filtering, and selecting multiple requests in one view. This is a design assumption to validate with an operations team.
               </p>
             </div>
           </div>
@@ -963,7 +963,7 @@ export default function FlowOpsCaseStudy() {
                 </div>
                 <div>
                   <p className="text-white/70 text-sm">Initial design had too many status options</p>
-                  <p className="text-white/40 text-xs mt-1">Consolidated from 12 states to 8 after feedback that "Pending Review" and "Awaiting Approval" felt redundant</p>
+                  <p className="text-white/40 text-xs mt-1">Used distinct states to separate review, approval, and fulfillment.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

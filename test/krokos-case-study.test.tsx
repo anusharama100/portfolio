@@ -133,7 +133,7 @@ describe('Krokos Bio case study', () => {
     const assets = [...container.querySelectorAll('img')].map(image => image.getAttribute('src')!)
     assets.push(...krokosDesignPreviews.map(image => image.src), caseStudyProjects.krokos.image)
     for (const asset of assets) expect(existsSync(resolve('public', asset.slice(1))), asset).toBe(true)
-    expect(caseStudyOrder.indexOf('krokos')).toBe(caseStudyOrder.indexOf('crusoe') + 1)
+    expect(caseStudyOrder.indexOf('krokos')).toBe(caseStudyOrder.indexOf('tonipr') + 1)
     expect(caseStudyProjects.krokos.meta).toContainEqual(['Platform', 'Squarespace'])
     expect(caseStudyProjects.krokos.meta).toContainEqual(['Tools', 'Figma, Claude Code, Lovable'])
   })

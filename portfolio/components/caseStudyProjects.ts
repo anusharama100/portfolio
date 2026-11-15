@@ -1,11 +1,19 @@
 export const caseStudyProjects = {
   crusoe: {
     name: 'Crusoe', category: 'Cloud infrastructure · Product design internship',
-    headline: 'Making complex cloud workflows feel clear.',
-    description: 'I designed first-time guidance, reviewed critical Console journeys, and connected AI usage to billing. Three internship projects, from interface audits and research synthesis to prototypes and engineering review.',
-    image: '/landing/project-crusoe.png', imageAlt: 'Crusoe cloud resource provisioning interface', tone: 'blue',
-    meta: [['Role', 'Product Design Intern'], ['Timeline', '2026 internship'], ['Team', 'Design, PM, Eng, Brand, Writing'], ['Tools', 'Figma, FigJam, Claude Code']],
-    summary: [['The challenge', 'Cloud workflows assumed technical familiarity and left users without clear guidance or connected context.'], ['My contribution', 'Designed reusable empty states, reviewed critical Console journeys, and connected AI usage to billing and investigation.'], ['The outcome', 'Usability improvements shipped, with reusable patterns and implementation-ready guidance for the team.']],
+    headline: 'Give a new cloud customer a useful first step.',
+    description: 'I audited first-run Console experiences and designed a reusable empty-state system with product, engineering, brand, and writing. The main story follows the research, design tradeoffs, and implementation handoff; two supporting projects explore usability and cost investigation.',
+    image: '/images/crusoe/final-instances-empty.png', imageAlt: 'Designed Crusoe Instances empty state', tone: 'blue',
+    meta: [['Role', 'Product Design Intern'], ['Timeline', '2026 internship'], ['Responsibility', 'Audit → design → handoff'], ['Team', 'Product, engineering, brand, writing']],
+    summary: [['Problem', 'First-run screens offered actions without enough resource context.'], ['My contribution', 'Audit, reusable guidance, product variants, and state specifications.'], ['Delivery', 'Initial pattern and a separately labeled proposed V2.']],
+  },
+  trace: {
+    name: 'Trace', category: 'Independent build · Product design + engineering',
+    headline: 'Keep the evidence with the decision.',
+    description: 'A working research workspace I designed and built in React and TypeScript. Capture observations, connect findings, and record decisions with their sources. Try the editable sample, then inspect the implementation and tests.',
+    image: '/trace/trace-evidence.jpg', imageAlt: 'Trace evidence library with source-linked observations and tag filters', tone: 'purple',
+    meta: [['Role', 'Product designer + frontend engineer'], ['Status', 'Working independent build'], ['Stack', 'React, TypeScript, IndexedDB'], ['Data', 'Local to your browser']],
+    summary: [['Problem', 'A decision can outlive the evidence that informed it.'], ['Built', 'Linked records, validation, durable local storage, undo, and import/export.'], ['Scope', 'Single-user workspace with browser-local persistence and clearly marked sample data.']],
   },
   krokos: {
     name: 'Krokos Bio', category: 'Biotechnology · Website redesign',
@@ -21,15 +29,15 @@ export const caseStudyProjects = {
     description: 'ToniPR is an AI-assisted interview product that turns one short conversation into reusable marketing content. Working with the founder and engineering, I designed the complete customer journey—from discovering the product to reviewing finished work.',
     image: '/tonipr/previews/dashboard-overview.jpg', imageAlt: 'ToniPR signed-in dashboard overview with interview credits, start interview, and content formats', tone: 'rose',
     meta: [['Role', 'End-to-end product designer'], ['Timeline', 'March–May 2026'], ['Product', 'ToniPR by TunePact'], ['Team', 'Founder + engineering'], ['Scope', 'Brand web, product UX, AI interaction']],
-    summary: [['The challenge', 'Founders had expertise to share, but consistent content demanded time, writing confidence, or agency support.'], ['My contribution', 'Partnered with the founder and engineering to connect discovery, onboarding, interview interactions, and content review in one service journey.'], ['The outcome', 'Eight core website and product flows, with seven content formats organized around one source interview.']],
+    summary: [['The challenge', 'Founders had expertise to share, but consistent content demanded time, writing confidence, or agency support.'], ['My contribution', 'Partnered with the founder and engineering to connect discovery, onboarding, interview interactions, and content review in one service journey.'], ['The delivery', 'Interface designs and a frontend prototype spanning setup, interview states, and content review.']],
   },
   nexus: {
     name: 'Nexus', category: 'AI learning experience · Internship project',
-    headline: 'One question. Multiple models. A clearer answer.',
-    description: 'I designed an AI research experience that compares multiple model responses behind the scenes and gives students one focused answer they can understand, verify, and act on.',
-    image: '/landing/project-nexus.png', imageAlt: 'Nexus multi-model answer experience', tone: 'blue',
-    meta: [['Role', 'Product Designer'], ['Timeline', '10 weeks'], ['Research', '48 users'], ['Scope', 'Research, product UX, and visual system'], ['Tools', 'Figma, Cursor, Lovable']],
-    summary: [['The challenge', 'Students spent time switching between AI tools and comparing confident but conflicting answers.'], ['My contribution', 'Translated research with 48 students into a unified question-to-answer experience and a clear visual system.'], ['The design direction', 'One focused response with model comparison behind the scenes, reducing the burden of manual synthesis.']],
+    headline: 'Make a multi-model workflow easier to follow.',
+    description: 'I translated research with 48 users into a unified question-to-answer experience at Narb, focusing on the main task, model attribution, and continuity between sessions.',
+    image: '/narbl/narbl-9.png?v=5', imageAlt: 'Nexus multi-model answer experience', tone: 'blue',
+    meta: [['Role', 'Product Designer'], ['Timeline', '10 weeks'], ['Research', '48 survey respondents'], ['Scope', 'Research, product UX, and visual system'], ['Tools', 'Figma, Cursor, Lovable']],
+    summary: [['The challenge', 'Students spent time switching between AI tools and comparing confident but conflicting answers.'], ['My contribution', 'Translated research with 48 students into a unified question-to-answer experience and a clear visual system.'], ['The design direction', 'A unified question flow with visible model controls and conversation history. Outcome improvements have not been verified.']],
   },
   neuranote: {
     name: 'NeuraNote', category: 'Learning & productivity · Concept project',
@@ -37,7 +45,7 @@ export const caseStudyProjects = {
     description: 'I designed a calmer study space that turns scattered notes into connected concepts, useful review moments, and material that feels easy to return to.',
     image: '/landing/project-neuranote.png', imageAlt: 'NeuraNote learning dashboard', tone: 'purple',
     meta: [['Role', 'UX Designer & Researcher'], ['Timeline', '6 weeks'], ['Platform', 'Web application'], ['Focus', 'Memory, review, and comprehension']],
-    summary: [['The challenge', 'Collecting notes was easier than connecting ideas, remembering material, and returning to review.'], ['My contribution', 'Combined research, concept mapping, AI-assisted notes, and review rituals in a calmer learning system.'], ['The design direction', 'A concept grounded in cognitive science and user feedback. Projected results are distinguished from measured outcomes.']],
+    summary: [['The challenge', 'Collecting notes was easier than connecting ideas, remembering material, and returning to review.'], ['My contribution', 'Combined research, concept mapping, AI-assisted notes, and review rituals in a calmer learning system.'], ['The design direction', 'A research-informed concept and working browser prototype. Improvements in retention or recall have not been measured.']],
   },
   flowops: {
     name: 'FlowOps', category: 'Enterprise platform · Concept project',
@@ -66,6 +74,6 @@ export const caseStudyProjects = {
 } as const
 
 export type CaseStudySlug = keyof typeof caseStudyProjects
-export const caseStudyOrder: CaseStudySlug[] = ['crusoe', 'krokos', 'tonipr', 'nexus', 'neuranote', 'flowops', 'habitat', 'spotify']
+export const caseStudyOrder: CaseStudySlug[] = ['crusoe', 'trace', 'tonipr', 'krokos', 'nexus', 'neuranote', 'habitat', 'flowops', 'spotify']
 // Keep older case-study routes available without inserting them into selected work.
-export const featuredCaseStudyOrder: CaseStudySlug[] = caseStudyOrder.filter(slug => slug !== 'spotify')
+export const featuredCaseStudyOrder: CaseStudySlug[] = caseStudyOrder.filter(slug => slug !== 'spotify' && slug !== 'flowops')

@@ -11,11 +11,11 @@ Built with Next.js, React, TypeScript, and Tailwind CSS. Case studies link to li
 | Project | Focus | Route |
 | --- | --- | --- |
 | Crusoe | Cloud-console guidance, critical journeys, and usage-to-billing clarity | `/case-study/crusoe/` |
+| Trace | Source-linked research workspace built in React and TypeScript | `/case-study/trace/` |
 | Krokos Bio | Botanical brand, content hierarchy, and responsive website redesign | `/case-study/krokos/` |
 | ToniPR | Discovery, onboarding, interview, and content-review experience | `/case-study/tonipr/` |
 | Nexus | A clearer experience for comparing and understanding AI answers | `/case-study/nexus/` |
 | NeuraNote | Notes, connected concepts, and review rituals | `/case-study/neuranote/` |
-| FlowOps | Request ownership, approvals, handoffs, and SLA visibility | `/case-study/flowops/` |
 | HABITat | Habit-building mobile concept and interactive Figma prototype | `/case-study/habitat/` |
 
 Each case study explains my role, the research, and the design decisions. Some projects are frontend prototypes or design concepts; they are labeled separately from published work and measured results.
@@ -59,10 +59,12 @@ Next.js 14 and TypeScript provide the routes. React components, Tailwind CSS 4, 
 | `portfolio/components/caseStudyProjects.ts` | Case-study context and summaries |
 | `components/` | Additional portfolio and presentation components |
 | `public/` | Project imagery and media |
-| `test/` | Interaction and presentation checks |
+| `test/` | Domain integrity, storage feedback, interaction, and presentation checks |
+| `portfolio/trace/` | Trace app, architecture notes, and data rules |
+| `demos/neuranote/` | Source for the self-contained NeuraNote browser demo |
 | `render.yaml` | Static hosting configuration |
 
-HABITat is the final featured project. Spotify Threads remains available by direct route but is not featured on the homepage. See [archived project notes](docs/archived-portfolio-projects.md).
+The homepage leads with Crusoe, Trace, ToniPR, and Krokos. Nexus, NeuraNote, and HABITat form a shorter supporting collection. FlowOps and Spotify Threads remain available by direct route. See [archived project notes](docs/archived-portfolio-projects.md).
 
 ## Continuing the work
 

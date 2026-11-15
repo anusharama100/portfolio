@@ -11,6 +11,8 @@ afterEach(cleanup)
 describe('Case study demo and source links', () => {
   it.each(caseStudyOrder.filter(slug => slug !== 'crusoe'))('puts %s resources before the description, metadata, and preview', slug => {
     const { container } = render(<CaseStudyExperience slug={slug}><p>Original case-study content</p></CaseStudyExperience>)
+    const available = Object.values(projectResources[slug]).filter(r => r.href)
+    if (!available.length) { expect(container.querySelector('.study-project-actions')).toBeNull(); return }
     const actions = screen.getByRole('group', { name: `${caseStudyProjects[slug].name} demo and code` })
     expect(container.querySelector('.study-cover .study-headline')!.nextElementSibling).toBe(actions)
     expect(actions.nextElementSibling).toHaveClass('study-description')
@@ -23,7 +25,7 @@ describe('Case study demo and source links', () => {
         expect(link).toHaveAttribute('rel', 'noreferrer')
         expect(link).toHaveAccessibleDescription(resource.detail)
       } else {
-        expect(within(actions).getByRole('button', { name: new RegExp(`^${resource.label}`) })).toBeDisabled()
+        expect(within(actions).queryByRole('button', { name: new RegExp(`^${resource.label}`) })).toBeNull()
       }
     }
   })

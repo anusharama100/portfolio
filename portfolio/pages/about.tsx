@@ -6,7 +6,7 @@ import { PortfolioHeader } from '@/portfolio/components/PortfolioHeader';
 const firstPhotos = [
   { src: "/about-grad.jpg", alt: "Anusha celebrating her UC Davis graduation" },
   { src: "/about-nature.jpg", alt: "Swings surrounded by greenery" },
-  { src: "/about-sunset.jpg", alt: "Sunset over the harbor" },
+  { src: "/about-sunset-campus.png", alt: "Orange sunset behind a water tower and illuminated fields" },
 ];
 
 const secondPhotos = [
@@ -38,7 +38,7 @@ export default function AboutPage() {
 
         <section className="about-stories site-container" aria-label="More about Anusha">
           <div className="about-story-row">
-            <PhotoBoard photos={firstPhotos} label="Graduation, nature, and travel photos" />
+            <PhotoBoard photos={firstPhotos} label="Graduation, nature, and sunset photos" />
             <div className="about-story-copy">
               <span className="about-story-index">01 / what drives me</span>
               <h2>from an idea to an <em>interface.</em></h2>

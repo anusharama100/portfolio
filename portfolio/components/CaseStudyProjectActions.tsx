@@ -6,9 +6,11 @@ import { caseStudyProjects, type CaseStudySlug } from './caseStudyProjects'
 export default function CaseStudyProjectActions({ slug }: { slug: CaseStudySlug }) {
   if (slug === 'crusoe') return null
   const resources = projectResources[slug]
+  const available = (['demo', 'code'] as const).filter(kind => resources[kind].href)
+  if (!available.length) return null
   return (
     <div className="study-project-actions" role="group" aria-label={`${caseStudyProjects[slug].name} demo and code`}>
-      {(['demo', 'code'] as const).map(kind => {
+      {available.map(kind => {
         const resource = resources[kind]
         const descriptionId = `${slug}-${kind}-description`
         const contents = <>
@@ -19,9 +21,7 @@ export default function CaseStudyProjectActions({ slug }: { slug: CaseStudySlug 
           {resource.href && <span aria-hidden="true">↗</span>}
         </>
         return <div className="study-project-action" key={kind}>
-          {resource.href
-            ? <a className={`study-project-action-button study-project-action-${kind}`} href={resource.href} target="_blank" rel="noreferrer" aria-describedby={descriptionId}>{contents}</a>
-            : <button className={`study-project-action-button study-project-action-${kind}`} type="button" disabled aria-describedby={descriptionId}>{contents}<small>Unavailable</small></button>}
+          <a className={`study-project-action-button study-project-action-${kind}`} href={resource.href} target="_blank" rel="noreferrer" aria-describedby={descriptionId}>{contents}</a>
           <p id={descriptionId}>{resource.detail}</p>
         </div>
       })}

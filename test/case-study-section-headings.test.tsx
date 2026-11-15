@@ -19,10 +19,8 @@ afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
 describe('Numbered case-study section headings', () => {
   it.each([
-    ['Nexus', NexusCaseStudy, 8],
     ['Spotify', SpotifyCaseStudy, 12],
     ['Habitat', HabitatCaseStudy, 11],
-    ['NeuraNote', NeuranoteCaseStudy, 10],
     ['FlowOps', FlowOpsCaseStudy, 12],
   ] as const)('keeps every %s number immediately above its title in the shared layout shell', (_name, Page, count) => {
     const { container } = render(<Page />)

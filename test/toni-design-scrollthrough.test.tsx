@@ -101,28 +101,26 @@ describe('ToniPR reader-controlled design preview', () => {
     const { container } = render(<CaseStudyExperience slug="tonipr" preview={<ToniDesignScrollThrough />}><ToniPRCaseStudy /></CaseStudyExperience>)
     const preview = screen.getByLabelText('ToniPR scroll-through design preview')
     const original = container.querySelector('.study-original-content') as HTMLElement
-    const detailed = within(original).getByRole('img', { name: /Detail of ToniPR's three steps/ })
+    const detailed = within(original).getByRole('img', { name: /ToniPR website explaining set your goal/ })
     expect(preview.compareDocumentPosition(detailed) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     expect(container.querySelector('.study-product-stage')).not.toBeInTheDocument()
     expect(container.querySelector('video')).toBeNull()
-    expect(within(original).getByRole('img', { name: /Public ToniPR demo pairing/ })).toHaveAttribute('src', '/tonipr/previews/source-and-story.jpg')
+    expect(within(original).getByRole('img', { name: /ToniPR public demonstration pairing/ })).toHaveAttribute('src', '/tonipr/previews/source-and-story.jpg')
     const route = readFileSync(resolve('app/case-study/tonipr/page.tsx'), 'utf8')
     expect(route).toContain('preview={<ToniDesignScrollThrough />}')
     expect(route).not.toContain('ToniJourneyWalkthrough')
     expect(existsSync(resolve('public/tonipr/journey-highlights.mp4'))).toBe(true)
   })
 
-  it('explains founder alignment and engineering collaboration as distinct parts of the work', () => {
-    render(<ToniPRCaseStudy />)
-    const collaboration = screen.getByRole('region', { name: 'Founder and engineering collaboration' })
-    const founder = within(collaboration).getByRole('article', { name: 'Translate the vision into a product people can understand.' })
-    const engineering = within(collaboration).getByRole('article', { name: 'Make the design intent clear beyond the final screen.' })
-    expect(founder).toHaveTextContent('product story, customer value')
-    expect(founder).toHaveTextContent('Flows and prototypes')
-    expect(engineering).toHaveTextContent('camera and microphone preparation')
-    expect(engineering).toHaveTextContent('permissions, interruptions, recovery, and responsive')
-    expect(collaboration).not.toHaveTextContent('From ambiguity to shipped behavior')
-    expect(collaboration).not.toHaveTextContent('usability testing')
+  it('makes ownership, implementation scope, and measurement limits explicit', () => {
+    const { container } = render(<ToniPRCaseStudy />)
+    const collaboration = container.querySelector('#collaboration')!
+    expect(collaboration).toHaveTextContent('I owned visual and interaction design')
+    expect(collaboration).toHaveTextContent('With the founder')
+    expect(collaboration).toHaveTextContent('with engineering')
+    expect(container.querySelector('#interview-design')).toHaveTextContent('outside that demo')
+    expect(collaboration).toHaveTextContent('analytics are not available')
+    expect(container).not.toHaveTextContent(/42%|7.8%|74%|180\+/)
   })
 
   it('makes the founder and engineering partnership visible in the recruiter introduction', () => {
