@@ -291,15 +291,6 @@ export default function PortfolioLanding() {
                 </span>
                 <span>view selected work</span>
               </a>
-              <a
-                className="hero-code-link"
-                href={github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="View GitHub repositories"
-              >
-                view GitHub <ArrowUpRight size={18} strokeWidth={1.5} />
-              </a>
             </div>
           </div>
         </section>
