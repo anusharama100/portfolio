@@ -667,7 +667,9 @@ export default function TraceApp() {
                     ? resultCount === 1
                       ? 'observation'
                       : 'observations'
-                    : view}
+                    : resultCount === 1
+                      ? view.slice(0, -1)
+                      : view}
                   {view === 'evidence' && (
                     <span>
                       {' '}
@@ -676,7 +678,10 @@ export default function TraceApp() {
                         new Set(visibleEvidence.map((record) => record.source))
                           .size
                       }{' '}
-                      sources
+                      {new Set(visibleEvidence.map((record) => record.source))
+                        .size === 1
+                        ? 'source'
+                        : 'sources'}
                     </span>
                   )}
                 </p>
@@ -806,7 +811,10 @@ export default function TraceApp() {
                           <strong>{i.title}</strong>
                           <span>{i.summary}</span>
                           <small>
-                            {i.evidenceIds.length} supporting observations
+                            {i.evidenceIds.length} supporting{' '}
+                            {i.evidenceIds.length === 1
+                              ? 'observation'
+                              : 'observations'}
                           </small>
                         </span>
                         <Pill tone={i.status === 'ready' ? 'green' : ''}>
@@ -854,8 +862,12 @@ export default function TraceApp() {
                           <strong>{d.title}</strong>
                           <span>{d.rationale}</span>
                           <small>
-                            {d.insightIds.length} insights ·{' '}
-                            {evidenceForDecision(w, d).length} observations
+                            {d.insightIds.length}{' '}
+                            {d.insightIds.length === 1 ? 'insight' : 'insights'}{' '}
+                            · {evidenceForDecision(w, d).length}{' '}
+                            {evidenceForDecision(w, d).length === 1
+                              ? 'observation'
+                              : 'observations'}
                           </small>
                         </span>
                         <Pill

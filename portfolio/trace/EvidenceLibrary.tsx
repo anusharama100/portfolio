@@ -112,7 +112,7 @@ export default function EvidenceLibrary({
                   'trace-connection-count' + (connections ? ' is-linked' : '')
                 }
                 onClick={() => onOpen(record.id)}
-                aria-label={`View ${record.title}: ${connections} linked insights`}
+                aria-label={`View ${record.title}: ${connections} linked ${connections === 1 ? 'insight' : 'insights'}`}
               >
                 <span className="trace-cell-label">Connections</span>
                 <Icon name="insights" />

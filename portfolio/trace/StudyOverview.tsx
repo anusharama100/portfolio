@@ -89,9 +89,14 @@ export default function StudyOverview({
                     <small>{recordReference('decisions', decision.id)}</small>
                     <strong>{decision.title}</strong>
                     <span>
-                      {decision.insightIds.length} insights ·{' '}
-                      {evidenceForDecision(workspace, decision).length}{' '}
-                      observations
+                      {decision.insightIds.length}{' '}
+                      {decision.insightIds.length === 1
+                        ? 'insight'
+                        : 'insights'}{' '}
+                      · {evidenceForDecision(workspace, decision).length}{' '}
+                      {evidenceForDecision(workspace, decision).length === 1
+                        ? 'observation'
+                        : 'observations'}
                     </span>
                   </span>
                   <Pill
