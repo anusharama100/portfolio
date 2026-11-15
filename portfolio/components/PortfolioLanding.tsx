@@ -1,7 +1,12 @@
-"use client"
+"use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight } from "./LandingIcons";
+import {
+  ArrowDownRight,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+} from "./LandingIcons";
 import { FlowingArtwork } from "./FlowingArtwork";
 import { PortfolioHeader } from "./PortfolioHeader";
 import { krokosDesignPreviews } from "./krokosDesignEvidence";
@@ -23,7 +28,8 @@ const projectCatalog = [
     name: "Crusoe",
     title: "Making the complex cloud feel clear.",
     type: "Cloud infrastructure",
-    description: "Product design internship: a reusable first-run guidance system, from interface audit and design decisions to engineering handoff.",
+    description:
+      "Product design internship: a reusable first-run guidance system, from interface audit and design decisions to engineering handoff.",
     tags: ["Interface systems", "Engineering collaboration"],
     path: "crusoe",
     images: [
@@ -36,7 +42,8 @@ const projectCatalog = [
     name: "Krokos Bio",
     title: "A warmer welcome to botanical science.",
     type: "Biotechnology website",
-    description: "A responsive website that brings plant science into a clear digital story, from interaction prototypes to the published Squarespace build.",
+    description:
+      "A responsive website that brings plant science into a clear digital story, from interaction prototypes to the published Squarespace build.",
     tags: ["Responsive web", "Scroll interactions"],
     path: "krokos",
     images: krokosDesignPreviews,
@@ -45,7 +52,8 @@ const projectCatalog = [
     name: "ToniPR",
     title: "One conversation. A world of content.",
     type: "Product interface prototype",
-    description: "An HTML, CSS, and JavaScript frontend connecting onboarding, interview setup, and content review in one guided workflow.",
+    description:
+      "An HTML, CSS, and JavaScript frontend connecting onboarding, interview setup, and content review in one guided workflow.",
     tags: ["HTML / CSS / JavaScript", "Interactive prototype"],
     path: "tonipr",
     images: toniProjectPreviews,
@@ -54,16 +62,23 @@ const projectCatalog = [
     name: "Nexus",
     title: "Multiple models. One clear answer.",
     type: "AI learning experience",
-    description: "A question-to-answer experience shaped by research with 48 users, with visible model controls and conversation history.",
+    description:
+      "A question-to-answer experience shaped by research with 48 users, with visible model controls and conversation history.",
     tags: ["Interaction systems", "Coded prototyping"],
     path: "nexus",
-    images: [{ src: "/narbl/narbl-9.png?v=5", alt: "Nexus question composer, model controls, and conversation history" }],
+    images: [
+      {
+        src: "/narbl/narbl-9.png?v=5",
+        alt: "Nexus question composer, model controls, and conversation history",
+      },
+    ],
   },
   {
     name: "NeuraNote",
     title: "A little less noise. A lot more learning.",
     type: "Learning application prototype",
-    description: "A React and TypeScript study prototype connecting note capture, concept maps, and review flows, with notes saved in the browser.",
+    description:
+      "A React and TypeScript study prototype connecting note capture, concept maps, and review flows, with notes saved in the browser.",
     tags: ["React + TypeScript", "Stateful interfaces"],
     path: "neuranote",
     images: [
@@ -76,46 +91,80 @@ const projectCatalog = [
     name: "Trace",
     title: "Keep the evidence with the decision.",
     type: "Designed + built",
-    description: "A working research workspace: source-linked findings, decision review, persistent data, and recovery. Built in React and TypeScript.",
+    description:
+      "A working research workspace: source-linked findings, decision review, persistent data, and recovery. Built in React and TypeScript.",
     tags: ["Working demo", "IndexedDB + validated data"],
     path: "trace",
     images: [
-      { src: "/trace/trace-evidence.png", alt: "Trace evidence library with source labels and tag filters" },
-      { src: "/trace/trace-decision.png", alt: "Trace decision detail tracing insights to original observations" },
+      {
+        src: "/trace/trace-evidence.png",
+        alt: "Trace evidence library with source labels and tag filters",
+      },
+      {
+        src: "/trace/trace-decision.png",
+        alt: "Trace decision detail tracing insights to original observations",
+      },
     ],
   },
   {
     name: "HABITat",
     title: "Small habits. A world worth growing.",
     type: "Mobile app concept",
-    description: "A playful habit-building experience that turns small daily wins into a growing habitat, with rewards and shared goals that make consistency feel encouraging.",
+    description:
+      "A playful habit-building experience that turns small daily wins into a growing habitat, with rewards and shared goals that make consistency feel encouraging.",
     tags: ["Figma prototype", "Interaction design"],
     path: "habitat",
     images: [
-      { src: "/habitat/habitat-hero.png", alt: "HABITat sign-in and habitat profile phone previews" },
-      { src: "/habitat/home-screen.jpeg", alt: "HABITat home screen with habit progress and animal rewards" },
-      { src: "/habitat/shared-habits.jpeg", alt: "HABITat shared habits and social accountability interface" },
+      {
+        src: "/habitat/habitat-hero.png",
+        alt: "HABITat sign-in and habitat profile phone previews",
+      },
+      {
+        src: "/habitat/home-screen.jpeg",
+        alt: "HABITat home screen with habit progress and animal rewards",
+      },
+      {
+        src: "/habitat/shared-habits.jpeg",
+        alt: "HABITat shared habits and social accountability interface",
+      },
     ],
   },
 ];
 
-const projects = ['crusoe', 'trace', 'tonipr', 'krokos', 'nexus', 'neuranote', 'habitat'].map(path => projectCatalog.find(project => project.path === path)!);
+const projects = [
+  "crusoe",
+  "trace",
+  "tonipr",
+  "krokos",
+  "nexus",
+  "neuranote",
+  "habitat",
+].map((path) => projectCatalog.find((project) => project.path === path)!);
 type Project = (typeof projects)[number];
 
 function ProjectImageSlideshow({ project }: { project: Project }) {
   const [activeImage, setActiveImage] = useState(0);
   const currentImage = project.images[activeImage] ?? project.images[0]!;
 
-  const previousImage = () => setActiveImage(current => (current - 1 + project.images.length) % project.images.length);
-  const nextImage = () => setActiveImage(current => (current + 1) % project.images.length);
+  const previousImage = () =>
+    setActiveImage(
+      (current) =>
+        (current - 1 + project.images.length) % project.images.length,
+    );
+  const nextImage = () =>
+    setActiveImage((current) => (current + 1) % project.images.length);
 
   return (
     <div
-      className={`project-image-link project-card-slideshow${project.path === "habitat" ? " project-card-slideshow-habitat" : ""}${project.images.length > 5 ? " project-card-slideshow-expanded" : ""}`}
+      className={`project-image-link project-card-slideshow${project.images.length === 1 ? " project-card-slideshow-single" : ""}${project.path === "habitat" ? " project-card-slideshow-habitat" : ""}${project.images.length > 5 ? " project-card-slideshow-expanded" : ""}`}
       aria-label={`${project.name} image slideshow`}
       data-reveal
     >
-      <Link className="project-image-stage" href={`/case-study/${project.path}/`} aria-label={`View ${project.name} case study`}>
+      <Link
+        className="project-image-stage"
+        href={`/case-study/${project.path}/`}
+        aria-label={`View ${project.name} case study`}
+      >
         <img
           key={`${project.path}-${activeImage}`}
           src={currentImage.src}
@@ -123,22 +172,48 @@ function ProjectImageSlideshow({ project }: { project: Project }) {
           loading="lazy"
         />
       </Link>
-      <div className="image-slideshow-controls" aria-label={`${project.name} slideshow controls`}>
-        <button type="button" onClick={previousImage} aria-label={`Previous ${project.name} image`}><ArrowLeft size={15} strokeWidth={1.5} /></button>
-        <div className="image-slideshow-dots">
-          {project.images.map((image, index) => (
+      <div className="project-slideshow-navigation">
+        {project.images.length > 1 && (
+          <div
+            className="image-slideshow-controls"
+            aria-label={`${project.name} slideshow controls`}
+          >
             <button
-              className={index === activeImage ? "is-active" : ""}
               type="button"
-              onClick={() => setActiveImage(index)}
-              aria-label={`Show ${project.name} image ${index + 1}`}
-              aria-current={index === activeImage ? "true" : undefined}
-              key={image.src}
-            />
-          ))}
-        </div>
-        {project.images.length > 5 && <span className="image-slideshow-count" aria-label={`Image ${activeImage + 1} of ${project.images.length}`}>{activeImage + 1} / {project.images.length}</span>}
-        <button type="button" onClick={nextImage} aria-label={`Next ${project.name} image`}><ArrowRight size={15} strokeWidth={1.5} /></button>
+              onClick={previousImage}
+              aria-label={`Previous ${project.name} image`}
+            >
+              <ArrowLeft size={15} strokeWidth={1.5} />
+            </button>
+            <div className="image-slideshow-dots">
+              {project.images.map((image, index) => (
+                <button
+                  className={index === activeImage ? "is-active" : ""}
+                  type="button"
+                  onClick={() => setActiveImage(index)}
+                  aria-label={`Show ${project.name} image ${index + 1}`}
+                  aria-current={index === activeImage ? "true" : undefined}
+                  key={image.src}
+                />
+              ))}
+            </div>
+            {project.images.length > 5 && (
+              <span
+                className="image-slideshow-count"
+                aria-label={`Image ${activeImage + 1} of ${project.images.length}`}
+              >
+                {activeImage + 1} / {project.images.length}
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={nextImage}
+              aria-label={`Next ${project.name} image`}
+            >
+              <ArrowRight size={15} strokeWidth={1.5} />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -149,25 +224,32 @@ export default function PortfolioLanding() {
   useEffect(() => {
     const page = pageRef.current;
     if (!page) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (reducedMotion || !("IntersectionObserver" in window)) return;
 
     const elements = page.querySelectorAll<HTMLElement>("[data-reveal]");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
-    elements.forEach(element => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -6% 0px" },
+    );
+    elements.forEach((element) => {
       element.classList.add("reveal-ready");
       observer.observe(element);
     });
     return () => {
       observer.disconnect();
-      elements.forEach(element => element.classList.remove("reveal-ready", "is-visible"));
+      elements.forEach((element) =>
+        element.classList.remove("reveal-ready", "is-visible"),
+      );
     };
   }, []);
 
@@ -176,42 +258,180 @@ export default function PortfolioLanding() {
       <PortfolioHeader />
       <main>
         <section className="hero" aria-labelledby="intro-title">
-          <img className="hero-art" src={ribbon} alt="" width={1920} height={1024} fetchPriority="high" />
+          <img
+            className="hero-art"
+            src={ribbon}
+            alt=""
+            width={1920}
+            height={1024}
+            fetchPriority="high"
+          />
           <FlowingArtwork src={ribbon} />
           <div className="hero-content site-container">
-            <h1 id="intro-title"><span className="headline-line"><span>product designer + engineer.</span></span></h1>
-            <p className="hero-description">I turn complex workflows into clear products,<br className="desktop-break" /> from research and design to working frontend.</p>
-            <ul className="hero-stack" aria-label="Frontend tools"><li>React</li><li>TypeScript</li><li>Next.js</li><li>HTML + CSS</li></ul>
+            <h1 id="intro-title">
+              <span className="headline-line">
+                <span>product designer + engineer.</span>
+              </span>
+            </h1>
+            <p className="hero-description">
+              I turn complex workflows into clear products,
+              <br className="desktop-break" /> from research and design to
+              working frontend.
+            </p>
+            <ul className="hero-stack" aria-label="Frontend tools">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Next.js</li>
+              <li>HTML + CSS</li>
+            </ul>
             <div className="hero-actions">
-              <a className="hero-cta" href="#projects"><span className="circle-arrow"><ArrowDownRight size={34} strokeWidth={1} /></span><span>view selected work</span></a>
-              <a className="hero-code-link" href={github} target="_blank" rel="noreferrer" aria-label="View GitHub repositories">view GitHub <ArrowUpRight size={18} strokeWidth={1.5} /></a>
+              <a className="hero-cta" href="#projects">
+                <span className="circle-arrow">
+                  <ArrowDownRight size={34} strokeWidth={1} />
+                </span>
+                <span>view selected work</span>
+              </a>
+              <a
+                className="hero-code-link"
+                href={github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="View GitHub repositories"
+              >
+                view GitHub <ArrowUpRight size={18} strokeWidth={1.5} />
+              </a>
             </div>
           </div>
         </section>
-        <section className="work-section site-container" id="projects" aria-labelledby="work-title">
-          <div className="section-heading" data-reveal><h2 id="work-title">Selected work</h2><span>interfaces, interactions & code</span></div>
+        <section
+          className="work-section site-container"
+          id="projects"
+          aria-labelledby="work-title"
+        >
+          <div className="section-heading" data-reveal>
+            <h2 id="work-title">Selected work</h2>
+            <span>interfaces, interactions & code</span>
+          </div>
           <div className="projects-list">
             {projects.slice(0, 4).map((project, index) => (
-              <article className={`project-row ${index % 2 === 1 ? "reverse" : ""}`} key={project.path}>
+              <article
+                className={`project-row ${index % 2 === 1 ? "reverse" : ""}`}
+                key={project.path}
+              >
                 <ProjectImageSlideshow project={project} />
                 <div className="project-info" data-reveal>
-                  <div className="project-topline"><span className="project-number">0{index + 1} / {project.name}</span><span className="project-type">{project.type}</span></div>
+                  <div className="project-topline">
+                    <span className="project-number">
+                      0{index + 1} / {project.name}
+                    </span>
+                    <span className="project-type">{project.type}</span>
+                  </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
-                  <div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-                  <div className="project-entry-links"><Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} strokeWidth={1.5} /></Link>{project.path === 'trace' && <a className="case-link project-demo-link" href="/lab/trace/">Try the workspace <ArrowUpRight size={16} /></a>}</div>
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <div className="project-entry-links">
+                    <Link
+                      className="case-link"
+                      href={`/case-study/${project.path}/`}
+                    >
+                      View case study{" "}
+                      <ArrowUpRight size={16} strokeWidth={1.5} />
+                    </Link>
+                    {project.path === "trace" && (
+                      <a
+                        className="case-link project-demo-link"
+                        href="/lab/trace/"
+                      >
+                        Try the workspace <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
           </div>
-          <div className="supporting-work-heading" data-reveal><h2>More explorations</h2><p>Responsive web, learning tools, and mobile interaction design.</p></div>
-          <div className="supporting-work-grid">{projects.slice(4).map((project, index) => <article className="supporting-project" key={project.path}><ProjectImageSlideshow project={project} /><div data-reveal><p className="project-number">0{index + 5} / {project.name}</p><h3>{project.type}</h3><p>{project.path === 'nexus' ? 'A research-led question-to-answer experience with model controls and persistent history.' : project.path === 'neuranote' ? 'A research-informed learning concept with a working browser prototype.' : 'A four-week mobile design sprint exploring encouraging habit formation.'}</p><Link className="case-link" href={`/case-study/${project.path}/`}>View case study <ArrowUpRight size={16} /></Link></div></article>)}</div>
+          <div className="supporting-work-heading" data-reveal>
+            <h2>More explorations</h2>
+            <p>
+              Responsive web, learning tools, and mobile interaction design.
+            </p>
+          </div>
+          <div className="supporting-work-grid">
+            {projects.slice(4).map((project, index) => (
+              <article className="supporting-project" key={project.path}>
+                <ProjectImageSlideshow project={project} />
+                <div className="supporting-project-copy" data-reveal>
+                  <p className="project-number">
+                    0{index + 5} / {project.name}
+                  </p>
+                  <h3>{project.type}</h3>
+                  <p>
+                    {project.path === "nexus"
+                      ? "A research-led question-to-answer experience with model controls and persistent history."
+                      : project.path === "neuranote"
+                        ? "A research-informed learning concept with a working browser prototype."
+                        : "A four-week mobile design sprint exploring encouraging habit formation."}
+                  </p>
+                  <Link
+                    className="case-link"
+                    href={`/case-study/${project.path}/`}
+                  >
+                    View case study <ArrowUpRight size={16} />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
       </main>
       <footer className="contact-section" id="contact">
         <div className="site-container">
-          <div className="contact-top" data-reveal><div><span className="eyebrow">Good things start with a conversation</span><h2>Let’s make something<br /><em>meaningful.</em></h2><a className="text-sm" href="mailto:anusharama100@gmail.com">anusharama100@gmail.com</a></div><a href="mailto:anusharama100@gmail.com" aria-label="Email Anusha"><span className="circle-arrow"><ArrowUpRight size={30} strokeWidth={1} /></span></a></div>
-          <div className="footer-bottom"><span>© {new Date().getUTCFullYear()} <span className="person-name">Anusha Ramachandran</span></span><div className="footer-links"><a href={github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight className="inline size-3" /></a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight className="inline size-3" /></a><a href="/Anusha_Ramachandran_Resume.pdf" target="_blank" rel="noreferrer">Résumé <ArrowUpRight className="inline size-3" /></a><a href="#">Back to top ↑</a></div></div>
+          <div className="contact-top" data-reveal>
+            <div>
+              <span className="eyebrow">
+                Good things start with a conversation
+              </span>
+              <h2>
+                Let’s make something
+                <br />
+                <em>meaningful.</em>
+              </h2>
+              <a className="text-sm" href="mailto:anusharama100@gmail.com">
+                anusharama100@gmail.com
+              </a>
+            </div>
+            <a href="mailto:anusharama100@gmail.com" aria-label="Email Anusha">
+              <span className="circle-arrow">
+                <ArrowUpRight size={30} strokeWidth={1} />
+              </span>
+            </a>
+          </div>
+          <div className="footer-bottom">
+            <span>
+              © {new Date().getUTCFullYear()}{" "}
+              <span className="person-name">Anusha Ramachandran</span>
+            </span>
+            <div className="footer-links">
+              <a href={github} target="_blank" rel="noreferrer">
+                GitHub <ArrowUpRight className="inline size-3" />
+              </a>
+              <a href={linkedin} target="_blank" rel="noreferrer">
+                LinkedIn <ArrowUpRight className="inline size-3" />
+              </a>
+              <a
+                href="/Anusha_Ramachandran_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Résumé <ArrowUpRight className="inline size-3" />
+              </a>
+              <a href="#">Back to top ↑</a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
