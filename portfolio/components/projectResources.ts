@@ -11,7 +11,8 @@ export const projectResources: Record<Exclude<CaseStudySlug, 'crusoe'>, ProjectR
     code: { label: 'View source', href: 'https://github.com/anusharama100/portfolio/tree/main/portfolio/trace', detail: 'Application code, architecture notes, and test instructions.' },
   },
   krokos: {
-    demo: { label: 'Live demo', href: 'https://krokos.bio/', detail: 'Published website · Explore the redesign.' },
+    website: { label: 'View the product website', href: 'https://krokos.bio/', detail: 'Published Krokos Bio website.' },
+    demo: { label: 'Live demo', detail: 'No separate demo is linked.' },
     code: { label: 'GitHub', detail: 'Prototype source · Public access pending.' },
   },
   tonipr: {
