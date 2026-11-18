@@ -71,6 +71,14 @@ const projectCatalog = [
         src: "/narbl/narbl-9.png?v=5",
         alt: "Nexus question composer, model controls, and conversation history",
       },
+      {
+        src: "/narbl/narbl-4.png",
+        alt: "Nexus website feature overview with model selection and study tools",
+      },
+      {
+        src: "/narbl/narbl-7.png",
+        alt: "Nexus website integrations section with connected tools",
+      },
     ],
   },
   {
