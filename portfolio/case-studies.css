@@ -55,7 +55,7 @@
 .case-study-experience .study-project-actions { display: flex; flex-wrap: wrap; gap: 20px 24px; margin: 24px 0 30px; }
 .case-study-experience .study-project-action { flex: 0 1 310px; min-width: 0; }
 .case-study-experience .study-project-action-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 22px; border: 1px solid var(--foreground); border-radius: 999px; background: var(--background); color: var(--foreground); font: 600 16px/1.5 'DM Sans', sans-serif; text-decoration: none; }
-.case-study-experience .study-project-action-demo { background: var(--foreground); color: var(--background); }
+.case-study-experience .study-project-action-button.is-primary { background: var(--foreground); color: var(--background); }
 .case-study-experience .study-project-action-button:hover { background: var(--study-stage); color: var(--foreground); }
 .case-study-experience .study-project-action-button:disabled { border-color: var(--border); background: var(--study-paper); color: var(--muted-foreground); cursor: not-allowed; }
 .case-study-experience .study-project-action-button small { font-size: 11px; font-weight: 400; }
@@ -975,4 +975,8 @@ html:has(.case-study-experience), body:has(.case-study-experience) { overflow: v
  .case-study-experience .crusoe-evidence-chain tbody tr { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
  .case-study-experience .crusoe-evidence-chain tbody th, .case-study-experience .crusoe-evidence-chain td { display: block; width: auto; padding: 0 0 14px; border: 0; }
  .case-study-experience .crusoe-evidence-chain tbody th::before, .case-study-experience .crusoe-evidence-chain td::before { content: attr(data-label); display: block; margin-bottom: 8px; color: var(--foreground); font-size: 12px; font-weight: 500; }
+}
+
+@media (max-width: 600px) {
+  .case-study-experience .study-project-action:has(.study-project-action-website) { grid-column: 1 / -1; }
 }

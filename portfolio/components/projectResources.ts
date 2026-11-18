@@ -1,7 +1,7 @@
 import type { CaseStudySlug } from './caseStudyProjects'
 
 type Resource = { href?: string; label: string; detail: string }
-type ProjectResources = { demo: Resource; code: Resource }
+type ProjectResources = { website?: Resource; demo: Resource; code: Resource }
 
 // Only enable destinations that are public and have been checked. A recording
 // or captured screenshot is not a substitute for an interactive demo.
@@ -15,6 +15,7 @@ export const projectResources: Record<Exclude<CaseStudySlug, 'crusoe'>, ProjectR
     code: { label: 'GitHub', detail: 'Prototype source · Public access pending.' },
   },
   tonipr: {
+    website: { label: 'View the product website', href: 'https://tonipr.com/', detail: 'Published ToniPR website.' },
     demo: { label: 'Live demo', href: 'https://anushaxrama.github.io/toniPR/dashboard.html', detail: 'Frontend prototype · No AI or payment backend.' },
     code: { label: 'GitHub', href: 'https://github.com/anusharama100/toniPR', detail: 'HTML, CSS, and JavaScript prototype source.' },
   },
