@@ -311,6 +311,7 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 }
 
 .project-card-slideshow .project-image-stage img,
+.project-card-slideshow .project-image-stage .project-preview-artwork,
 .project-card-slideshow .project-image-stage:hover img,
 .project-row.reverse .project-card-slideshow .project-image-stage:hover img {
   display: block;

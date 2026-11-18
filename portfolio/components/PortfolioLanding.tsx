@@ -130,6 +130,8 @@ const projectCatalog = [
       {
         src: "/habitat/habitat-hero.png",
         alt: "HABITat sign-in and habitat profile phone previews",
+        // Frame the visible phones, excluding the source's transparent top margin.
+        artworkBounds: "68 55 458 366",
       },
       {
         src: "/habitat/home-screen.jpeg",
@@ -177,12 +179,24 @@ function ProjectImageSlideshow({ project }: { project: Project }) {
         href={`/case-study/${project.path}/`}
         aria-label={`View ${project.name} case study`}
       >
-        <img
-          key={`${project.path}-${activeImage}`}
-          src={currentImage.src}
-          alt={currentImage.alt}
-          loading="lazy"
-        />
+        {"artworkBounds" in currentImage ? (
+          <svg
+            key={`${project.path}-${activeImage}`}
+            className="project-preview-artwork"
+            viewBox={currentImage.artworkBounds}
+            role="img"
+            aria-label={currentImage.alt}
+          >
+            <image href={currentImage.src} width="593" height="421" />
+          </svg>
+        ) : (
+          <img
+            key={`${project.path}-${activeImage}`}
+            src={currentImage.src}
+            alt={currentImage.alt}
+            loading="lazy"
+          />
+        )}
       </Link>
       <div className="project-slideshow-navigation">
         {project.images.length > 1 && (
