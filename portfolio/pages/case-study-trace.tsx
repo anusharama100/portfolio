@@ -232,13 +232,13 @@ export default function TraceCaseStudy() {
       <section className="refined-chapter" id="trace-iteration">
         <div className="refined-heading">
           <p className="refined-kicker">03 / Interface iteration</p>
-          <h3>Turn a collection of cards into a working evidence library.</h3>
+          <h3>Give the research a considered place to live.</h3>
           <p>
-            The first build made every observation a large card and led with
-            expressive headings. During my own review, the interface made
-            browsing easy but comparison slower: source information was
-            scattered, controls had similar visual weight, and the page title
-            did not match the navigation.
+            The initial interface gave every note the same generic card
+            treatment. In my interface review, source labels and actions needed
+            a clearer hierarchy. I refined the workspace around readable
+            evidence cards, a compact comparison view, and a visual identity
+            suited to focused research work.
           </p>
         </div>
         <div className="trace-case-comparison">
@@ -248,45 +248,45 @@ export default function TraceCaseStudy() {
             caption="Initial build · A card-first layout with equal emphasis on every observation."
           />
           <EvidenceFigure
-            src="/trace/trace-evidence.png"
-            alt="Refined Trace evidence library with a compact log, source columns, connections, sorting, and list and card controls"
-            caption="Refined build · A scannable evidence log with explicit source and connection information."
+            src="/trace/trace-evidence.jpg"
+            alt="Refined Trace research workspace with ink navigation, warm evidence cards, topic labels, source metadata, and linked insights"
+            caption="Refined build · Evidence cards keep the observation, topic, source, and connected insight together."
           />
         </div>
         <div className="trace-case-decisions">
           <article>
             <span>Hierarchy</span>
-            <h4>Use the language of the task.</h4>
+            <h4>Make the current task recognizable.</h4>
             <p>
-              “Evidence library,” “Insights,” and “Decisions” now match the
-              navigation. The heading identifies the current workspace;
-              supporting copy explains the action instead of competing with it.
+              Editorial headings identify the current view. The study context
+              supports the work, while the darker navigation provides a clear
+              orientation point. Primary actions share one consistent treatment.
             </p>
           </article>
           <article>
             <span>Density</span>
-            <h4>Offer a log and a reading view.</h4>
+            <h4>Choose the right reading mode.</h4>
             <p>
-              The default list aligns observations, sources, connections, and
-              update dates. Card view remains available for reading longer
-              excerpts. Switching views preserves selection and filters.
+              Cards give each observation a readable hierarchy and keep its
+              source close. The list aligns sources, connections, and dates for
+              comparison. Switching views preserves selection and filters.
             </p>
           </article>
           <article>
             <span>Visual system</span>
-            <h4>Give emphasis a specific job.</h4>
+            <h4>Let color carry context.</h4>
             <p>
-              Neutral surfaces and borders organize the page. A restrained green
-              identifies actions and reviewed states; amber identifies decisions
-              that need attention. Metadata and controls follow one type scale
-              and spacing system.
+              Ink navigation, warm paper surfaces, and terracotta actions
+              establish the product identity. Topic colors repeat on labels and
+              card edges. Green and amber distinguish reviewed states and
+              decisions needing attention.
             </p>
           </article>
         </div>
         <p>
-          This iteration made sources easier to compare and reduced the visual
-          weight of secondary controls. The next validation step is a synthesis
-          task with designers using their own research notes.
+          The next validation is a synthesis task with designers using their own
+          notes, checking navigation, source inspection, and the clarity of
+          review states.
         </p>
       </section>
 
@@ -302,7 +302,7 @@ export default function TraceCaseStudy() {
           </p>
         </div>
         <EvidenceFigure
-          src="/trace/trace-insight.png"
+          src="/trace/trace-insight.jpg"
           alt="Trace insight editor showing the interpretation, selected supporting observations, and explicit draft or ready status"
           caption="Create an insight · Selected observations remain attached while the interpretation is written."
         />
@@ -349,7 +349,7 @@ export default function TraceCaseStudy() {
           </p>
         </div>
         <EvidenceFigure
-          src="/trace/trace-decision.png"
+          src="/trace/trace-decision.jpg"
           alt="Trace decision inspector showing an alternative, a changed-evidence warning, supporting insights, and original observations"
           caption="Decision inspector · Review the rationale, alternative, and evidence in one place."
         />
@@ -451,8 +451,8 @@ export default function TraceCaseStudy() {
         </div>
         <div className="trace-case-mobile">
           <EvidenceFigure
-            src="/trace/trace-mobile.png"
-            alt="Trace mobile evidence library with responsive controls and readable observation rows"
+            src="/trace/trace-mobile.jpg"
+            alt="Trace mobile evidence library with responsive controls and readable evidence cards"
             caption="Mobile layout · The evidence and editing workflow remain available on a narrow screen."
           />
           <div>

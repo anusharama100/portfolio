@@ -1,7 +1,7 @@
 'use client'
 
 import type { Evidence, Insight } from './domain'
-import { Icon, recordDate, recordReference } from './TracePrimitives'
+import { Icon, recordDate, recordReference, topicTone } from './TracePrimitives'
 
 export type EvidenceLayout = 'list' | 'cards'
 export type EvidenceSort = 'newest' | 'oldest' | 'title'
@@ -46,7 +46,7 @@ export default function EvidenceLibrary({
             checked={allVisibleSelected}
             onChange={(event) => toggleVisible(event.target.checked)}
           />
-          <span>Observation</span>
+          <span>{layout === 'cards' ? 'Select all' : 'Observation'}</span>
         </label>
         <span>Source</span>
         <span>Connections</span>
@@ -64,6 +64,7 @@ export default function EvidenceLibrary({
                 (selected.includes(record.id) ? ' is-selected' : '')
               }
               key={record.id}
+              data-tone={topicTone(record.tags[0] || '')}
             >
               <label className="trace-observation-select">
                 <input
@@ -94,6 +95,7 @@ export default function EvidenceLibrary({
                   {record.tags.map((tag) => (
                     <button
                       className="trace-tag"
+                      data-tone={topicTone(tag)}
                       key={tag}
                       onClick={() => onTag(tag)}
                     >
@@ -102,34 +104,36 @@ export default function EvidenceLibrary({
                   ))}
                 </div>
               </div>
-              <div className="trace-observation-source">
-                <span className="trace-cell-label">Source</span>
-                <Icon name="evidence" />
-                <span>{record.source}</span>
+              <div className="trace-observation-footer">
+                <div className="trace-observation-source">
+                  <span className="trace-cell-label">Source</span>
+                  <Icon name="evidence" />
+                  <span>{record.source}</span>
+                </div>
+                <button
+                  className={
+                    'trace-connection-count' + (connections ? ' is-linked' : '')
+                  }
+                  onClick={() => onOpen(record.id)}
+                  aria-label={`View ${record.title}: ${connections} linked ${connections === 1 ? 'insight' : 'insights'}`}
+                >
+                  <span className="trace-cell-label">Connections</span>
+                  <Icon name="insights" />
+                  <span>
+                    {connections
+                      ? `${connections} ${connections === 1 ? 'insight' : 'insights'}`
+                      : 'Not linked'}
+                  </span>
+                </button>
+                <time
+                  className="trace-observation-date"
+                  dateTime={record.updatedAt}
+                  title={new Date(record.updatedAt).toLocaleString()}
+                >
+                  <span className="trace-cell-label">Updated</span>
+                  {recordDate(record.updatedAt)}
+                </time>
               </div>
-              <button
-                className={
-                  'trace-connection-count' + (connections ? ' is-linked' : '')
-                }
-                onClick={() => onOpen(record.id)}
-                aria-label={`View ${record.title}: ${connections} linked ${connections === 1 ? 'insight' : 'insights'}`}
-              >
-                <span className="trace-cell-label">Connections</span>
-                <Icon name="insights" />
-                <span>
-                  {connections
-                    ? `${connections} ${connections === 1 ? 'insight' : 'insights'}`
-                    : 'Not linked'}
-                </span>
-              </button>
-              <time
-                className="trace-observation-date"
-                dateTime={record.updatedAt}
-                title={new Date(record.updatedAt).toLocaleString()}
-              >
-                <span className="trace-cell-label">Updated</span>
-                {recordDate(record.updatedAt)}
-              </time>
             </article>
           )
         })}

@@ -97,11 +97,15 @@ const projectCatalog = [
     path: "trace",
     images: [
       {
-        src: "/trace/trace-evidence.png",
+        src: "/trace/trace-evidence.jpg",
         alt: "Trace evidence library with source labels and tag filters",
       },
       {
-        src: "/trace/trace-decision.png",
+        src: "/trace/trace-overview.jpg",
+        alt: "Trace study overview with a research brief, connected decisions, and review actions",
+      },
+      {
+        src: "/trace/trace-decision.jpg",
         alt: "Trace decision detail tracing insights to original observations",
       },
     ],

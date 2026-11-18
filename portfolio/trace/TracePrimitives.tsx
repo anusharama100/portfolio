@@ -181,3 +181,14 @@ export function recordDate(date: string) {
     day: 'numeric',
   })
 }
+
+const topicTones: Record<string, string> = {
+  comprehension: 'amber',
+  trust: 'violet',
+  navigation: 'teal',
+  feedback: 'blue',
+}
+
+export function topicTone(tag: string) {
+  return topicTones[tag.toLowerCase()] || 'neutral'
+}

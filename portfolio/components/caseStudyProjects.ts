@@ -11,7 +11,7 @@ export const caseStudyProjects = {
     name: 'Trace', category: 'Independent build · Product design + engineering',
     headline: 'From research evidence to a decision you can inspect.',
     description: 'I designed and built a research workspace that connects observations, findings, and product decisions. This case study follows the product framing, interface iteration, data model, and verification behind the working React and TypeScript application.',
-    image: '/trace/trace-evidence.png', imageAlt: 'Trace evidence library with source-linked observations and tag filters', tone: 'purple',
+    image: '/trace/trace-evidence.jpg', imageAlt: 'Trace evidence library with source-linked observations and tag filters', tone: 'purple',
     meta: [['Role', 'Product designer + frontend engineer'], ['Status', 'Working independent build'], ['Stack', 'React, TypeScript, IndexedDB'], ['Data', 'Local to your browser']],
     summary: [['Problem', 'A decision can outlive the evidence that informed it.'], ['Built', 'Linked records, validation, durable local storage, undo, and import/export.'], ['Scope', 'Single-user workspace with browser-local persistence and clearly marked sample data.']],
   },

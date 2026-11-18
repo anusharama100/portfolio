@@ -37,6 +37,7 @@ import {
   Pill,
   SourceButton,
   recordReference,
+  topicTone,
 } from './TracePrimitives'
 import './trace.css'
 
@@ -67,7 +68,7 @@ export default function TraceApp() {
   const deferredQuery = useDeferredValue(query)
   const [tag, setTag] = useState('')
   const [unlinked, setUnlinked] = useState(false)
-  const [layout, setLayout] = useState<EvidenceLayout>('list')
+  const [layout, setLayout] = useState<EvidenceLayout>('cards')
   const [sort, setSort] = useState<EvidenceSort>('newest')
   const [statusFilter, setStatusFilter] = useState('')
   const [selected, setSelected] = useState<string[]>([])
@@ -75,6 +76,7 @@ export default function TraceApp() {
   const [history, setHistory] = useState<Workspace[]>([])
   const [notice, setNotice] = useState('')
   const [mobileNav, setMobileNav] = useState(false)
+  const shellRef = useRef<HTMLDivElement>(null)
   const importFile = useRef<Workspace | null>(null)
   const [importMessage, setImportMessage] = useState('')
   const [formError, setFormError] = useState('')
@@ -171,6 +173,7 @@ export default function TraceApp() {
     setModal(next)
   }
   const go = (next: View) => {
+    shellRef.current?.scrollTo?.({ top: 0 })
     setView(next)
     setQuery('')
     setSelected([])
@@ -443,6 +446,7 @@ export default function TraceApp() {
             New study
           </button>
         </div>
+        <p className="trace-nav-label">Workspace</p>
         <nav aria-label="Study views">
           {(['overview', 'evidence', 'insights', 'decisions'] as View[]).map(
             (item) => (
@@ -497,7 +501,7 @@ export default function TraceApp() {
           onClick={() => setMobileNav(false)}
         />
       )}
-      <div className="trace-shell">
+      <div className="trace-shell" ref={shellRef}>
         <header className="trace-topbar">
           <button
             className="trace-icon-button trace-mobile-menu"
@@ -530,17 +534,6 @@ export default function TraceApp() {
           </a>
         </header>
         <main className="trace-main" id="trace-main">
-          {currentStudyId === 'study-sample' && (
-            <div className="trace-study-context">
-              <span className="trace-sample-label">Sample study</span>
-              <p>
-                All observations are fictional. Everything here is editable.
-              </p>
-              <button onClick={() => open({ type: 'study' })}>
-                Start a study <Icon name="arrow" />
-              </button>
-            </div>
-          )}
           <div className="trace-page-heading">
             <div>
               <h1>{viewTitle}</h1>
@@ -556,6 +549,17 @@ export default function TraceApp() {
               </button>
             )}
           </div>
+          {currentStudyId === 'study-sample' && (
+            <div className="trace-study-context">
+              <span className="trace-sample-label">Sample study</span>
+              <p>
+                All observations are fictional. Everything here is editable.
+              </p>
+              <button onClick={() => open({ type: 'study' })}>
+                Start a study <Icon name="arrow" />
+              </button>
+            </div>
+          )}
           {(saveState === 'error' || temporary) && (
             <div className="trace-storage-error" role="alert">
               <strong>
@@ -704,20 +708,20 @@ export default function TraceApp() {
                       aria-label="Evidence layout"
                     >
                       <button
-                        aria-label="List view"
-                        aria-pressed={layout === 'list'}
-                        onClick={() => setLayout('list')}
-                      >
-                        <Icon name="list" />
-                        <span>List</span>
-                      </button>
-                      <button
                         aria-label="Card view"
                         aria-pressed={layout === 'cards'}
                         onClick={() => setLayout('cards')}
                       >
                         <Icon name="cards" />
                         <span>Cards</span>
+                      </button>
+                      <button
+                        aria-label="List view"
+                        aria-pressed={layout === 'list'}
+                        onClick={() => setLayout('list')}
+                      >
+                        <Icon name="list" />
+                        <span>List</span>
                       </button>
                     </div>
                     <button
@@ -1028,7 +1032,7 @@ export default function TraceApp() {
                   </legend>
                   <p>
                     {modal.kind === 'insights'
-                      ? 'Keep the original sources attached.'
+                      ? `Choose from ${observations.length} observations. Original sources stay attached.`
                       : 'Ready insights with evidence are required before acceptance.'}
                   </p>
                   {(modal.kind === 'insights' ? observations : insights)
@@ -1130,7 +1134,11 @@ export default function TraceApp() {
                 <blockquote>{detailRecord.body}</blockquote>
                 <div className="trace-tag-list">
                   {detailRecord.tags.map((t) => (
-                    <span className="trace-tag" key={t}>
+                    <span
+                      className="trace-tag"
+                      data-tone={topicTone(t)}
+                      key={t}
+                    >
                       {t}
                     </span>
                   ))}

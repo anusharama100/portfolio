@@ -60,3 +60,7 @@ The application is part of the portfolio's static Next.js export. Its domain and
 **Recovery is part of the workflow.** Deletes update the graph; the last ten workspace snapshots support session undo. Export/import provides a portable backup. Undo is not durable audit history.
 
 **Next step.** A shared service would need authentication, authorization, server-side validation, a database, and a conflict strategy. None of those are represented as completed work in this frontend build. Customer research and a structured usability study would come before any claim of improved decision quality or time saved.
+
+## Interface system
+
+Shared color and typography tokens connect the evidence library, editors, and review panels. The navigation stays in place while the workspace scrolls. Cards support reading; the list aligns source metadata for comparison. Topic colors repeat in labels and card edges, while review states use separate green and amber signals.
