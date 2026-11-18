@@ -38,7 +38,7 @@ describe('Case study section navigation', () => {
     expect(screen.queryByRole('navigation', { name: 'Portfolio navigation' })).not.toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'Back to selected work' })).not.toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'Anusha Ramachandran, home' })).not.toBeInTheDocument()
-    expect(screen.getByRole('link', { name: '← All selected work' })).toHaveAttribute('href', '/#projects')
+    expect(screen.getByRole('link', { name: '← Browse all work' })).toHaveAttribute('href', '/#all-work')
     expect(screen.getByRole('heading', { name: 'Research' })).toBeInTheDocument()
     expect(screen.queryByText('In this story')).not.toBeInTheDocument()
   })

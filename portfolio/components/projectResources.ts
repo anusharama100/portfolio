@@ -8,6 +8,26 @@ export const traceWorkspaceUrl = 'https://www.anusharamachandran.com/lab/trace/'
 // Only enable destinations that are public and have been checked. A recording
 // or captured screenshot is not a substitute for an interactive demo.
 export const projectResources: Record<Exclude<CaseStudySlug, 'crusoe'>, ProjectResources> = {
+  marketpulse: {
+    demo: { label: 'Demo', detail: 'Reproducible local application; no hosted demo.' },
+    code: { label: 'View source', href: 'https://github.com/anusharama100/marketpulse', detail: 'Application, architecture, and recorded verification.' },
+  },
+  atlasiq: {
+    demo: { label: 'Demo', detail: 'Reproducible local application; no hosted demo.' },
+    code: { label: 'View source', href: 'https://github.com/anusharama100/atlasiq', detail: 'Pipeline, dashboard, SQL, and recorded verification.' },
+  },
+  signalflow: {
+    demo: { label: 'Demo', detail: 'Reproducible local application; no hosted demo.' },
+    code: { label: 'View source', href: 'https://github.com/anusharama100/signalflow', detail: 'Pipeline, dashboard, and recorded verification.' },
+  },
+  'patient-journey': {
+    demo: { label: 'Demo', detail: 'No hosted demo.' },
+    code: { label: 'Source', detail: 'Source repository remains private.' },
+  },
+  'diabetes-readmission': {
+    demo: { label: 'Demo', detail: 'No hosted demo.' },
+    code: { label: 'Source', detail: 'Source repository remains private.' },
+  },
   trace: {
     demo: { label: 'Try Trace', href: traceWorkspaceUrl, detail: 'Working workspace · No sign-in. Edits stay in your browser.' },
     code: { label: 'View source', href: 'https://github.com/anusharama100/portfolio/tree/main/portfolio/trace', detail: 'Application code, architecture notes, and test instructions.' },

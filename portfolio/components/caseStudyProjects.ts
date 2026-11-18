@@ -1,4 +1,7 @@
+import { dataProjects, dataProjectSlugs } from './dataProjects'
+
 export const caseStudyProjects = {
+  ...dataProjects,
   crusoe: {
     name: 'Crusoe', category: 'Cloud infrastructure · Product design internship',
     headline: 'Give a new cloud customer a useful first step.',
@@ -74,6 +77,6 @@ export const caseStudyProjects = {
 } as const
 
 export type CaseStudySlug = keyof typeof caseStudyProjects
-export const caseStudyOrder: CaseStudySlug[] = ['crusoe', 'trace', 'tonipr', 'krokos', 'nexus', 'neuranote', 'habitat', 'flowops', 'spotify']
+export const caseStudyOrder: CaseStudySlug[] = ['crusoe', 'trace', 'tonipr', 'krokos', 'nexus', 'neuranote', 'habitat', 'flowops', 'spotify', ...dataProjectSlugs]
 // Keep older case-study routes available without inserting them into selected work.
-export const featuredCaseStudyOrder: CaseStudySlug[] = caseStudyOrder.filter(slug => slug !== 'spotify' && slug !== 'flowops')
+export const featuredCaseStudyOrder: CaseStudySlug[] = ['crusoe', 'trace', 'tonipr', 'krokos', 'nexus', 'neuranote', 'habitat']

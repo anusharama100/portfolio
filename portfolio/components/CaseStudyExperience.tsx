@@ -64,7 +64,7 @@ export default function CaseStudyExperience({ slug, children, preview }: { slug:
         <div className="study-width">
           <p className="study-eyebrow">next case study / {next.category}</p>
           <Link href={`/case-study/${nextSlug}`} className="study-next"><div><h2>{next.name}</h2><p>{next.headline}</p></div><span aria-hidden="true">↗</span></Link>
-          <div className="study-footer-bottom"><Link href="/#projects">← All selected work</Link><a href="mailto:anusharama100@gmail.com">Let’s make something meaningful ↗</a><a href="#study-top">Back to top ↑</a></div>
+          <div className="study-footer-bottom"><Link href="/#all-work">← Browse all work</Link><a href="mailto:anusharama100@gmail.com">Let’s make something meaningful ↗</a><a href="#study-top">Back to top ↑</a></div>
         </div>
       </footer>
     </div>

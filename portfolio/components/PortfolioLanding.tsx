@@ -12,6 +12,7 @@ import { PortfolioHeader } from "./PortfolioHeader";
 import { krokosDesignPreviews } from "./krokosDesignEvidence";
 import { toniProjectPreviews } from "./toniProjectPreviews";
 import { traceWorkspaceUrl } from "./projectResources";
+import AllWorkShelf from "./AllWorkShelf";
 import { Link } from "@/portfolio/compat";
 
 const ribbon = "/landing/editorial-flow.jpg";
@@ -404,6 +405,7 @@ export default function PortfolioLanding() {
               </article>
             ))}
           </div>
+          <AllWorkShelf />
         </section>
       </main>
       <footer className="contact-section" id="contact">
