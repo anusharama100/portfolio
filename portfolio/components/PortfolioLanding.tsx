@@ -11,6 +11,7 @@ import { FlowingArtwork } from "./FlowingArtwork";
 import { PortfolioHeader } from "./PortfolioHeader";
 import { krokosDesignPreviews } from "./krokosDesignEvidence";
 import { toniProjectPreviews } from "./toniProjectPreviews";
+import { traceWorkspaceUrl } from "./projectResources";
 import { Link } from "@/portfolio/compat";
 
 const ribbon = "/landing/editorial-flow.jpg";
@@ -361,7 +362,7 @@ export default function PortfolioLanding() {
                     {project.path === "trace" && (
                       <a
                         className="case-link project-demo-link"
-                        href="/lab/trace/"
+                        href={traceWorkspaceUrl}
                       >
                         Try the workspace <ArrowUpRight size={16} />
                       </a>

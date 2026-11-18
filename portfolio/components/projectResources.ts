@@ -3,11 +3,13 @@ import type { CaseStudySlug } from './caseStudyProjects'
 type Resource = { href?: string; label: string; detail: string }
 type ProjectResources = { website?: Resource; demo: Resource; code: Resource }
 
+export const traceWorkspaceUrl = 'https://www.anusharamachandran.com/lab/trace/'
+
 // Only enable destinations that are public and have been checked. A recording
 // or captured screenshot is not a substitute for an interactive demo.
 export const projectResources: Record<Exclude<CaseStudySlug, 'crusoe'>, ProjectResources> = {
   trace: {
-    demo: { label: 'Try Trace', href: '/lab/trace/', detail: 'Working workspace · No sign-in. Edits stay in your browser.' },
+    demo: { label: 'Try Trace', href: traceWorkspaceUrl, detail: 'Working workspace · No sign-in. Edits stay in your browser.' },
     code: { label: 'View source', href: 'https://github.com/anusharama100/portfolio/tree/main/portfolio/trace', detail: 'Application code, architecture notes, and test instructions.' },
   },
   krokos: {

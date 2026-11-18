@@ -23,23 +23,27 @@ describe('Featured portfolio projects', () => {
     expect(supporting.at(-1)).toHaveTextContent('07 / HABITat')
     expect(featuredCaseStudyOrder).not.toContain('flowops')
     expect(caseStudyOrder).toContain('flowops')
-    expect(screen.getByRole('link', { name: 'Try the workspace' })).toHaveAttribute('href', '/lab/trace/')
+    expect(screen.getByRole('link', { name: 'Try the workspace' })).toHaveAttribute('href', 'https://www.anusharamachandran.com/lab/trace/')
   })
 
   it('uses the original HABITat designs in an operable case-study slideshow', () => {
     render(<PortfolioLanding />)
     const gallery = screen.getByLabelText('HABITat image slideshow')
+    const displayedAsset = () => {
+      const image = gallery.querySelector('img, svg image')
+      return image?.getAttribute('src') ?? image?.getAttribute('href')
+    }
     const assets = ['/habitat/habitat-hero.png', '/habitat/home-screen.jpeg', '/habitat/shared-habits.jpeg']
     expect(within(gallery).getByRole('link', { name: 'View HABITat case study' })).toHaveAttribute('href', '/case-study/habitat/')
     for (const [index, asset] of assets.entries()) {
       fireEvent.click(within(gallery).getByRole('button', { name: `Show HABITat image ${index + 1}` }))
-      expect(within(gallery).getByRole('img')).toHaveAttribute('src', asset)
+      expect(displayedAsset()).toBe(asset)
       expect(existsSync(resolve('public', asset.slice(1)))).toBe(true)
     }
     fireEvent.click(within(gallery).getByRole('button', { name: 'Next HABITat image' }))
-    expect(within(gallery).getByRole('img')).toHaveAttribute('src', assets[0])
+    expect(displayedAsset()).toBe(assets[0])
     fireEvent.click(within(gallery).getByRole('button', { name: 'Previous HABITat image' }))
-    expect(within(gallery).getByRole('img')).toHaveAttribute('src', assets[2])
+    expect(displayedAsset()).toBe(assets[2])
   })
 
   it.each([['crusoe', 'trace'], ['habitat', 'crusoe']] as const)('takes %s to %s in the featured reading sequence', (slug: CaseStudySlug, next) => {
