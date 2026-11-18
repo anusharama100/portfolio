@@ -343,7 +343,6 @@ export default function PortfolioLanding() {
                     <span className="project-number">
                       0{index + 1} / {project.name}
                     </span>
-                    <span className="project-type">{project.type}</span>
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>

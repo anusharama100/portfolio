@@ -87,7 +87,6 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 .project-image-link.blue { background: var(--surface-blue); }
 .project-topline { display: flex; align-items: center; gap: 14px; margin-bottom: 21px; }
 .project-number { font-size: 11px; color: var(--muted-foreground); }
-.project-type { border: 1px solid var(--border); border-radius: 50px; padding: 6px 10px; font-size: 9px; text-transform: lowercase; letter-spacing: .6px; }
 .project-info h3 { font-family: "DM Sans", sans-serif; font-size: 28px; font-weight: 500; line-height: 1.3; margin-bottom: 15px; }
 .project-info p { color: var(--muted-foreground); font-size: 14px; line-height: 1.8; max-width: 400px; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 20px; color: var(--muted-foreground); font-size: 10px; }
