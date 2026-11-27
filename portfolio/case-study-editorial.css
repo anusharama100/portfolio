@@ -1,0 +1,80 @@
+/* One reading system for the refined stories and the retained project layouts.
+   Keep these rules on narrative containers, never inside product evidence. */
+.case-study-experience[data-study-slug] {
+  --study-content-max: 1440px;
+  --study-section-space: clamp(48px, 5vw, 72px);
+  --study-block-space: 32px;
+  --study-body-size: 20px;
+  --study-chapter-size: clamp(30px, 3vw, 40px);
+  --study-label-size: 16px;
+}
+.case-study-experience .study-description { font-size: 19px; line-height: 1.75; max-width: 72ch; }
+.case-study-experience .study-summary { padding-block: var(--study-section-space); }
+.case-study-experience .study-summary-heading h2 { margin: 0; }
+.case-study-experience .study-summary-grid p { margin-bottom: 0; font-size: var(--study-body-size); line-height: 1.75; }
+.case-study-experience .study-original-content > main.refined-story { padding-block: 0 !important; }
+/* A Crusoe panel already supplies the page gutters. Do not inset it a second time. */
+.case-study-experience .crusoe-project-panel.refined-story { width: 100%; max-width: none; margin: 0; padding: var(--study-section-space) var(--study-content-inset) !important; }
+.case-study-experience .refined-chapter { margin: 0; padding-block: var(--study-section-space); border-top: 1px solid var(--border); }
+.case-study-experience .refined-chapter:first-of-type { margin: 0; border-top: 0; }
+.case-study-experience .crusoe-project-panel > .refined-chapter:first-of-type { border-top: 1px solid var(--border); margin-top: var(--study-block-space); }
+.case-study-experience .crusoe-clean-section { margin: 0; padding-block: var(--study-section-space); border-top: 1px solid var(--border); }
+.case-study-experience .crusoe-clean-heading { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; border: 0; padding: 0; margin: 0 0 var(--study-block-space); }
+.case-study-experience :is(.refined-heading, .krokos-section-heading) { max-width: 980px; margin-bottom: var(--study-block-space); }
+.case-study-experience .study-original-content :is(.refined-heading h2, .refined-heading h3, .crusoe-clean-heading h3, .krokos-section-heading h2, .legacy-section-title) {
+  max-width: 36ch; margin: 0 0 20px !important;
+  font: 600 var(--study-chapter-size)/1.25 'DM Sans', sans-serif !important;
+  text-transform: none; text-wrap: pretty;
+}
+.case-study-experience .study-original-content :is(.refined-heading p, .crusoe-clean-heading p, .krokos-section-heading > p:last-child) {
+  max-width: 72ch; margin: 0 !important; font-size: var(--study-body-size); line-height: 1.75 !important;
+}
+.case-study-experience .study-original-content :is(.refined-heading .refined-kicker, .krokos-section-heading .krokos-kicker) {
+  margin: 0 0 14px !important; font-size: var(--study-label-size); font-weight: 700; line-height: 1.5 !important;
+}
+.case-study-experience .crusoe-clean-heading > span { font-size: var(--study-label-size); font-weight: 700; line-height: 1.5; text-transform: none; }
+.case-study-experience .crusoe-project-panel .crusoe-project-heading-visual { align-items: center; grid-template-areas: 'title visual' 'intro visual'; row-gap: 18px; margin-block: 28px var(--study-block-space); }
+.case-study-experience .crusoe-project-heading-visual > h2 { margin: 0; align-self: end; }
+.case-study-experience .study-original-content :is(.crusoe-project-heading > h2, .crusoe-focused-story > .refined-heading h2) { max-width: 28ch; font: 600 clamp(34px, 3.4vw, 46px)/1.2 'DM Sans', sans-serif !important; }
+.case-study-experience .crusoe-project-panel .crusoe-project-heading > p { margin: 0; align-self: start; font-size: var(--study-body-size); line-height: 1.75; }
+.case-study-experience .refined-facts { margin-block: var(--study-block-space); padding-block: 26px; gap: var(--study-block-space); }
+.case-study-experience .refined-facts dt { font-size: 18px; font-weight: 700; }
+.case-study-experience .refined-facts dd { font-size: 18px; line-height: 1.7; }
+.case-study-experience :is(.refined-two, .refined-split) { gap: var(--study-block-space); }
+.case-study-experience .refined-note { margin-block: var(--study-block-space); padding: 26px 30px; }
+.case-study-experience .refined-story .refined-note p { margin: 10px 0 0; }
+.case-study-experience .refined-story p { font-size: var(--study-body-size); line-height: 1.75; }
+.case-study-experience .legacy-case-section > div > p:not(.legacy-section-number) { font-size: var(--study-body-size); line-height: 1.75 !important; max-width: 72ch; }
+.case-study-experience .refined-figure { margin-block: var(--study-block-space); }
+.case-study-experience .refined-figure figcaption { font-size: 16px; line-height: 1.6; }
+.case-study-experience .crusoe-cost-story .refined-note p { font-size: var(--study-body-size); margin: 10px 0 0; }
+.case-study-experience .crusoe-cost-story .crusoe-project-process { margin: 0; padding-block: 0 var(--study-section-space); border-top: 0; }
+.case-study-experience .crusoe-cost-story :is(.crusoe-research-cards, .crusoe-research-questions) { margin-top: var(--study-block-space); gap: var(--study-block-space); }
+.case-study-experience .crusoe-cost-story :is(.crusoe-research-cards p, .crusoe-research-questions p, .crusoe-project-process-steps p) { font-size: 17px; line-height: 1.7; }
+.case-study-experience .crusoe-cost-story .crusoe-cost-tradeoff { max-width: 78ch; margin: var(--study-block-space) 0; font-size: var(--study-body-size); line-height: 1.75; }
+.case-study-experience .crusoe-cost-walkthrough { max-width: none; margin-top: var(--study-block-space); }
+.case-study-experience .crusoe-cost-change-note { gap: var(--study-block-space); margin-block: 0 var(--study-block-space); }
+.case-study-experience .crusoe-cost-change-note dt { font-size: 16px; font-weight: 700; }
+.case-study-experience .crusoe-cost-change-note dd { font-size: 18px; line-height: 1.7; }
+.case-study-experience .crusoe-cost-still-grid { gap: var(--study-block-space); margin-top: 0; align-items: stretch; }
+.case-study-experience .crusoe-cost-story-shot { display: flex; flex-direction: column; }
+.case-study-experience .crusoe-cost-story-shot figcaption { flex: 1; padding: 24px; }
+.case-study-experience .crusoe-cost-story-shot h4 { font-size: 22px; font-weight: 600; }
+.case-study-experience .crusoe-cost-story-shot p { font-size: 17px; line-height: 1.7; }
+.case-study-experience .crusoe-cost-story .crusoe-story-context dd { font-size: 18px; line-height: 1.7; }
+.case-study-experience .crusoe-cost-review { margin-top: var(--study-block-space); padding: 28px; }
+.case-study-experience .crusoe-cost-review :is(p, li) { font-size: 18px; line-height: 1.75; }
+.case-study-experience .crusoe-cost-review p { margin: 20px 0 0; max-width: 80ch; }
+.case-study-experience .crusoe-cost-review li + li { margin-top: 12px; }
+@media (max-width: 900px) {
+  .case-study-experience .crusoe-project-panel .crusoe-project-heading-visual { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'title' 'intro' 'visual'; gap: 24px; }
+  .case-study-experience .crusoe-opening-preview { width: 100%; max-width: none; }
+}
+@media (max-width: 760px) {
+  .case-study-experience[data-study-slug] { --study-section-space: 40px; --study-block-space: 24px; --study-body-size: 18px; --study-chapter-size: 28px; --study-label-size: 15px; }
+  .case-study-experience .refined-facts { grid-template-columns: minmax(0, 1fr); }
+  .case-study-experience .crusoe-cost-still-grid, .case-study-experience .crusoe-cost-change-note { grid-template-columns: minmax(0, 1fr); }
+  .case-study-experience .crusoe-cost-story .crusoe-project-process-steps { grid-template-columns: minmax(0, 1fr); }
+  .case-study-experience .crusoe-cost-story-shot figcaption, .case-study-experience .crusoe-cost-review, .case-study-experience .refined-note { padding: 20px; }
+  .case-study-experience .crusoe-cost-story-shot h4 { font-size: 20px; }
+}

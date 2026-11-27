@@ -92,6 +92,10 @@ describe('Usage-to-cost edited walkthrough', () => {
     expect(container.querySelectorAll('video')).toHaveLength(1)
     expect(container.querySelectorAll('.crusoe-cost-story-shot')).toHaveLength(6)
     expect(screen.getAllByLabelText('Problem, design decision, and rationale')).toHaveLength(3)
+    for (const rationale of screen.getAllByLabelText('Problem, design decision, and rationale')) {
+      expect(rationale.closest('details')).toBeNull()
+    }
+    expect(screen.getByLabelText('Usage and billing project brief').closest('details')).toBeNull()
     expect(screen.getByText('How I mapped and reviewed the investigation').closest('details')).not.toHaveAttribute('open')
     for (const image of container.querySelectorAll('.crusoe-cost-story-shot img')) {
       expect(image).toHaveAttribute('width', '1280')

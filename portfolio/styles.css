@@ -18,6 +18,7 @@
 @import "./case-study-scale.css";
 @import "./refined-stories.css";
 @import "./trace-case-study.css";
+@import "./case-study-editorial.css";
 
 @custom-variant dark (&:is(.dark *));
 

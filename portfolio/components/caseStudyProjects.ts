@@ -4,8 +4,8 @@ export const caseStudyProjects = {
   ...dataProjects,
   crusoe: {
     name: 'Crusoe', category: 'Cloud infrastructure · Product design internship',
-    headline: 'Give a new cloud customer a useful first step.',
-    description: 'I audited first-run Console experiences and designed a reusable empty-state system with product, engineering, brand, and writing. The main story follows the research, design tradeoffs, and implementation handoff; two supporting projects explore usability and cost investigation.',
+    headline: 'Make complex cloud workflows easier to understand.',
+    description: 'During my product design internship, I worked on first-run guidance, Console usability, and AI usage and billing. These three projects show how I mapped problems, made interaction decisions, and worked with product and engineering—from a reusable empty-state pattern to a connected cost investigation.',
     image: '/images/crusoe/final-instances-empty.png', imageAlt: 'Designed Crusoe Instances empty state', tone: 'blue',
     meta: [['Role', 'Product Design Intern'], ['Timeline', '2026 internship'], ['Responsibility', 'Audit → design → handoff'], ['Team', 'Product, engineering, brand, writing']],
     summary: [['Problem', 'First-run screens offered actions without enough resource context.'], ['My contribution', 'Audit, reusable guidance, product variants, and state specifications.'], ['Delivery', 'Initial pattern and a separately labeled proposed V2.']],
